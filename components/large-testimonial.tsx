@@ -7,7 +7,7 @@ export default function LargeTestimonial() {
       <div className="mx-auto max-w-2xl px-4 sm:px-6">
         <div className="py-12 md:py-20">
           <div className="space-y-3 text-center">
-            <div className="relative inline-flex">
+            {/* <div className="relative inline-flex">
               <svg
                 className="absolute -left-6 -top-2 -z-10"
                 width={40}
@@ -28,19 +28,18 @@ export default function LargeTestimonial() {
                 height={48}
                 alt="Large testimonial"
               />
-            </div>
-            <p className="text-2xl font-bold text-gray-900">
-              “Simple has simplified my life in more ways than one. From
-              managing my sites to{" "}
-              <em className="italic text-gray-500">keeping track of tasks</em>,
-              it's become my go-to tool for everything.”
+            </div> */}
+            <p className="text-4xl font-bold text-gray-900">
+							Book a free 45 minutes consultation to discover how to scale your SME by 
+							100% in 6 months with a Technology Transformation {" "}
+							<em className="italic text-red-500">[worth £500]</em>
             </p>
-            <div className="text-sm font-medium text-gray-500">
-              <span className="text-gray-700">Mary Sullivan</span>{" "}
+            <div className="text-2xl font-medium text-gray-500">
+              <span className="text-gray-700">100% FREE</span>{" "}
               <span className="text-gray-400">/</span>{" "}
-              <a className="text-blue-500" href="#0">
-                CTO at Microsoft
-              </a>
+              <span className="text-blue-500">
+                Offer lasts till end of 2024
+              </span>
             </div>
           </div>
         </div>

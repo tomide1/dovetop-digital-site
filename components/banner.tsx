@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+//What can we use this component for?
 export default function Banner() {
   const [bannerOpen, setBannerOpen] = useState<boolean>(true);
 
