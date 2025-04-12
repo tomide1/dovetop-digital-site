@@ -2,14 +2,23 @@ export default function Footer({ border = false }: { border?: boolean }) {
   return (
     <footer>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        {/* Top area: Blocks */}
+        {/* <div
+          className={`grid gap-10 py-8 sm:grid-cols-12 md:py-12 ${border ? "border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.200),transparent)1]" : ""}`}
+        >
+          <div className="space-y-2 sm:col-span-12 lg:col-span-4">
+            <div className="text-sm text-gray-600">
+							<a href="https://find-and-update.company-information.service.gov.uk/company/16159208">Company House</a>
+            </div>
+          </div>
+				</div> */}
+				
         <div
           className={`grid gap-10 py-8 sm:grid-cols-12 md:py-12 ${border ? "border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.200),transparent)1]" : ""}`}
         >
           {/* 1st block */}
           <div className="space-y-2 sm:col-span-12 lg:col-span-4">
-            <div className="text-sm text-gray-600">
-              &copy; Powered by VI 30 Studios. All rights reserved.
+            <div className="text-sm text-gray-600 underline">
+							&copy; Powered by VI 30 Studios. All rights reserved.
             </div>
           </div>
 				</div>
