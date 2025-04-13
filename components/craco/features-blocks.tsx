@@ -224,23 +224,6 @@ function FeaturesBlocks() {
                 you achieve this and your other Data needs e.g cleansing, ETL
                 processes, ML models
               </p>
-              <div className='mt-4 text-blue-600 font-medium flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                Learn more
-                <svg
-                  className='w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-300'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M14 5l7 7m0 0l-7 7m7-7H3'
-                  ></path>
-                </svg>
-              </div>
             </Link>
 
             {/* 4th item */}
@@ -300,23 +283,6 @@ function FeaturesBlocks() {
                 security and governance requirements and can help you stay in
                 line with the standards
               </p>
-              <div className='mt-4 text-blue-600 font-medium flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                Learn more
-                <svg
-                  className='w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-300'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M14 5l7 7m0 0l-7 7m7-7H3'
-                  ></path>
-                </svg>
-              </div>
             </Link>
 
             {/* 5th item */}
