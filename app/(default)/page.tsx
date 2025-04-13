@@ -1,9 +1,8 @@
 export const metadata = {
-  title: 'Home - Simple',
-  description: 'Page description',
+  title: 'Dovetop Digital',
+  description: 'Official website for Dovetop Digital Ltd., a Tech consultancy based out of London, UK',
 }
 
-import Header from '@/components/ui/header'
 import Hero from '@/components/hero-home'
 import BusinessCategories from '@/components/business-categories'
 import FeaturesPlanet from '@/components/features-planet'
