@@ -56,6 +56,7 @@ const DesktopNavigation = memo(() => {
     </nav>
   )
 })
+DesktopNavigation.displayName = 'DesktopNavigation'
 
 /**
  * Mobile menu button component
@@ -107,6 +108,7 @@ const MobileMenuButton = memo<MobileMenuButtonProps>(
     )
   }
 )
+MobileMenuButton.displayName = 'MobileMenuButton'
 
 /**
  * Mobile menu item component
@@ -149,6 +151,7 @@ const MobileMenuItem = memo<MobileMenuItemProps>(
     )
   }
 )
+MobileMenuItem.displayName = 'MobileMenuItem'
 
 /**
  * Mobile navigation component
@@ -190,6 +193,7 @@ const MobileNavigation = memo<MobileNavigationProps>(
     )
   }
 )
+MobileNavigation.displayName = 'MobileNavigation'
 
 /**
  * Focus trap component for accessibility

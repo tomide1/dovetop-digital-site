@@ -17,8 +17,8 @@ export default function Footer({ border = false }: { border?: boolean }) {
         >
           {/* 1st block */}
           <div className="space-y-2 sm:col-span-12 lg:col-span-4">
-            <div className="text-sm text-gray-600 underline">
-							&copy; Powered by VI 30 Studios. All rights reserved.
+            <div className="text-sm text-gray-600">
+							&copy; 2025 Dovetop Digital Limited. All rights reserved.
             </div>
           </div>
 				</div>

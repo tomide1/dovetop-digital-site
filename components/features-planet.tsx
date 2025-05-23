@@ -14,7 +14,7 @@ export default function FeaturesPlanet() {
           {/* Section header */}
           <div className='mx-auto max-w-3xl pb-16 text-center md:pb-20'>
             <h2 className='text-3xl font-bold text-gray-200 md:text-4xl'>
-							Ideas thrive here — let's bring yours to life.
+              Ideas thrive here — let&apos;s bring yours to life.
             </h2>
           </div>
           {/* Planet */}
