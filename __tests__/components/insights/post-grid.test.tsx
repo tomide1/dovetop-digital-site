@@ -5,8 +5,19 @@ import { InsightPost } from '@/data/insights'
 // Mock the PostCard component
 jest.mock('@/components/insights/post-card', () => ({
   __esModule: true,
-  default: ({ post }: { post: InsightPost }) => (
-    <div data-testid='post-card'>{post.title}</div>
+  default: ({
+    post,
+    variant,
+  }: {
+    post: InsightPost
+    variant?: 'default' | 'compact'
+    showExcerpt?: boolean
+    showAuthor?: boolean
+    showDate?: boolean
+  }) => (
+    <div data-testid='post-card' data-variant={variant}>
+      {post.title}
+    </div>
   ),
 }))
 
