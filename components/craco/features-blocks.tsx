@@ -153,7 +153,7 @@ function FeaturesBlocks() {
               <p className='text-gray-600 text-center'>
                 The needs of your Users always comes first, we can help you
                 chart the course towards running a ship that prioritises your
-                user's needs and experience
+                user&apos;s needs and experience
               </p>
             </Link>
 

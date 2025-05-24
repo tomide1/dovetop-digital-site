@@ -10,13 +10,22 @@ type SubscribeRequestBody = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { fullName, email, companyName, phoneNumber, enquiry }: SubscribeRequestBody = await req.json()
+    const {
+      fullName,
+      email,
+      companyName,
+      phoneNumber,
+      enquiry,
+    }: SubscribeRequestBody = await req.json()
 
     const API_KEY = process.env.MAILCHIMP_API_KEY
     const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID
 
     if (!API_KEY || !AUDIENCE_ID) {
-      return NextResponse.json({ error: 'Missing Mailchimp config' }, { status: 500 })
+      return NextResponse.json(
+        { error: 'Missing Mailchimp config' },
+        { status: 500 }
+      )
     }
 
     const mailchimpEndpoint = `https://us17.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`
@@ -42,14 +51,21 @@ export async function POST(req: NextRequest) {
     })
 
     const responseBody = await response.json()
-		console.error('Mailchimp error response:', responseBody);
+    console.error('Mailchimp error response:', responseBody)
 
     if (!response.ok) {
-      return NextResponse.json({ error: responseBody.detail || 'Failed to subscribe' }, { status: response.status })
+      return NextResponse.json(
+        { error: responseBody.detail || 'Failed to subscribe' },
+        { status: response.status }
+      )
     }
 
     return NextResponse.json({ message: 'Subscription successful' })
   } catch (error) {
-    return NextResponse.json({ error: 'Unexpected server error' }, { status: 500 })
+    console.error('Subscription error:', error)
+    return NextResponse.json(
+      { error: 'Unexpected server error' },
+      { status: 500 }
+    )
   }
 }

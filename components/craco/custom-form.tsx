@@ -28,7 +28,13 @@ const CustomForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ fullName, email, companyName, phoneNumber, enquiry }),
+        body: JSON.stringify({
+          fullName,
+          email,
+          companyName,
+          phoneNumber,
+          enquiry,
+        }),
       })
 
       if (response.ok) {
@@ -37,14 +43,20 @@ const CustomForm = () => {
         const data = await response.json()
         setError(data?.error || 'Something went wrong. Please try again.')
       }
-    } catch (err) {
+    } catch (error) {
+      console.error('Form submission error:', error)
       setError('Network error. Please try again.')
     } finally {
       setLoading(false)
     }
   }
 
-  if (status === 'success') return <p className='font-large text-gray-200'>Thanks for submitting your query, we'll be in touch soon 👍🏾</p>
+  if (status === 'success')
+    return (
+      <p className='font-large text-gray-200'>
+        Thanks for submitting your query, we&apos;ll be in touch soon 👍🏾
+      </p>
+    )
 
   return (
     <form
@@ -53,7 +65,13 @@ const CustomForm = () => {
       data-aos-delay='300'
       onSubmit={handleSubmit}
     >
-      {loading && <svg style={{ color: '#1BA9BB' }} className='animate-spin h-5 w-5' viewBox='0 0 24 24' />}
+      {loading && (
+        <svg
+          style={{ color: '#1BA9BB' }}
+          className='animate-spin h-5 w-5'
+          viewBox='0 0 24 24'
+        />
+      )}
 
       {error && <div className='text-red-500 text-center mb-4'>{error}</div>}
 

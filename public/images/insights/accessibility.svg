@@ -1,0 +1,18 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background rectangle with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="450" fill="url(#bgGradient)"/>
+  
+  <!-- Overlay pattern -->
+  <path d="M0 0L800 450M800 0L0 450" stroke="white" stroke-width="2" stroke-opacity="0.1"/>
+  
+  <!-- Center text -->
+  <text x="400" y="220" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white" text-anchor="middle">Dovetop Digital</text>
+  <text x="400" y="260" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">Insights Image</text>
+</svg> 
