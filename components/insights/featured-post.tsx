@@ -77,7 +77,7 @@ const FeaturedPost = ({ post }: FeaturedPostProps) => {
         <div className='relative h-64 overflow-hidden lg:h-auto'>
           <div className='h-full'>
             <Image
-              src={coverImage || '/images/insights/placeholder.jpg'}
+              src={coverImage || '/images/insights/placeholder.svg'}
               alt={title}
               fill
               sizes='(max-width: 768px) 100vw, 50vw'

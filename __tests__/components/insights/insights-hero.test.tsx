@@ -11,7 +11,9 @@ describe('InsightsHero Component', () => {
     expect(heading).toHaveTextContent(/insights/i)
 
     // Check for description
-    const description = screen.getByText(/thought leadership/i)
+    const description = screen.getByText(
+      /explore the latest trends and best practices/i
+    )
     expect(description).toBeInTheDocument()
   })
 

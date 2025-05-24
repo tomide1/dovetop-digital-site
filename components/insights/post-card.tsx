@@ -42,7 +42,7 @@ const PostCard = ({
       })
     : ''
 
-  const placeholderImage = '/images/insights/placeholder.jpg'
+  const placeholderImage = '/images/insights/placeholder.svg'
   const imageUrl = coverImage || placeholderImage
 
   // Adjust styling based on variant

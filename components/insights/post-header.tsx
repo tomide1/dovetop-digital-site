@@ -20,7 +20,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
       <div className='mb-6'>
         <div className='relative aspect-[21/9] w-full overflow-hidden rounded-xl bg-gray-100'>
           <Image
-            src={coverImage || '/images/insights/placeholder.jpg'}
+            src={coverImage || '/images/insights/placeholder.svg'}
             alt={title}
             fill
             priority

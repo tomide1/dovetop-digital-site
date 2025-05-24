@@ -27,15 +27,16 @@ export default function LargeTestimonial() {
               />
             </div> */}
             <p className='text-4xl font-bold text-gray-900'>
-              Book a free 45 minutes consultation to discover how to scale your
-              SME by 100% in 6 months with a Technology Transformation{' '}
-              <em className='italic text-red-500'>[worth £500]</em>
+              We can completely transform your organisation in 6 months. Book a
+              1hr free consultation with our team to gain expert insight on how
+              to solve your most crippling problems{' '}
+              <em className='italic text-red-500'>[worth £500/1M Naira]</em>
             </p>
             <div className='text-2xl font-medium text-gray-500'>
               <span className='text-gray-700'>100% FREE</span>{' '}
               <span className='text-gray-400'>/</span>{' '}
               <span className='text-blue-500'>
-                Offer lasts till end of 2024
+                Offer lasts till end of 2025
               </span>
             </div>
           </div>

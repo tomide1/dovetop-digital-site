@@ -59,12 +59,12 @@ The cloud journey doesn't end with migration. To maximize cloud benefits:
 
 By following these best practices, organizations can achieve successful cloud migrations that deliver on the promise of improved agility, efficiency, and innovation.
     `,
-    coverImage: '/images/insights/cloud-migration.jpg',
+    coverImage: '/images/insights/cloud-migration.svg',
     date: '2023-10-15',
     author: {
       name: 'Sarah Johnson',
       title: 'Cloud Solutions Architect',
-      image: '/images/team/sarah-johnson.jpg',
+      image: '/images/team/sarah-johnson.svg',
     },
     category: 'Cloud Solutions',
     readTime: 8,
@@ -120,12 +120,12 @@ The best approach typically combines multiple research methods, selected based o
 
 By thoughtfully selecting and applying these research methods, design teams can create products that truly serve user needs while achieving business objectives.
     `,
-    coverImage: '/images/insights/ux-research.jpg',
+    coverImage: '/images/insights/ux-research.svg',
     date: '2023-09-22',
     author: {
       name: 'Michael Chen',
       title: 'UX Research Lead',
-      image: '/images/team/michael-chen.jpg',
+      image: '/images/team/michael-chen.svg',
     },
     category: 'User-Centered Design',
     readTime: 6,
@@ -184,12 +184,12 @@ For ML to deliver value, it must integrate seamlessly with existing workflows:
 
 By addressing these considerations, enterprises can move beyond ML pilots to implement solutions that deliver sustained business value.
     `,
-    coverImage: '/images/insights/machine-learning.jpg',
+    coverImage: '/images/insights/machine-learning.svg',
     date: '2023-08-17',
     author: {
       name: 'Alex Rodriguez',
       title: 'Data Science Director',
-      image: '/images/team/alex-rodriguez.jpg',
+      image: '/images/team/alex-rodriguez.svg',
     },
     category: 'Data Analytics & ML',
     readTime: 10,
@@ -255,12 +255,12 @@ Security isn't a one-time activity:
 
 By adopting DevSecOps practices, organizations can deliver secure applications at the speed of business while building a security-conscious development culture.
     `,
-    coverImage: '/images/insights/devsecops.jpg',
+    coverImage: '/images/insights/devsecops.svg',
     date: '2023-11-05',
     author: {
       name: 'Priya Patel',
       title: 'Security Engineering Lead',
-      image: '/images/team/priya-patel.jpg',
+      image: '/images/team/priya-patel.svg',
     },
     category: 'Security & Governance',
     readTime: 7,
@@ -326,12 +326,12 @@ For existing applications:
 
 When implemented thoughtfully, serverless architectures can deliver on their promise of simplified operations, improved scalability, and faster innovation.
     `,
-    coverImage: '/images/insights/serverless.jpg',
+    coverImage: '/images/insights/serverless.svg',
     date: '2023-09-10',
     author: {
       name: 'David Wilson',
       title: 'Cloud Architect',
-      image: '/images/team/david-wilson.jpg',
+      image: '/images/team/david-wilson.svg',
     },
     category: 'Cloud Solutions',
     readTime: 6,
@@ -396,12 +396,12 @@ AI development typically requires large datasets that may contain sensitive info
 
 By proactively addressing ethical considerations, organizations can build AI systems that not only avoid harm but actively promote fairness, transparency, and human well-being.
     `,
-    coverImage: '/images/insights/ethical-ai.jpg',
+    coverImage: '/images/insights/ethical-ai.svg',
     date: '2023-10-30',
     author: {
       name: 'Jasmine Lee',
       title: 'AI Ethics Researcher',
-      image: '/images/team/jasmine-lee.jpg',
+      image: '/images/team/jasmine-lee.svg',
     },
     category: 'Data Analytics & ML',
     readTime: 9,
@@ -476,12 +476,12 @@ Content must be robust enough to be interpreted by a wide variety of user agents
 
 By embracing these principles and strategies, organizations can create digital products that truly work for everyone, improving the experience for all users while meeting legal requirements and expanding market reach.
     `,
-    coverImage: '/images/insights/accessibility.jpg',
+    coverImage: '/images/insights/accessibility.svg',
     date: '2023-08-25',
     author: {
       name: 'Thomas Rivera',
       title: 'Senior UX Designer',
-      image: '/images/team/thomas-rivera.jpg',
+      image: '/images/team/thomas-rivera.svg',
     },
     category: 'User-Centered Design',
     readTime: 8,
@@ -555,12 +555,12 @@ Technical implementation is only part of the equation. Successful Zero Trust ado
 
 By methodically implementing Zero Trust principles, organizations can significantly improve their security posture while enabling the flexibility modern businesses require.
     `,
-    coverImage: '/images/insights/zero-trust.jpg',
+    coverImage: '/images/insights/zero-trust.svg',
     date: '2023-11-15',
     author: {
       name: 'Olivia Mitchell',
       title: 'Cybersecurity Director',
-      image: '/images/team/olivia-mitchell.jpg',
+      image: '/images/team/olivia-mitchell.svg',
     },
     category: 'Security & Governance',
     readTime: 11,
