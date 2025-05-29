@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import PostCard from '@/components/insights/post-card'
-import { InsightPost } from '@/data/insights'
+import { InsightWithAuthor } from '@/data/insights'
 
-// Mock InsightPost for testing
-const mockInsight: InsightPost = {
+// Mock InsightWithAuthor for testing
+const mockInsight: InsightWithAuthor = {
   id: '1',
   slug: 'sample-post',
   title: 'Sample Post Title',
@@ -11,7 +11,15 @@ const mockInsight: InsightPost = {
   content: 'Full content here...',
   coverImage: '/images/sample-cover.jpg',
   date: '2023-10-26',
-  author: { name: 'John Doe', title: 'Tech Lead' },
+  authorName: 'John Doe',
+  author: {
+    id: 'john-doe',
+    name: 'John Doe',
+    title: 'Tech Lead',
+    image: '/images/team/john-doe.svg',
+    alt: 'John Doe headshot',
+    isAuthor: true,
+  },
   category: 'Cloud Solutions',
   readTime: 5,
   featured: false,
@@ -36,7 +44,7 @@ describe('PostCard Component', () => {
 
       expect(screen.getByText(mockInsight.title)).toBeInTheDocument()
       expect(screen.getByText(mockInsight.excerpt)).toBeInTheDocument()
-      expect(screen.getByText(mockInsight.author.name)).toBeInTheDocument()
+      expect(screen.getByText(mockInsight.author!.name)).toBeInTheDocument()
       expect(
         screen.getByText(`${mockInsight.readTime} min read`)
       ).toBeInTheDocument()
@@ -59,9 +67,26 @@ describe('PostCard Component', () => {
     })
 
     test('renders correctly with minimal data (no excerpt)', () => {
-      const minimalPost: InsightPost = {
-        ...mockInsight,
+      const minimalPost: InsightWithAuthor = {
+        id: '2',
+        slug: 'minimal-post',
+        title: 'Minimal Post Title',
         excerpt: '', // No excerpt
+        content: 'Full content here...',
+        coverImage: '/images/minimal-cover.jpg',
+        date: '2023-10-26',
+        authorName: 'John Doe',
+        author: {
+          id: 'john-doe',
+          name: 'John Doe',
+          title: 'Tech Lead',
+          image: '/images/team/john-doe.svg',
+          alt: 'John Doe headshot',
+          isAuthor: true,
+        },
+        category: 'Cloud Solutions',
+        readTime: 5,
+        featured: false,
       }
 
       render(<PostCard post={minimalPost} />)
@@ -71,9 +96,26 @@ describe('PostCard Component', () => {
     })
 
     test('displays placeholder or handles missing cover image gracefully', () => {
-      const postWithoutImage: InsightPost = {
-        ...mockInsight,
+      const postWithoutImage: InsightWithAuthor = {
+        id: '3',
+        slug: 'no-image-post',
+        title: 'Post Without Image',
+        excerpt: 'This post has no cover image.',
+        content: 'Full content here...',
         coverImage: '',
+        date: '2023-10-26',
+        authorName: 'John Doe',
+        author: {
+          id: 'john-doe',
+          name: 'John Doe',
+          title: 'Tech Lead',
+          image: '/images/team/john-doe.svg',
+          alt: 'John Doe headshot',
+          isAuthor: true,
+        },
+        category: 'Cloud Solutions',
+        readTime: 5,
+        featured: false,
       }
 
       render(<PostCard post={postWithoutImage} />)
@@ -89,6 +131,32 @@ describe('PostCard Component', () => {
           expect.stringContaining('placeholder')
         )
       }
+    })
+
+    test('handles missing author gracefully', () => {
+      const postWithoutAuthor: InsightWithAuthor = {
+        id: '4',
+        slug: 'no-author-post',
+        title: 'Post Without Author',
+        excerpt: 'This post has no author.',
+        content: 'Full content here...',
+        coverImage: '/images/no-author-cover.jpg',
+        date: '2023-10-26',
+        authorName: 'Unknown Author',
+        author: undefined,
+        category: 'Cloud Solutions',
+        readTime: 5,
+        featured: false,
+      }
+
+      render(<PostCard post={postWithoutAuthor} />)
+
+      // Should still render the title and other elements
+      expect(screen.getByText(postWithoutAuthor.title)).toBeInTheDocument()
+      expect(screen.getByText(postWithoutAuthor.category)).toBeInTheDocument()
+
+      // Should not show author name
+      expect(screen.queryByText('John Doe')).not.toBeInTheDocument()
     })
   })
 
@@ -106,7 +174,7 @@ describe('PostCard Component', () => {
       // Should not show excerpt, author, or date by default
       expect(screen.queryByTestId('post-excerpt')).not.toBeInTheDocument()
       expect(
-        screen.queryByText(mockInsight.author.name)
+        screen.queryByText(mockInsight.author!.name)
       ).not.toBeInTheDocument()
       expect(screen.queryByText(/October 26, 2023/)).not.toBeInTheDocument()
 
@@ -126,7 +194,7 @@ describe('PostCard Component', () => {
       expect(screen.getByText(mockInsight.title)).toBeInTheDocument()
       expect(screen.queryByTestId('post-excerpt')).not.toBeInTheDocument()
       // Should still show author since we didn't override that
-      expect(screen.getByText(mockInsight.author.name)).toBeInTheDocument()
+      expect(screen.getByText(mockInsight.author!.name)).toBeInTheDocument()
     })
 
     test('can override author display in default variant', () => {
@@ -134,7 +202,7 @@ describe('PostCard Component', () => {
 
       expect(screen.getByText(mockInsight.title)).toBeInTheDocument()
       expect(
-        screen.queryByText(mockInsight.author.name)
+        screen.queryByText(mockInsight.author!.name)
       ).not.toBeInTheDocument()
       // Should still show excerpt since we didn't override that
       expect(screen.getByTestId('post-excerpt')).toBeInTheDocument()
@@ -146,7 +214,7 @@ describe('PostCard Component', () => {
       expect(screen.getByText(mockInsight.title)).toBeInTheDocument()
       expect(screen.queryByText(/October 26, 2023/)).not.toBeInTheDocument()
       // Should still show author since we didn't override that
-      expect(screen.getByText(mockInsight.author.name)).toBeInTheDocument()
+      expect(screen.getByText(mockInsight.author!.name)).toBeInTheDocument()
     })
 
     test('can force show excerpt in compact variant', () => {
@@ -158,7 +226,7 @@ describe('PostCard Component', () => {
       expect(screen.getByTestId('post-excerpt')).toBeInTheDocument()
       // Should still hide author/date since compact variant overrides
       expect(
-        screen.queryByText(mockInsight.author.name)
+        screen.queryByText(mockInsight.author!.name)
       ).not.toBeInTheDocument()
     })
 
@@ -168,7 +236,7 @@ describe('PostCard Component', () => {
       )
 
       expect(screen.getByText(mockInsight.title)).toBeInTheDocument()
-      expect(screen.getByText(mockInsight.author.name)).toBeInTheDocument()
+      expect(screen.getByText(mockInsight.author!.name)).toBeInTheDocument()
       // Should still hide excerpt since compact variant overrides
       expect(screen.queryByTestId('post-excerpt')).not.toBeInTheDocument()
     })

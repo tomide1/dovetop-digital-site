@@ -1,4 +1,4 @@
-import { insights } from '@/data/insights'
+import { insights, getInsightWithAuthor } from '@/data/insights'
 import { notFound } from 'next/navigation'
 import PostHeader from '@/components/insights/post-header'
 import PostContent from '@/components/insights/post-content'
@@ -52,12 +52,27 @@ export default function PostDetailPage({
     return null
   }
 
+  // Get the enriched post with author data
+  const enrichedPost = getInsightWithAuthor(post)
+
+  // If author is not found, we should still render the post but without author bio
+  if (!enrichedPost.author) {
+    return (
+      <main className='container mx-auto px-4 py-12'>
+        <BackButton />
+        <PostHeader post={post} />
+        <PostContent post={post} />
+        <RelatedPosts currentPostId={post.id} category={post.category} />
+      </main>
+    )
+  }
+
   return (
     <main className='container mx-auto px-4 py-12'>
       <BackButton />
       <PostHeader post={post} />
       <PostContent post={post} />
-      <AuthorBio author={post.author} />
+      <AuthorBio author={enrichedPost.author} />
       <RelatedPosts currentPostId={post.id} category={post.category} />
     </main>
   )

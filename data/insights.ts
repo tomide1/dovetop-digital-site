@@ -1,3 +1,6 @@
+import { getAuthorByName, type TeamMember } from './team'
+
+// Legacy Author interface (kept for compatibility)
 export interface Author {
   name: string
   title: string
@@ -12,10 +15,16 @@ export interface InsightPost {
   content: string
   coverImage: string
   date: string
-  author: Author
+  authorName: string // Changed from author object to authorName string
   category: string
   readTime: number
   featured: boolean
+}
+
+// Interface for insights enriched with author data
+export interface InsightWithAuthor extends Omit<InsightPost, 'authorName'> {
+  author: TeamMember | undefined
+  authorName: string
 }
 
 export const insights: InsightPost[] = [
@@ -61,11 +70,7 @@ By following these best practices, organizations can achieve successful cloud mi
     `,
     coverImage: '/images/insights/cloud-migration.svg',
     date: '2023-10-15',
-    author: {
-      name: 'Sarah Johnson',
-      title: 'Cloud Solutions Architect',
-      image: '/images/team/sarah-johnson.svg',
-    },
+    authorName: 'Sarah Johnson',
     category: 'Cloud Solutions',
     readTime: 8,
     featured: true,
@@ -122,11 +127,7 @@ By thoughtfully selecting and applying these research methods, design teams can 
     `,
     coverImage: '/images/insights/ux-research.svg',
     date: '2023-09-22',
-    author: {
-      name: 'Michael Chen',
-      title: 'UX Research Lead',
-      image: '/images/team/michael-chen.svg',
-    },
+    authorName: 'Michael Chen',
     category: 'User-Centered Design',
     readTime: 6,
     featured: false,
@@ -186,11 +187,7 @@ By addressing these considerations, enterprises can move beyond ML pilots to imp
     `,
     coverImage: '/images/insights/machine-learning.svg',
     date: '2023-08-17',
-    author: {
-      name: 'Alex Rodriguez',
-      title: 'Data Science Director',
-      image: '/images/team/alex-rodriguez.svg',
-    },
+    authorName: 'Alex Rodriguez',
     category: 'Data Analytics & ML',
     readTime: 10,
     featured: false,
@@ -257,11 +254,7 @@ By adopting DevSecOps practices, organizations can deliver secure applications a
     `,
     coverImage: '/images/insights/devsecops.svg',
     date: '2023-11-05',
-    author: {
-      name: 'Priya Patel',
-      title: 'Security Engineering Lead',
-      image: '/images/team/priya-patel.svg',
-    },
+    authorName: 'Priya Patel',
     category: 'Security & Governance',
     readTime: 7,
     featured: false,
@@ -328,11 +321,7 @@ When implemented thoughtfully, serverless architectures can deliver on their pro
     `,
     coverImage: '/images/insights/serverless.svg',
     date: '2023-09-10',
-    author: {
-      name: 'David Wilson',
-      title: 'Cloud Architect',
-      image: '/images/team/david-wilson.svg',
-    },
+    authorName: 'David Wilson',
     category: 'Cloud Solutions',
     readTime: 6,
     featured: false,
@@ -398,11 +387,7 @@ By proactively addressing ethical considerations, organizations can build AI sys
     `,
     coverImage: '/images/insights/ethical-ai.svg',
     date: '2023-10-30',
-    author: {
-      name: 'Jasmine Lee',
-      title: 'AI Ethics Researcher',
-      image: '/images/team/jasmine-lee.svg',
-    },
+    authorName: 'Jasmine Lee',
     category: 'Data Analytics & ML',
     readTime: 9,
     featured: true,
@@ -449,121 +434,127 @@ Information and operation of the user interface must be understandable:
 
 ### Robust
 
-Content must be robust enough to be interpreted by a wide variety of user agents:
+Content must be robust enough for interpretation by a wide variety of user agents:
 
-- **Compatible code**: Maximize compatibility with current and future tools.
-- **Proper markup**: Use correct HTML semantics and ARIA when needed.
+- **Valid code**: Follow web standards and use valid markup.
+- **Compatible assistive technologies**: Ensure compatibility with screen readers and other assistive tools.
 
-## Implementation Strategies
+## Implementation Best Practices
 
-### 1. Start Early
+### Design Phase
 
-- Include accessibility requirements in project planning
-- Address accessibility from the beginning of design process
-- Choose frameworks and libraries with good accessibility support
+- **Color contrast**: Ensure sufficient contrast ratios between text and background colors.
+- **Focus indicators**: Design clear visual indicators for keyboard navigation.
+- **Flexible layouts**: Create designs that work across different screen sizes and zoom levels.
 
-### 2. Test Throughout Development
+### Development Phase
 
-- Incorporate automated accessibility testing tools
-- Conduct regular manual testing with assistive technologies
-- Include people with disabilities in user testing
+- **Semantic HTML**: Use appropriate HTML elements for their intended purpose.
+- **ARIA labels**: Provide additional context for assistive technologies where needed.
+- **Keyboard navigation**: Ensure all interactive elements are accessible via keyboard.
 
-### 3. Educate Your Team
+### Testing and Validation
 
-- Provide accessibility training for all team members
-- Create accessibility champions within the organization
-- Build a culture where accessibility is everyone's responsibility
+- **Automated testing**: Use tools like axe-core to catch common accessibility issues.
+- **Manual testing**: Test with actual assistive technologies and keyboard navigation.
+- **User testing**: Include users with disabilities in your testing process.
 
-By embracing these principles and strategies, organizations can create digital products that truly work for everyone, improving the experience for all users while meeting legal requirements and expanding market reach.
+Creating accessible digital experiences benefits everyone and demonstrates a commitment to inclusive design. By integrating accessibility considerations throughout the design and development process, teams can build products that are truly usable by all.
     `,
     coverImage: '/images/insights/accessibility.svg',
     date: '2023-08-25',
-    author: {
-      name: 'Thomas Rivera',
-      title: 'Senior UX Designer',
-      image: '/images/team/thomas-rivera.svg',
-    },
+    authorName: 'Olivia Mitchell',
     category: 'User-Centered Design',
     readTime: 8,
     featured: false,
   },
   {
     id: '8',
-    slug: 'zero-trust-security-model',
-    title: 'Implementing a Zero Trust Security Model in the Modern Enterprise',
+    slug: 'sustainable-software-development',
+    title:
+      'Sustainable Software Development: Building for Environmental Impact',
     excerpt:
-      'A practical guide to adopting the "never trust, always verify" approach to cybersecurity in today\'s distributed work environment.',
+      'Explore how software development practices can contribute to environmental sustainability through efficient coding, green hosting, and responsible resource usage.',
     content: `
-# Implementing a Zero Trust Security Model in the Modern Enterprise
+# Sustainable Software Development: Building for Environmental Impact
 
-The traditional security perimeter has dissolved. With remote work, cloud services, and BYOD policies now standard, organizations must shift from perimeter-based security to a Zero Trust model that validates every access request regardless of origin.
+As the tech industry grapples with its environmental footprint, sustainable software development has emerged as a critical practice. By optimizing code efficiency, choosing green infrastructure, and making conscious architectural decisions, development teams can significantly reduce their applications' environmental impact.
 
-## Zero Trust Fundamentals
+## Understanding Software Carbon Footprint
 
-### Core Principles
+### Energy Consumption Sources
 
-The Zero Trust approach is built on three key principles:
+Software applications consume energy through:
 
-1. **Verify explicitly**: Authenticate and authorize based on all available data points.
-2. **Use least privilege access**: Limit user access with Just-In-Time and Just-Enough-Access.
-3. **Assume breach**: Minimize blast radius and segment access, verify end-to-end encryption, and use analytics to improve defenses.
+- **CPU and memory usage**: Inefficient algorithms increase computational requirements
+- **Network transfers**: Excessive data transmission consumes bandwidth and energy
+- **Storage operations**: Frequent reads/writes to disk or database systems
+- **Infrastructure**: Servers, data centers, and cloud services
 
-### Key Components
+### Measurement and Monitoring
 
-A comprehensive Zero Trust architecture includes:
+- **Carbon tracking tools**: Use services like the Green Software Foundation's Carbon Aware SDK
+- **Performance monitoring**: Track CPU usage, memory consumption, and network traffic
+- **Energy profiling**: Measure application energy consumption across different use cases
 
-- **Identity verification**: Strong authentication across all users
-- **Device verification**: Security health validation for all devices
-- **Network segmentation**: Micro-segmentation and monitoring
-- **Application security**: Protection and monitoring at the application layer
-- **Data classification and protection**: Controls based on sensitivity
+## Sustainable Development Practices
 
-## Implementation Roadmap
+### Efficient Code Design
 
-### Phase 1: Assessment and Planning
+- **Algorithm optimization**: Choose efficient algorithms and data structures
+- **Resource management**: Properly manage memory allocation and cleanup
+- **Lazy loading**: Load resources only when needed
+- **Caching strategies**: Implement effective caching to reduce repeated computations
 
-1. **Current state analysis**: Inventory assets, identities, and access patterns
-2. **Risk assessment**: Identify critical assets and potential vulnerabilities
-3. **Roadmap creation**: Develop a phased implementation plan
+### Green Architecture Decisions
 
-### Phase 2: Foundation Building
+- **Serverless computing**: Leverage auto-scaling to match resource usage with demand
+- **Edge computing**: Process data closer to users to reduce network latency
+- **Microservices optimization**: Right-size services to avoid over-provisioning
+- **Database optimization**: Use efficient queries and indexing strategies
 
-1. **Identity foundation**: Implement strong MFA and conditional access
-2. **Device management**: Establish device health verification
-3. **Network visibility**: Deploy monitoring for traffic and access patterns
+### Sustainable Infrastructure
 
-### Phase 3: Progressive Implementation
+- **Green hosting providers**: Choose data centers powered by renewable energy
+- **Content delivery networks**: Use CDNs to reduce data transfer distances
+- **Auto-scaling**: Implement dynamic scaling to match resource allocation with actual demand
+- **Container optimization**: Use minimal base images and efficient container configurations
 
-1. **Micro-segmentation**: Implement network controls based on identity
-2. **Application protection**: Secure and monitor applications
-3. **Data protection**: Classify and protect data based on sensitivity
+## Implementation Strategies
 
-### Phase 4: Optimization
+### Development Phase
 
-1. **Automation**: Reduce manual intervention in security processes
-2. **Analytics**: Implement advanced threat analytics and user behavior analytics
-3. **Continuous improvement**: Regular review and adjustment of policies
+1. **Code reviews for efficiency**: Include performance and efficiency in code review criteria
+2. **Automated testing**: Test for performance regressions and resource usage
+3. **Profiling tools**: Regularly profile applications to identify inefficiencies
 
-## Change Management Considerations
+### Deployment and Operations
 
-Technical implementation is only part of the equation. Successful Zero Trust adoption requires:
+1. **Infrastructure as Code**: Version control infrastructure to optimize resource allocation
+2. **Monitoring and alerting**: Track resource usage and carbon footprint metrics
+3. **Continuous optimization**: Regularly review and optimize infrastructure and application performance
 
-- **Executive sponsorship**: Security leadership commitment
-- **User education**: Training on new security practices
-- **Phased rollout**: Gradual implementation to minimize disruption
-- **Performance monitoring**: Ensuring security doesn't impede productivity
+### Team Culture
 
-By methodically implementing Zero Trust principles, organizations can significantly improve their security posture while enabling the flexibility modern businesses require.
+1. **Environmental awareness**: Educate teams on the environmental impact of software
+2. **Sustainable metrics**: Include sustainability KPIs alongside traditional performance metrics
+3. **Green practices**: Encourage power-efficient development environments and practices
+
+By adopting sustainable software development practices, teams can create applications that perform well while minimizing their environmental impact. This approach not only benefits the planet but often results in more efficient, cost-effective software solutions.
     `,
-    coverImage: '/images/insights/zero-trust.svg',
-    date: '2023-11-15',
-    author: {
-      name: 'Olivia Mitchell',
-      title: 'Cybersecurity Director',
-      image: '/images/team/olivia-mitchell.svg',
-    },
+    coverImage: '/images/insights/sustainable-development.svg',
+    date: '2023-10-12',
+    authorName: 'Thomas Rivera',
     category: 'Security & Governance',
-    readTime: 11,
+    readTime: 7,
     featured: false,
   },
 ]
+
+// Helper function to get insight with author data from team
+export const getInsightWithAuthor = (
+  insight: InsightPost
+): InsightWithAuthor => ({
+  ...insight,
+  author: getAuthorByName(insight.authorName),
+})

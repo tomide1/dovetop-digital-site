@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import RelatedPosts from '@/components/insights/related-posts'
-import { InsightPost } from '@/data/insights'
+import { InsightWithAuthor } from '@/data/insights'
 
 // Mock the insights data module
 jest.mock('@/data/insights', () => ({
@@ -13,7 +13,7 @@ jest.mock('@/data/insights', () => ({
       content: 'Current post content',
       coverImage: '/images/current.jpg',
       date: '2023-10-26',
-      author: { name: 'Author 1', title: 'Title 1' },
+      authorName: 'Sarah Johnson',
       category: 'Cloud Solutions',
       readTime: 5,
       featured: false,
@@ -26,7 +26,7 @@ jest.mock('@/data/insights', () => ({
       content: 'Related post 1 content',
       coverImage: '/images/related1.jpg',
       date: '2023-10-25',
-      author: { name: 'Author 2', title: 'Title 2' },
+      authorName: 'Michael Chen',
       category: 'Cloud Solutions',
       readTime: 3,
       featured: false,
@@ -39,7 +39,7 @@ jest.mock('@/data/insights', () => ({
       content: 'Related post 2 content',
       coverImage: '/images/related2.jpg',
       date: '2023-10-24',
-      author: { name: 'Author 3', title: 'Title 3' },
+      authorName: 'Emily Rodriguez',
       category: 'Cloud Solutions',
       readTime: 4,
       featured: false,
@@ -52,12 +52,23 @@ jest.mock('@/data/insights', () => ({
       content: 'Different category content',
       coverImage: '/images/different.jpg',
       date: '2023-10-23',
-      author: { name: 'Author 4', title: 'Title 4' },
+      authorName: 'David Wilson',
       category: 'Data Analytics',
       readTime: 6,
       featured: false,
     },
   ],
+  getInsightWithAuthor: jest.fn((post) => ({
+    ...post,
+    author: {
+      id: 'mock-author-id',
+      name: post.authorName,
+      title: 'Mock Title',
+      image: '/images/team/mock-author.svg',
+      alt: `${post.authorName} headshot`,
+      isAuthor: true,
+    },
+  })),
 }))
 
 // Mock the PostCard component
@@ -67,7 +78,7 @@ jest.mock('@/components/insights/post-card', () => ({
     post,
     variant,
   }: {
-    post: InsightPost
+    post: InsightWithAuthor
     variant?: 'default' | 'compact'
   }) => (
     <div

@@ -1,4 +1,4 @@
-import { InsightPost } from '@/data/insights'
+import { InsightPost, getInsightWithAuthor } from '@/data/insights'
 import PostCard from './post-card'
 
 interface PostGridProps {
@@ -22,9 +22,10 @@ const PostGrid = ({ posts }: PostGridProps) => {
 
   return (
     <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
+      {posts.map((post) => {
+        const enrichedPost = getInsightWithAuthor(post)
+        return <PostCard key={post.id} post={enrichedPost} />
+      })}
     </div>
   )
 }

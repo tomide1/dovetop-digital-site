@@ -1,12 +1,23 @@
 import Image from 'next/image'
 import { InsightPost } from '@/data/insights'
+import { getAuthorByName } from '@/data/team'
 
 interface PostHeaderProps {
   post: InsightPost
 }
 
 export default function PostHeader({ post }: PostHeaderProps) {
-  const { title, date, author, category, readTime, coverImage } = post
+  const { title, date, authorName, category, readTime, coverImage } = post
+
+  // Get author data from team, but handle gracefully if not found or if there's an error
+  let author
+  try {
+    author = getAuthorByName(authorName)
+  } catch (error) {
+    // If getAuthorByName throws an error, fallback to undefined
+    console.warn('Error getting author data:', error)
+    author = undefined
+  }
 
   // Format date for display
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
@@ -46,7 +57,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
 
       <div className='flex items-center'>
         <div className='mr-3 h-12 w-12 overflow-hidden rounded-full bg-gray-200'>
-          {author.image && (
+          {author?.image && (
             <Image
               src={author.image}
               alt={author.name}
@@ -57,8 +68,10 @@ export default function PostHeader({ post }: PostHeaderProps) {
           )}
         </div>
         <div>
-          <p className='font-medium text-gray-900'>{author.name}</p>
-          <p className='text-sm text-gray-600'>{author.title}</p>
+          <p className='font-medium text-gray-900'>
+            {author?.name || authorName || 'Unknown Author'}
+          </p>
+          <p className='text-sm text-gray-600'>{author?.title || ''}</p>
         </div>
       </div>
     </header>

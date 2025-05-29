@@ -1,4 +1,5 @@
-import { insights, InsightPost, Author } from '@/data/insights'
+import { insights, getInsightWithAuthor, InsightPost } from '@/data/insights'
+import { getAuthorByName } from '@/data/team'
 
 describe('Insights Data Structure', () => {
   test('insights array exists, is not empty, and has expected structure', () => {
@@ -21,18 +22,40 @@ describe('Insights Data Structure', () => {
     expect(typeof firstInsight.coverImage).toBe('string')
     expect(firstInsight).toHaveProperty('date')
     expect(typeof firstInsight.date).toBe('string')
-    expect(firstInsight).toHaveProperty('author')
-    expect(typeof firstInsight.author).toBe('object')
-    expect(firstInsight.author).toHaveProperty('name')
-    expect(typeof firstInsight.author.name).toBe('string')
-    expect(firstInsight.author).toHaveProperty('title')
-    expect(typeof firstInsight.author.title).toBe('string')
+
+    // Updated: Should have authorName instead of author object
+    expect(firstInsight).toHaveProperty('authorName')
+    expect(typeof firstInsight.authorName).toBe('string')
+
     expect(firstInsight).toHaveProperty('category')
     expect(typeof firstInsight.category).toBe('string')
     expect(firstInsight).toHaveProperty('readTime')
     expect(typeof firstInsight.readTime).toBe('number')
     expect(firstInsight).toHaveProperty('featured')
     expect(typeof firstInsight.featured).toBe('boolean')
+  })
+
+  test('all author names reference valid team members', () => {
+    insights.forEach((insight) => {
+      const author = getAuthorByName(insight.authorName)
+      expect(author).toBeDefined()
+      expect(author?.isAuthor).toBe(true)
+    })
+  })
+
+  test('getInsightWithAuthor enriches insight with author data', () => {
+    const firstInsight = insights[0]
+    const enrichedInsight = getInsightWithAuthor(firstInsight)
+
+    expect(enrichedInsight).toHaveProperty('author')
+    expect(enrichedInsight.author).toBeDefined()
+    expect(enrichedInsight.author?.name).toBe(firstInsight.authorName)
+    expect(enrichedInsight.author?.isAuthor).toBe(true)
+
+    // Should preserve all original insight properties
+    expect(enrichedInsight.id).toBe(firstInsight.id)
+    expect(enrichedInsight.title).toBe(firstInsight.title)
+    expect(enrichedInsight.authorName).toBe(firstInsight.authorName)
   })
 
   test('categories correspond to predefined service areas or valid values', () => {
@@ -42,7 +65,9 @@ describe('Insights Data Structure', () => {
       'Data Analytics & ML',
       'Security & Governance',
     ]
-    const categories = [...new Set(insights.map((insight) => insight.category))]
+    const categories = Array.from(
+      new Set(insights.map((insight) => insight.category))
+    )
 
     categories.forEach((category) => {
       expect(validCategories).toContain(category)

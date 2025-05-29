@@ -1,9 +1,9 @@
-import { InsightPost } from '@/data/insights'
+import { InsightWithAuthor } from '@/data/insights'
 import Image from 'next/image'
 import Link from 'next/link'
 
 interface FeaturedPostProps {
-  post: InsightPost
+  post: InsightWithAuthor
 }
 
 const FeaturedPost = ({ post }: FeaturedPostProps) => {
@@ -51,25 +51,34 @@ const FeaturedPost = ({ post }: FeaturedPostProps) => {
           )}
 
           <div className='mt-auto flex items-center border-t border-white/20 pt-4'>
-            <div className='mr-3 h-10 w-10 overflow-hidden rounded-full bg-gray-100'>
-              {author.image && (
-                <Image
-                  src={author.image}
-                  alt={author.name}
-                  width={40}
-                  height={40}
-                  className='h-full w-full object-cover'
-                />
-              )}
-            </div>
-            <div>
-              <p className='font-medium text-white'>{author.name}</p>
+            {author && (
+              <>
+                <div className='mr-3 h-10 w-10 overflow-hidden rounded-full bg-gray-100'>
+                  <Image
+                    src={author.image}
+                    alt={author.alt}
+                    width={40}
+                    height={40}
+                    className='h-full w-full object-cover'
+                  />
+                </div>
+                <div>
+                  <p className='font-medium text-white'>{author.name}</p>
+                  <div className='flex items-center text-sm text-gray-300'>
+                    <span>{formattedDate}</span>
+                    <span className='mx-2'>•</span>
+                    <span>{readTime} min read</span>
+                  </div>
+                </div>
+              </>
+            )}
+            {!author && (
               <div className='flex items-center text-sm text-gray-300'>
                 <span>{formattedDate}</span>
                 <span className='mx-2'>•</span>
                 <span>{readTime} min read</span>
               </div>
-            </div>
+            )}
           </div>
         </div>
 

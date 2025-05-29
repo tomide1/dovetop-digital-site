@@ -1,9 +1,9 @@
-import { InsightPost } from '@/data/insights'
+import { InsightWithAuthor } from '@/data/insights'
 import Image from 'next/image'
 import Link from 'next/link'
 
 interface PostCardProps {
-  post: InsightPost
+  post: InsightWithAuthor
   /** Card variant - 'default' shows full details, 'compact' shows minimal details */
   variant?: 'default' | 'compact'
   /** Override to hide excerpt even in default variant */
@@ -30,7 +30,7 @@ const PostCard = ({
   // Determine what to show based on variant and explicit props
   const isCompact = variant === 'compact'
   const displayExcerpt = showExcerpt ?? (!isCompact && excerpt)
-  const displayAuthor = showAuthor ?? !isCompact
+  const displayAuthor = showAuthor ?? (!isCompact && author)
   const displayDate = showDate ?? !isCompact
 
   // Format date for display if needed
@@ -102,7 +102,7 @@ const PostCard = ({
           {(displayAuthor || displayDate) && (
             <div className='mt-auto flex items-center border-t border-gray-100 pt-4'>
               <div className='flex-1'>
-                {displayAuthor && (
+                {displayAuthor && author && (
                   <p className='font-medium text-gray-900'>{author.name}</p>
                 )}
                 {displayDate && (
