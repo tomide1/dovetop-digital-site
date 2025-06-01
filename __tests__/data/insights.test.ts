@@ -1,4 +1,4 @@
-import { insights, InsightPost, Author } from '@/data/insights'
+import { insights, InsightPost } from '@/data/insights'
 
 describe('Insights Data Structure', () => {
   test('insights array exists, is not empty, and has expected structure', () => {
