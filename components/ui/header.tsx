@@ -16,10 +16,9 @@ interface NavigationItem {
  * This makes it easier to maintain and update navigation structure
  */
 const NAVIGATION_ITEMS: NavigationItem[] = [
-  { label: 'Services', href: '/services' },
-  { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Insights', href: '/insights' },
-  { label: 'About Us', href: '/about' },
+  { label: 'Who We Are', href: '/about' },
+  { label: 'What We Do', href: '/services' },
+  { label: 'What We Think', href: '/insights' },
   { label: 'Contact', href: '/contact' },
 ]
 
