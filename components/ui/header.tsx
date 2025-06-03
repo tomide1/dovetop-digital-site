@@ -9,6 +9,7 @@ interface NavigationItem {
   label: string
   href: string
   isEnabled?: boolean // For future use if some links need to be disabled
+  variant?: 'default' | 'cta' // Add variant for special styling
 }
 
 /**
@@ -19,7 +20,7 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
   { label: 'Who We Are', href: '/about' },
   { label: 'What We Do', href: '/services' },
   { label: 'What We Think', href: '/insights' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact', href: '/contact', variant: 'cta' }, // Mark contact as CTA
 ]
 
 // Define CSS classes for animation delays
@@ -40,12 +41,16 @@ const ANIMATION_DELAY_CLASSES = [
 const DesktopNavigation = memo(() => {
   return (
     <nav className='hidden md:flex' aria-label='Main navigation'>
-      <ul className='flex items-center space-x-8'>
+      <ul className='flex items-center space-x-6'>
         {NAVIGATION_ITEMS.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className='text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md px-2 py-1 cursor-pointer transition duration-150 ease-in-out'
+              className={
+                item.variant === 'cta'
+                  ? 'inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-t from-blue-600 to-blue-500 bg-[length:100%_100%] bg-[bottom] rounded-lg shadow-sm hover:bg-[length:100%_150%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 ease-in-out'
+                  : 'text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md px-2 py-1 cursor-pointer transition duration-150 ease-in-out'
+              }
             >
               {item.label}
             </Link>
@@ -135,7 +140,11 @@ const MobileMenuItem = memo<MobileMenuItemProps>(
       >
         <Link
           href={item.href}
-          className='block py-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md px-2'
+          className={
+            item.variant === 'cta'
+              ? 'block py-3 px-4 text-center text-sm font-medium text-white bg-gradient-to-t from-blue-600 to-blue-500 bg-[length:100%_100%] bg-[bottom] rounded-lg shadow-sm hover:bg-[length:100%_150%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 ease-in-out'
+              : 'block py-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md px-2'
+          }
           onClick={onClick}
           onKeyDown={(e) => {
             // Close menu when pressing Enter or Space key
