@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { industries } from '@/data/industries'
 import { getIndustryDetails, getIndustryIcon } from '@/utils/industry-helpers'
 import { Metadata } from 'next'
+import CaseStudyCard from '@/components/case-studies/case-study-card'
 
 interface IndustryPageProps {
   params: {
@@ -152,36 +153,12 @@ export default function IndustryPage({ params }: IndustryPageProps) {
 
             <div className='grid md:grid-cols-2 gap-8'>
               {caseStudies.map((caseStudy) => (
-                <Link
+                <CaseStudyCard
                   key={caseStudy.id}
-                  href={`/case-studies/${caseStudy.id}`}
-                  className='block bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300'
-                >
-                  <h3 className='text-xl font-bold text-gray-900 mb-3 hover:text-blue-600'>
-                    {caseStudy.title}
-                  </h3>
-                  <p className='text-gray-600 mb-4 leading-relaxed'>
-                    {caseStudy.shortDescription}
-                  </p>
-                  <ul className='space-y-2'>
-                    {caseStudy.results.slice(0, 2).map((result, idx) => (
-                      <li key={idx} className='flex items-start text-sm'>
-                        <svg
-                          className='w-4 h-4 text-green-500 mr-2 mt-1 flex-shrink-0'
-                          fill='currentColor'
-                          viewBox='0 0 20 20'
-                        >
-                          <path
-                            fillRule='evenodd'
-                            d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
-                            clipRule='evenodd'
-                          />
-                        </svg>
-                        <span>{result}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Link>
+                  caseStudy={caseStudy}
+                  variant='compact'
+                  maxResults={2}
+                />
               ))}
             </div>
             <div className='text-center mt-12'>
