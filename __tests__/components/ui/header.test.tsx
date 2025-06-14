@@ -36,7 +36,6 @@ describe('Header Component', () => {
   describe('Desktop Navigation', () => {
     it('renders all top-level navigation items', () => {
       render(<Header />)
-
       // Target the desktop navigation specifically using aria-label
       const desktopNav = screen.getByLabelText('Main navigation')
 
@@ -61,7 +60,6 @@ describe('Header Component', () => {
     it('shows "What We Do" dropdown on hover', async () => {
       const user = userEvent.setup()
       render(<Header />)
-
       // Target the desktop navigation and find "What We Do" within it
       const desktopNav = screen.getByLabelText('Main navigation')
       const whatWeDoItem = within(desktopNav).getByText('What We Do')
