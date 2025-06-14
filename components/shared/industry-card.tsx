@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Industry } from '@/data/industries'
+import { Industry } from '@/types/what-we-do'
 import { getIndustryIcon } from '@/utils/industry-helpers'
 
 export interface IndustryCardProps {
@@ -10,6 +10,15 @@ export interface IndustryCardProps {
   animationDelay?: number
   variant?: 'default' | 'homepage'
   className?: string
+}
+
+// Helper function to determine if icon is a valid image URL
+const isValidImageUrl = (icon: string): boolean => {
+  return (
+    icon.startsWith('/') ||
+    icon.startsWith('http://') ||
+    icon.startsWith('https://')
+  )
 }
 
 export default function IndustryCard({
@@ -48,7 +57,7 @@ export default function IndustryCard({
       data-testid={`industry-card-${industry.id}`}
     >
       <div className='mx-auto mb-6 w-20 h-20 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center group-hover:from-blue-100 group-hover:to-blue-200 group-hover:scale-110 transition-all duration-300'>
-        {industry.icon ? (
+        {industry.icon && isValidImageUrl(industry.icon) ? (
           <Image
             src={industry.icon}
             alt={industry.name}
@@ -57,7 +66,7 @@ export default function IndustryCard({
             className='w-10 h-10'
           />
         ) : (
-          <span className='text-4xl'>{icon}</span>
+          <span className='text-4xl'>{industry.icon || icon}</span>
         )}
       </div>
 

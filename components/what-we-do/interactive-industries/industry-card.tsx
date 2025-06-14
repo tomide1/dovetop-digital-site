@@ -3,10 +3,10 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Industry } from '@/data/industries'
 import { getIndustryIcon } from '@/utils/industry-helpers'
 import { CaseStudyCard } from '@/components/case-studies'
 import type {
+  Industry,
   IndustryDetailsData,
   ServiceApplicationWithService,
 } from '@/types/what-we-do'
@@ -19,6 +19,15 @@ interface IndustryCardProps {
   isVisible: boolean
   isExpanded?: boolean
   selectedDetails?: IndustryDetailsData | null
+}
+
+// Helper function to determine if icon is a valid image URL
+const isValidImageUrl = (icon: string): boolean => {
+  return (
+    icon.startsWith('/') ||
+    icon.startsWith('http://') ||
+    icon.startsWith('https://')
+  )
 }
 
 export default function IndustryCard({
@@ -89,7 +98,7 @@ export default function IndustryCard({
             data-testid='expanded-industry-header'
           >
             <div className='flex items-center'>
-              <div className='text-6xl mr-6'>{icon}</div>
+              <div className='text-6xl mr-6'>{industry.icon || icon}</div>
               <div>
                 <h3 className='text-3xl md:text-4xl font-bold text-gray-900 mb-2'>
                   {industry.name} Industry
@@ -141,7 +150,8 @@ export default function IndustryCard({
                     data-testid={`application-${application.serviceId}`}
                   >
                     <div className='flex items-center mb-4'>
-                      {application.service?.icon && (
+                      {application.service?.icon &&
+                      isValidImageUrl(application.service.icon) ? (
                         <div className='w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0'>
                           <Image
                             src={application.service.icon}
@@ -151,7 +161,13 @@ export default function IndustryCard({
                             className='w-6 h-6'
                           />
                         </div>
-                      )}
+                      ) : application.service?.icon ? (
+                        <div className='w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0'>
+                          <span className='text-2xl'>
+                            {application.service.icon}
+                          </span>
+                        </div>
+                      ) : null}
                       <h5 className='text-xl font-bold text-gray-900'>
                         {application.service?.title}
                       </h5>
@@ -199,7 +215,7 @@ export default function IndustryCard({
                   : 'text-4xl group-hover:scale-110'
               }`}
             >
-              {icon}
+              {industry.icon || icon}
             </div>
             <h3
               className={`font-bold mb-3 transition-colors duration-300 ${

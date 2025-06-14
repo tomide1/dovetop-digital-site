@@ -17,23 +17,6 @@ const mockFeaturedInsight: InsightPost = {
   featured: true,
 }
 
-// Mock Next.js's Image component
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: (props: {
-    src?: string
-    alt?: string
-    fill?: boolean
-    [key: string]: unknown
-  }) => {
-    // Remove fill prop to avoid warnings in test
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { fill: _fill, ...restProps } = props
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    return <img {...restProps} />
-  },
-}))
-
 describe('FeaturedPost Component', () => {
   test('renders featured post with all information correctly', () => {
     render(<FeaturedPost post={mockFeaturedInsight} />)

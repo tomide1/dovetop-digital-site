@@ -1,11 +1,8 @@
 import { useState, useCallback } from 'react'
 import { industries } from '@/data/industries'
+import { Industry } from '@/types/what-we-do'
 
-interface IndustryWithAnimation {
-  id: string
-  name: string
-  description?: string
-  icon?: string
+interface IndustryWithAnimation extends Industry {
   isVisible: boolean
   animationDelay: number
 }
