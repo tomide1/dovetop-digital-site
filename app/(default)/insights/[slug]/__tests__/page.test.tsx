@@ -3,13 +3,7 @@ import { notFound } from 'next/navigation'
 import PostDetailPage from '../page'
 import { insights, Author, InsightPost } from '@/data/insights'
 
-// Mock Next.js navigation and metadata
-jest.mock('next/navigation', () => ({
-  notFound: jest.fn().mockImplementation(() => {
-    // This prevents the test from trying to render further
-    throw new Error('NEXT_NOT_FOUND')
-  }),
-}))
+// The global mock in jest.setup.ts will handle next/navigation
 
 // Mock components
 jest.mock('@/components/insights/post-header', () => ({
@@ -79,14 +73,12 @@ describe('Post Detail Page', () => {
   })
 
   it('should call notFound when post is not found', () => {
-    try {
+    // Use Jest's toThrow matcher to properly test for errors thrown during render
+    expect(() => {
       render(<PostDetailPage params={{ slug: 'non-existent-slug' }} />)
-    } catch (error) {
-      // Expected error due to notFound mock
-      if ((error as Error).message !== 'NEXT_NOT_FOUND') {
-        throw error
-      }
-    }
+    }).toThrow('NEXT_NOT_FOUND')
+
+    // Verify that the notFound function was called
     expect(notFound).toHaveBeenCalled()
   })
 })
