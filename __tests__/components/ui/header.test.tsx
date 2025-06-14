@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Header from '@/components/ui/header'
 
@@ -36,17 +36,22 @@ describe('Header Component', () => {
   describe('Desktop Navigation', () => {
     it('renders all top-level navigation items', () => {
       render(<Header />)
+      // Target the desktop navigation specifically using aria-label
+      const desktopNav = screen.getByLabelText('Main navigation')
 
-      expect(screen.getByText('Who We Are')).toBeInTheDocument()
-      expect(screen.getByText('What We Do')).toBeInTheDocument()
-      expect(screen.getByText('What We Think')).toBeInTheDocument()
-      expect(screen.getByText('Contact')).toBeInTheDocument()
+      expect(within(desktopNav).getByText('Who We Are')).toBeInTheDocument()
+      expect(within(desktopNav).getByText('What We Do')).toBeInTheDocument()
+      expect(within(desktopNav).getByText('What We Think')).toBeInTheDocument()
+      expect(within(desktopNav).getByText('Contact')).toBeInTheDocument()
     })
 
     it('renders Contact button with CTA styling', () => {
       render(<Header />)
 
-      const contactLink = screen.getByText('Contact').closest('a')
+      // Target the desktop navigation and find Contact link within it
+      const desktopNav = screen.getByLabelText('Main navigation')
+      const contactLink = within(desktopNav).getByText('Contact').closest('a')
+
       expect(contactLink).toHaveClass(
         'bg-gradient-to-t from-blue-600 to-blue-500'
       )
@@ -55,8 +60,9 @@ describe('Header Component', () => {
     it('shows "What We Do" dropdown on hover', async () => {
       const user = userEvent.setup()
       render(<Header />)
-
-      const whatWeDoItem = screen.getByText('What We Do')
+      // Target the desktop navigation and find "What We Do" within it
+      const desktopNav = screen.getByLabelText('Main navigation')
+      const whatWeDoItem = within(desktopNav).getByText('What We Do')
 
       // Hover over "What We Do"
       await user.hover(whatWeDoItem)
@@ -73,7 +79,9 @@ describe('Header Component', () => {
       const user = userEvent.setup()
       render(<Header />)
 
-      const whatWeDoItem = screen.getByText('What We Do')
+      // Target the desktop navigation
+      const desktopNav = screen.getByLabelText('Main navigation')
+      const whatWeDoItem = within(desktopNav).getByText('What We Do')
 
       // First hover over "What We Do" to open the dropdown
       await user.hover(whatWeDoItem)
@@ -102,10 +110,19 @@ describe('Header Component', () => {
     it('has correct href attributes for top-level items', () => {
       render(<Header />)
 
-      const whoWeAreLink = screen.getByText('Who We Are').closest('a')
-      const whatWeDoLink = screen.getByText('What We Do').closest('a')
-      const whatWeThinkLink = screen.getByText('What We Think').closest('a')
-      const contactLink = screen.getByText('Contact').closest('a')
+      // Target the desktop navigation specifically
+      const desktopNav = screen.getByLabelText('Main navigation')
+
+      const whoWeAreLink = within(desktopNav)
+        .getByText('Who We Are')
+        .closest('a')
+      const whatWeDoLink = within(desktopNav)
+        .getByText('What We Do')
+        .closest('a')
+      const whatWeThinkLink = within(desktopNav)
+        .getByText('What We Think')
+        .closest('a')
+      const contactLink = within(desktopNav).getByText('Contact').closest('a')
 
       expect(whoWeAreLink).toHaveAttribute('href', '/about')
       expect(whatWeDoLink).toHaveAttribute('href', '/what-we-do')
