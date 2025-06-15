@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { Service } from '@/data/services'
+import { Industry } from '@/types/what-we-do'
+import { getIndustryIcon } from '@/utils/industry-helpers'
 
-export interface ServiceCardProps {
-  service: Service
+export interface IndustryCardProps {
+  industry: Industry
   isVisible?: boolean
   animationDelay?: number
   variant?: 'default' | 'homepage'
@@ -20,13 +21,15 @@ const isValidImageUrl = (icon: string): boolean => {
   )
 }
 
-export default function ServiceCard({
-  service,
+export default function IndustryCard({
+  industry,
   isVisible = true,
   animationDelay = 0,
   variant = 'default',
   className = '',
-}: ServiceCardProps) {
+}: IndustryCardProps) {
+  const icon = getIndustryIcon(industry.id)
+
   const baseClasses =
     'group block text-center transition-all duration-500 transform hover:-translate-y-2'
 
@@ -46,35 +49,33 @@ export default function ServiceCard({
 
   return (
     <Link
-      href={`/services/${service.id}`}
+      href={`/industries/${industry.id}`}
       className={combinedClasses}
       style={{
         transitionDelay: `${animationDelay}ms`,
       }}
-      data-testid={`service-card-${service.id}`}
+      data-testid={`industry-card-${industry.id}`}
     >
       <div className='mx-auto mb-6 w-20 h-20 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center group-hover:from-blue-100 group-hover:to-blue-200 group-hover:scale-110 transition-all duration-300'>
-        {service.icon && isValidImageUrl(service.icon) ? (
+        {industry.icon && isValidImageUrl(industry.icon) ? (
           <Image
-            src={service.icon}
-            alt={service.title}
+            src={industry.icon}
+            alt={industry.name}
             width={40}
             height={40}
             className='w-10 h-10'
           />
-        ) : service.icon ? (
-          <span className='text-4xl'>{service.icon}</span>
         ) : (
-          <div className='w-10 h-10 bg-blue-600 rounded-full'></div>
+          <span className='text-4xl'>{industry.icon || icon}</span>
         )}
       </div>
 
       <h3 className='text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300'>
-        {service.title}
+        {industry.name}
       </h3>
 
       <p className='text-sm text-gray-600 leading-relaxed'>
-        {service.shortDescription}
+        {industry.description}
       </p>
     </Link>
   )

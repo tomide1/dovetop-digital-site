@@ -4,36 +4,6 @@ import '@testing-library/jest-dom'
 import CaseStudyDetailPage from '../case-study-detail-page'
 import type { CaseStudy } from '@/data/case-studies'
 
-// Mock Next.js components
-jest.mock('next/image', () => {
-  return function MockImage({
-    src,
-    alt,
-    ...props
-  }: React.ComponentProps<'img'>) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} {...props} />
-  }
-})
-
-jest.mock('next/link', () => {
-  return function MockLink({
-    href,
-    children,
-    ...props
-  }: {
-    href: string
-    children: React.ReactNode
-    [key: string]: unknown
-  }) {
-    return (
-      <a href={href} {...props}>
-        {children}
-      </a>
-    )
-  }
-})
-
 // Mock case study data
 const mockCaseStudy: CaseStudy = {
   id: 'test-case-study',

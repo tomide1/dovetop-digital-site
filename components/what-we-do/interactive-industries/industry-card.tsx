@@ -3,9 +3,10 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Industry } from '@/data/industries'
 import { getIndustryIcon } from '@/utils/industry-helpers'
+import { CaseStudyCard } from '@/components/case-studies'
 import type {
+  Industry,
   IndustryDetailsData,
   ServiceApplicationWithService,
 } from '@/types/what-we-do'
@@ -18,6 +19,15 @@ interface IndustryCardProps {
   isVisible: boolean
   isExpanded?: boolean
   selectedDetails?: IndustryDetailsData | null
+}
+
+// Helper function to determine if icon is a valid image URL
+const isValidImageUrl = (icon: string): boolean => {
+  return (
+    icon.startsWith('/') ||
+    icon.startsWith('http://') ||
+    icon.startsWith('https://')
+  )
 }
 
 export default function IndustryCard({
@@ -38,7 +48,7 @@ export default function IndustryCard({
     } else {
       params.set('industry', industry.id)
     }
-    router.push(`?${params.toString()}`)
+    router.push(`?${params.toString()}`, { scroll: false })
   }
 
   const icon = getIndustryIcon(industry.id)
@@ -88,7 +98,7 @@ export default function IndustryCard({
             data-testid='expanded-industry-header'
           >
             <div className='flex items-center'>
-              <div className='text-6xl mr-6'>{icon}</div>
+              <div className='text-6xl mr-6'>{industry.icon || icon}</div>
               <div>
                 <h3 className='text-3xl md:text-4xl font-bold text-gray-900 mb-2'>
                   {industry.name} Industry
@@ -140,7 +150,8 @@ export default function IndustryCard({
                     data-testid={`application-${application.serviceId}`}
                   >
                     <div className='flex items-center mb-4'>
-                      {application.service?.icon && (
+                      {application.service?.icon &&
+                      isValidImageUrl(application.service.icon) ? (
                         <div className='w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0'>
                           <Image
                             src={application.service.icon}
@@ -150,7 +161,13 @@ export default function IndustryCard({
                             className='w-6 h-6'
                           />
                         </div>
-                      )}
+                      ) : application.service?.icon ? (
+                        <div className='w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0'>
+                          <span className='text-2xl'>
+                            {application.service.icon}
+                          </span>
+                        </div>
+                      ) : null}
                       <h5 className='text-xl font-bold text-gray-900'>
                         {application.service?.title}
                       </h5>
@@ -173,48 +190,14 @@ export default function IndustryCard({
 
               <div className='grid md:grid-cols-2 gap-6'>
                 {selectedDetails.caseStudies.map((caseStudy: CaseStudy) => (
-                  <a
+                  <CaseStudyCard
                     key={caseStudy.id}
-                    href={`/case-studies/${caseStudy.id}`}
-                    className='group block bg-gray-50 rounded-xl p-6 hover:bg-blue-50 hover:shadow-md transition-all duration-300'
-                    data-testid={`case-study-${caseStudy.id}`}
+                    caseStudy={caseStudy}
+                    variant='compact'
+                    maxResults={2}
                     onClick={(e) => e.stopPropagation()}
-                  >
-                    <h5 className='text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors'>
-                      {caseStudy.title}
-                    </h5>
-                    <p className='text-gray-600 mb-4 leading-relaxed'>
-                      {caseStudy.shortDescription}
-                    </p>
-
-                    <div className='flex flex-wrap gap-2 mb-4'>
-                      {caseStudy.results
-                        .slice(0, 2)
-                        .map((result: string, idx: number) => (
-                          <span
-                            key={idx}
-                            className='inline-block bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full font-medium'
-                          >
-                            {result}
-                          </span>
-                        ))}
-                    </div>
-
-                    <div className='flex items-center text-blue-600 font-medium group-hover:text-blue-700'>
-                      Read Case Study
-                      <svg
-                        className='w-4 h-4 ml-2 transition-transform group-hover:translate-x-1'
-                        fill='currentColor'
-                        viewBox='0 0 20 20'
-                      >
-                        <path
-                          fillRule='evenodd'
-                          d='M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z'
-                          clipRule='evenodd'
-                        />
-                      </svg>
-                    </div>
-                  </a>
+                    data-testid={`case-study-${caseStudy.id}`}
+                  />
                 ))}
               </div>
             </div>
@@ -232,7 +215,7 @@ export default function IndustryCard({
                   : 'text-4xl group-hover:scale-110'
               }`}
             >
-              {icon}
+              {industry.icon || icon}
             </div>
             <h3
               className={`font-bold mb-3 transition-colors duration-300 ${
