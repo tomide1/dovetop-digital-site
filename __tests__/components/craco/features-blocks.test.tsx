@@ -85,12 +85,12 @@ describe('FeaturesBlocks Component', () => {
     ).toBeInTheDocument()
   })
 
-  test('service cards use homepage variant', () => {
+  test('service cards use default variant', () => {
     render(<FeaturesBlocks />)
 
     const serviceCards = screen.getAllByTestId(/service-card-/)
     serviceCards.forEach((card) => {
-      expect(card).toHaveAttribute('data-variant', 'homepage')
+      expect(card).toHaveAttribute('data-variant', 'default')
     })
   })
 
@@ -133,7 +133,7 @@ describe('FeaturesBlocks Component', () => {
     const gridContainer = document.querySelector('.grid.gap-8')
     expect(gridContainer).toBeInTheDocument()
     expect(gridContainer).toHaveClass('md:grid-cols-2')
-    expect(gridContainer).toHaveClass('lg:grid-cols-4')
+    expect(gridContainer).toHaveClass('lg:grid-cols-3')
   })
 
   test('includes background decorative elements', () => {
