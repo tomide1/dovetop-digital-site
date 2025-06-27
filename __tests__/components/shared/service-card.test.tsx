@@ -107,14 +107,14 @@ describe('ServiceCard Component', () => {
       )
 
       let icon = screen.getByAltText(mockService.title)
-      expect(icon).toHaveAttribute('width', '40')
-      expect(icon).toHaveAttribute('height', '40')
+      expect(icon).toHaveAttribute('width', DEFAULT_ICON_DIMENSIONS.width.toString())
+      expect(icon).toHaveAttribute('height', DEFAULT_ICON_DIMENSIONS.height.toString())
 
       rerender(<ServiceCard service={mockService} variant='homepage' />)
 
       icon = screen.getByAltText(mockService.title)
-      expect(icon).toHaveAttribute('width', '40')
-      expect(icon).toHaveAttribute('height', '40')
+      expect(icon).toHaveAttribute('width', DEFAULT_ICON_DIMENSIONS.width.toString())
+      expect(icon).toHaveAttribute('height', DEFAULT_ICON_DIMENSIONS.height.toString())
     })
   })
 
