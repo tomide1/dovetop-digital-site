@@ -1,4 +1,5 @@
-import { render, screen, within } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Header from '@/components/ui/header'
 
 // Mock Next.js components
@@ -39,61 +40,95 @@ describe('Header Component', () => {
       // Target the desktop navigation specifically using aria-label
       const desktopNav = screen.getByLabelText('Main navigation')
 
-      expect(within(desktopNav).getByText('Services')).toBeInTheDocument()
-      expect(within(desktopNav).getByText('Case Studies')).toBeInTheDocument()
-      expect(within(desktopNav).getByText('Insights')).toBeInTheDocument()
-      expect(within(desktopNav).getByText('About Us')).toBeInTheDocument()
+      expect(within(desktopNav).getByText('Who We Are')).toBeInTheDocument()
+      expect(within(desktopNav).getByText('What We Do')).toBeInTheDocument()
+      expect(within(desktopNav).getByText('What We Think')).toBeInTheDocument()
       expect(within(desktopNav).getByText('Contact')).toBeInTheDocument()
     })
 
-    it('renders Contact link with standard styling', () => {
+    it('renders Contact button with CTA styling', () => {
       render(<Header />)
 
       // Target the desktop navigation and find Contact link within it
       const desktopNav = screen.getByLabelText('Main navigation')
       const contactLink = within(desktopNav).getByText('Contact').closest('a')
 
-      expect(contactLink).toHaveClass('text-gray-700 hover:text-gray-900')
+      expect(contactLink).toHaveClass(
+        'bg-gradient-to-t from-blue-600 to-blue-500'
+      )
     })
 
-    it('has simple navigation without dropdowns', () => {
+    it('shows "What We Do" dropdown on hover', async () => {
+      const user = userEvent.setup()
       render(<Header />)
 
-      // Verify that the navigation is simple and direct
+      // Target the desktop navigation and find "What We Do" within it
       const desktopNav = screen.getByLabelText('Main navigation')
-      const navLinks = within(desktopNav).getAllByRole('link')
+      const whatWeDoItem = within(desktopNav).getByText('What We Do')
 
-      // Should have exactly 5 navigation links
-      expect(navLinks).toHaveLength(5)
+      // Hover over "What We Do"
+      await user.hover(whatWeDoItem)
 
-      // Each link should be a direct navigation item
-      expect(navLinks[0]).toHaveTextContent('Services')
-      expect(navLinks[1]).toHaveTextContent('Case Studies')
-      expect(navLinks[2]).toHaveTextContent('Insights')
-      expect(navLinks[3]).toHaveTextContent('About Us')
-      expect(navLinks[4]).toHaveTextContent('Contact')
+      // Wait for dropdown to appear
+      await waitFor(() => {
+        expect(screen.getByText('Services')).toBeInTheDocument()
+        expect(screen.getByText('Industries')).toBeInTheDocument()
+        expect(screen.getByText('Case Studies')).toBeInTheDocument()
+      })
+    })
+
+    it('shows Services submenu on hover', async () => {
+      const user = userEvent.setup()
+      render(<Header />)
+
+      // Target the desktop navigation
+      const desktopNav = screen.getByLabelText('Main navigation')
+      const whatWeDoItem = within(desktopNav).getByText('What We Do')
+
+      // First hover over "What We Do" to open the dropdown
+      await user.hover(whatWeDoItem)
+
+      await waitFor(() => {
+        expect(screen.getByText('Services')).toBeInTheDocument()
+      })
+
+      // Then hover over "Services" to open its submenu
+      const servicesItem = screen.getByText('Services')
+      await user.hover(servicesItem)
+
+      // Check for service items (these come from data/services.ts)
+      await waitFor(() => {
+        expect(screen.getByText('Cloud Solutions')).toBeInTheDocument()
+        expect(screen.getByText('User-Centered Design')).toBeInTheDocument()
+        expect(
+          screen.getByText('Data Analytics, Engineering & ML')
+        ).toBeInTheDocument()
+        expect(screen.getByText('Security & Governance')).toBeInTheDocument()
+      })
     })
   })
 
   describe('Links', () => {
-    it('has correct href attributes for navigation items', () => {
+    it('has correct href attributes for top-level items', () => {
       render(<Header />)
 
       // Target the desktop navigation specifically
       const desktopNav = screen.getByLabelText('Main navigation')
 
-      const servicesLink = within(desktopNav).getByText('Services').closest('a')
-      const caseStudiesLink = within(desktopNav)
-        .getByText('Case Studies')
+      const whoWeAreLink = within(desktopNav)
+        .getByText('Who We Are')
         .closest('a')
-      const insightsLink = within(desktopNav).getByText('Insights').closest('a')
-      const aboutLink = within(desktopNav).getByText('About Us').closest('a')
+      const whatWeDoLink = within(desktopNav)
+        .getByText('What We Do')
+        .closest('a')
+      const whatWeThinkLink = within(desktopNav)
+        .getByText('What We Think')
+        .closest('a')
       const contactLink = within(desktopNav).getByText('Contact').closest('a')
 
-      expect(servicesLink).toHaveAttribute('href', '/services')
-      expect(caseStudiesLink).toHaveAttribute('href', '/case-studies')
-      expect(insightsLink).toHaveAttribute('href', '/insights')
-      expect(aboutLink).toHaveAttribute('href', '/about')
+      expect(whoWeAreLink).toHaveAttribute('href', '/about')
+      expect(whatWeDoLink).toHaveAttribute('href', '/what-we-do')
+      expect(whatWeThinkLink).toHaveAttribute('href', '/insights')
       expect(contactLink).toHaveAttribute('href', '/contact')
     })
   })
