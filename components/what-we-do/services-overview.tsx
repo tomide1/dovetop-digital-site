@@ -13,8 +13,9 @@ export default function ServicesOverview() {
             Our Core Services
           </h2>
           <p className='text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed'>
-            We offer a range of services designed to help you build, grow, and
-            innovate.
+            We deliver comprehensive solutions across four key areas, each
+            designed to address your unique business challenges and drive
+            growth.
           </p>
         </div>
 
