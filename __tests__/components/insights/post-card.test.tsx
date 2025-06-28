@@ -17,18 +17,6 @@ const mockInsight: InsightPost = {
   featured: false,
 }
 
-// Mock Next.js's Image component
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: (props: { fill?: boolean; [key: string]: unknown }) => {
-    // Remove fill prop to avoid warnings in test
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { fill, ...restProps } = props
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    return <img {...restProps} />
-  },
-}))
-
 describe('PostCard Component', () => {
   describe('Default variant', () => {
     test('renders all post information correctly', () => {
