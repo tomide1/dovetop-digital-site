@@ -5,7 +5,6 @@ interface CaseStudiesHeroProps {
     total: number
     industries: number
     services: number
-    totalResults: number
     avgDuration: number
   }
 }
