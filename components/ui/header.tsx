@@ -9,6 +9,7 @@ import { Service, Industry } from '../../types/what-we-do'
  * Interface for navigation items to ensure type safety and consistency
  */
 interface NavigationItem {
+  id: string // Unique identifier for stable React keys
   label: string
   href?: string // Made optional for parent items that only toggle submenus
   isEnabled?: boolean // For future use if some links need to be disabled
@@ -21,6 +22,7 @@ interface NavigationItem {
  */
 const mapServicesToNavItems = (allServices: Service[]): NavigationItem[] => {
   return allServices.map((service) => ({
+    id: service.id, // Use the existing service ID for stability
     label: service.title,
     href: `/services/${service.id}`,
   }))
@@ -33,6 +35,7 @@ const mapIndustriesToNavItems = (
   allIndustries: Industry[]
 ): NavigationItem[] => {
   return allIndustries.map((industry) => ({
+    id: industry.id, // Use the existing industry ID for stability
     label: industry.name,
     href: `/industries/${industry.id}`,
   }))
@@ -43,26 +46,29 @@ const mapIndustriesToNavItems = (
  * This makes it easier to maintain and update navigation structure
  */
 const NAVIGATION_ITEMS: NavigationItem[] = [
-  { label: 'Who We Are', href: '/about' },
+  { id: 'who-we-are', label: 'Who We Are', href: '/about' },
   {
+    id: 'what-we-do',
     label: 'What We Do',
     href: '/what-we-do',
     children: [
       {
+        id: 'services',
         label: 'Services',
         href: '/what-we-do#services',
         children: mapServicesToNavItems(services),
       },
       {
+        id: 'industries',
         label: 'Industries',
         href: '/what-we-do#industries',
         children: mapIndustriesToNavItems(industries),
       },
-      { label: 'Case Studies', href: '/case-studies' },
+      { id: 'case-studies', label: 'Case Studies', href: '/case-studies' },
     ],
   },
-  { label: 'What We Think', href: '/insights' },
-  { label: 'Contact', href: '/contact', variant: 'cta' },
+  { id: 'what-we-think', label: 'What We Think', href: '/insights' },
+  { id: 'contact', label: 'Contact', href: '/contact', variant: 'cta' },
 ]
 
 // Define CSS classes for animation delays
@@ -85,7 +91,7 @@ const DesktopNavigation = memo(() => {
     <nav className='hidden md:flex' aria-label='Main navigation'>
       <ul className='flex items-center space-x-6'>
         {NAVIGATION_ITEMS.map((item) => (
-          <li key={item.href || item.label}>
+          <li key={item.id}>
             <DesktopDropdownMenuItem item={item} level={0} />
           </li>
         ))}
@@ -301,7 +307,7 @@ const MobileDropdownMenuItem = memo<MobileDropdownMenuItemProps>(
             >
               {item.children?.map((child, childIndex) => (
                 <MobileDropdownMenuItem
-                  key={child.href || child.label}
+                  key={child.id}
                   item={child}
                   onNavigate={onNavigate}
                   level={level + 1}
@@ -345,7 +351,7 @@ const MobileNavigation = memo<MobileNavigationProps>(
           <ul className='flex flex-col space-y-3' role='menu'>
             {NAVIGATION_ITEMS.map((item, index) => (
               <MobileDropdownMenuItem
-                key={item.href || item.label}
+                key={item.id}
                 item={item}
                 onNavigate={onItemClick}
                 level={0}
@@ -588,7 +594,7 @@ const DesktopDropdownMenuItem = memo<DesktopDropdownMenuItemProps>(
           >
             <div className='py-1' role='menu'>
               {item.children?.map((child) => (
-                <div key={child.href || child.label} role='menuitem'>
+                <div key={child.id} role='menuitem'>
                   <DesktopDropdownMenuItem item={child} level={level + 1} />
                 </div>
               ))}
