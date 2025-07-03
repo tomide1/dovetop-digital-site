@@ -2,7 +2,7 @@
 
 import React, { useMemo, useCallback, useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import type { CaseStudy } from '@/data/case-studies'
+import type { CaseStudy } from '@/types/what-we-do'
 import CaseStudiesHero from './case-studies-hero'
 import CaseStudiesFilters from './case-studies-filters'
 import CaseStudiesGrid from './case-studies-grid'

@@ -1,16 +1,4 @@
-export interface CaseStudy {
-  id: string
-  title: string
-  serviceIds: string[]
-  shortDescription: string
-  detailedDescription: string
-  results: string[]
-  imageUrl: string
-  client: string
-  industryIds: string[]
-  duration: string
-  technologies: string[]
-}
+import { CaseStudy } from '@/types/what-we-do'
 
 export const caseStudies: CaseStudy[] = [
   // Cloud Solutions Case Studies

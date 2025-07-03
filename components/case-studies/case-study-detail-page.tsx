@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { CaseStudy } from '@/data/case-studies'
+import type { CaseStudy } from '@/types/what-we-do'
 import { CaseStudyCard } from '@/components/case-studies'
 import {
   getServiceDisplayName,

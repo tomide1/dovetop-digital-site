@@ -1,4 +1,4 @@
-import type { CaseStudy } from '@/data/case-studies'
+import type { CaseStudy } from '@/types/what-we-do'
 
 /**
  * Get unique service IDs from case studies

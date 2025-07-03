@@ -9,8 +9,8 @@ import type {
   Industry,
   IndustryDetailsData,
   ServiceApplicationWithService,
+  CaseStudy,
 } from '@/types/what-we-do'
-import type { CaseStudy } from '@/data/case-studies'
 
 interface IndustryCardProps {
   industry: Industry

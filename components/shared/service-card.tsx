@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { Service } from '@/data/services'
+import type { Service } from '@/types/what-we-do'
 
 export interface ServiceCardProps {
   service: Service

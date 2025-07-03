@@ -1,23 +1,5 @@
 // Services data with comprehensive information about each service offered
-export interface Service {
-  id: string
-  title: string
-  shortDescription: string
-  detailedDescription: string
-  icon: string // Path to the icon/image
-  benefits: string[]
-  process?: {
-    steps: {
-      title: string
-      description: string
-    }[]
-  }
-  deliverables?: string[]
-  caseStudies?: {
-    id: string
-    title: string
-  }[] // For future integration with case studies
-}
+import { Service } from '@/types/what-we-do'
 
 export const services: Service[] = [
   {

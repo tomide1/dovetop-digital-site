@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { useState, useRef, useEffect, memo, useCallback } from 'react'
 import Logo from './logo'
-import { services, Service } from '../../data/services'
-import { industries, Industry } from '../../data/industries'
+import { services } from '../../data/services'
+import { industries } from '../../data/industries'
+import { Service, Industry } from '../../types/what-we-do'
 
 /**
  * Interface for navigation items to ensure type safety and consistency
