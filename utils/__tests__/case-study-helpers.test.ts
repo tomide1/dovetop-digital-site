@@ -13,7 +13,7 @@ import {
   getCaseStudiesByIndustry,
   getCaseStudyBreadcrumbs,
 } from '../case-study-helpers'
-import type { CaseStudy } from '@/data/case-studies'
+import type { CaseStudy } from '@/types/what-we-do'
 
 // Mock case study data
 const mockCaseStudies: CaseStudy[] = [

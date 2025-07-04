@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import ServiceCard from '@/components/shared/service-card'
-import { Service } from '@/data/services'
+import { Service } from '@/types/what-we-do'
 
 // Mock service data for testing
 const mockService: Service = {

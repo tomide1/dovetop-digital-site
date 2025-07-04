@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import CaseStudyCard from '../case-study-card'
-import type { CaseStudy } from '@/data/case-studies'
+import type { CaseStudy } from '@/types/what-we-do'
 
 // Mock case study data
 const mockCaseStudy: CaseStudy = {

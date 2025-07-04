@@ -5,8 +5,8 @@ import type {
   Industry,
   IndustryDetailsData,
   ServiceApplicationWithService,
+  Service,
 } from '@/types/what-we-do'
-import { Service } from '@/data/services'
 
 export function getIndustryIcon(industryId: string): string {
   const industry = industries.find((i) => i.id === industryId)

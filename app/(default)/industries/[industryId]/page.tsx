@@ -7,6 +7,15 @@ import { getIndustryDetails, getIndustryIcon } from '@/utils/industry-helpers'
 import { Metadata } from 'next'
 import CaseStudyCard from '@/components/case-studies/case-study-card'
 
+// Helper function to determine if icon is a valid image URL
+const isValidImageUrl = (icon: string): boolean => {
+  return (
+    icon.startsWith('/') ||
+    icon.startsWith('http://') ||
+    icon.startsWith('https://')
+  )
+}
+
 interface IndustryPageProps {
   params: {
     industryId: string
@@ -76,7 +85,7 @@ export default function IndustryPage({ params }: IndustryPageProps) {
 
             {/* Industry Icon */}
             <div className='w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center'>
-              {industry.icon ? (
+              {industry.icon && isValidImageUrl(industry.icon) ? (
                 <Image
                   src={industry.icon}
                   alt={industry.name}
@@ -85,7 +94,7 @@ export default function IndustryPage({ params }: IndustryPageProps) {
                   className='w-12 h-12'
                 />
               ) : (
-                <span className='text-5xl'>{icon}</span>
+                <span className='text-5xl'>{industry.icon || icon}</span>
               )}
             </div>
 

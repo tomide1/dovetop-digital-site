@@ -1,6 +1,6 @@
 import React from 'react'
 import { CaseStudyCard } from '@/components/case-studies'
-import type { CaseStudy } from '@/data/case-studies'
+import type { CaseStudy } from '@/types/what-we-do'
 
 interface CaseStudiesGridProps {
   caseStudies: CaseStudy[]
