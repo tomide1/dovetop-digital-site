@@ -1,19 +1,74 @@
+export const SERVICE_IDS = [
+  'cloud-solutions',
+  'user-centered-design',
+  'data-analytics',
+  'security-governance',
+] as const
+export type ServiceId = (typeof SERVICE_IDS)[number]
+
+export const INDUSTRY_IDS = [
+  'healthcare',
+  'finance',
+  'legal',
+  'agriculture',
+  'education',
+  'e-commerce',
+  'government',
+] as const
+export type IndustryId = (typeof INDUSTRY_IDS)[number]
+
+export const TECHNOLOGY_CATEGORY_IDS = [
+  'frontend',
+  'backend',
+  'cloud',
+  'database',
+  'devops',
+  'mobile',
+  'ai-ml',
+] as const
+export type TechnologyCategoryId = (typeof TECHNOLOGY_CATEGORY_IDS)[number]
+
+export interface TechnologyCategory {
+  id: TechnologyCategoryId
+  name: string
+  icon?: string
+}
+
+export const TECHNOLOGY_IDS = [
+  'react',
+  'nextjs',
+  'aws-lambda',
+  'postgresql',
+  'terraform',
+  'kubernetes',
+  'flutter',
+  'pytorch',
+] as const
+export type TechnologyId = (typeof TECHNOLOGY_IDS)[number] | (string & {})
+
+export interface Technology {
+  id: TechnologyId
+  name: string
+  categoryId: TechnologyCategoryId
+  icon: string
+}
+
 export interface CaseStudy {
   id: string
   title: string
-  serviceIds: string[]
+  serviceIds: ServiceId[]
   shortDescription: string
   detailedDescription: string
   results: string[]
   imageUrl: string
   client: string
-  industryIds: string[]
+  industryIds: IndustryId[]
   duration: string
-  technologies: string[]
+  technologies: TechnologyId[]
 }
 
 export interface Service {
-  id: string
+  id: ServiceId
   title: string
   shortDescription: string
   detailedDescription: string
@@ -33,7 +88,7 @@ export interface Service {
 }
 
 export interface Industry {
-  id: string
+  id: IndustryId
   name: string
   description: string
   icon?: string
@@ -42,7 +97,7 @@ export interface Industry {
 }
 
 export interface ServiceApplication {
-  serviceId: string
+  serviceId: ServiceId
   applicationText: string
 }
 
