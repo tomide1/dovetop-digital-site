@@ -25,6 +25,8 @@ export const TECHNOLOGY_CATEGORY_IDS = [
   'devops',
   'mobile',
   'ai-ml',
+  'design',
+  'blockchain',
 ] as const
 export type TechnologyCategoryId = (typeof TECHNOLOGY_CATEGORY_IDS)[number]
 
@@ -35,15 +37,91 @@ export interface TechnologyCategory {
 }
 
 export const TECHNOLOGY_IDS = [
+  // Frontend
   'react',
   'nextjs',
+  'react-native',
+  'swift',
+  'kotlin',
+  'flutter',
+  'd3js',
+  'webrtc',
+
+  // Backend
+  'nodejs',
+  'python',
+  'graphql',
+  'firebase',
+  'algolia',
+  'twilio',
+  'sharepoint',
+  'microsoft-graph',
+  'cerner',
+
+  // Cloud
+  'aws',
   'aws-lambda',
+  'aws-cloudfront',
+  'aws-route53',
+  'aws-ecs',
+  'aws-rds',
+  'aws-vpc',
+  'aws-kms',
+  'aws-cloudtrail',
+  'aws-ec2',
+  'aws-directconnect',
+  'aws-elasticache',
+  'aws-kinesis',
+  'aws-healthlake',
+  'aws-iot-core',
+  'aws-iot-greengrass',
+  'aws-s3',
+  'aws-iam',
+  'aws-api-gateway',
+  'aws-cognito',
+  'aws-sagemaker',
+  'aws-redshift',
+  'aws-quicksight',
+  'aws-govcloud',
+  'iot',
+
+  // Database
   'postgresql',
+  'dynamodb',
+  'documentdb',
+  'elasticsearch',
+  'sqlite',
+
+  // DevOps
   'terraform',
   'kubernetes',
-  'flutter',
+  'docker',
+  'cicd',
+
+  // AI & ML
   'pytorch',
+  'tensorflow',
+
+  // Design
+  'figma',
+  'adobe-xd',
+  'sketch',
+  'invision',
+  'lottie',
+  'usertesting',
+
+  // Other
+  'unity',
+  'blockchain',
+  'tableau',
+  'hotjar',
+  'mapbox',
+  'webflow',
+  'moodle',
+  'wcag',
+  'dynamic-yield',
 ] as const
+
 export type TechnologyId = (typeof TECHNOLOGY_IDS)[number] | (string & {})
 
 export interface Technology {
