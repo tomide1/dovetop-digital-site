@@ -5,7 +5,7 @@ import CoreValuesGrid from '@/components/about/core-values-grid'
 import ImpactStats from '@/components/about/impact-stats'
 import CompanyTimeline from '@/components/about/company-timeline'
 import LeadershipGrid from '@/components/about/leadership-grid'
-import PartnerLogosStrip from '@/components/about/partner-logos-strip'
+// import PartnerLogosStrip from '@/components/about/partner-logos-strip'
 import LargeTestimonial from '@/components/large-testimonial'
 
 // Data imports
@@ -14,7 +14,7 @@ import { coreValues } from '@/data/about/core-values'
 import { quickStats } from '@/data/about/quick-stats'
 import { companyTimeline } from '@/data/about/timeline'
 import { leadershipTeam } from '@/data/about/team'
-import { partners } from '@/data/about/partners'
+// import { partners } from '@/data/about/partners'
 
 export const metadata = {
   title: 'Who We Are | Dovetop Digital',
@@ -56,7 +56,7 @@ export default function WhoWeArePage() {
       <LargeTestimonial />
 
       {/* Partners & Certifications */}
-      <PartnerLogosStrip partners={partners} />
+      {/* <PartnerLogosStrip partners={partners} /> */}
     </main>
   )
 }
