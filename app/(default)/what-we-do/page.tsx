@@ -1,5 +1,5 @@
 import React from 'react'
-import HeroSection from '@/components/what-we-do/hero-section'
+import { PageHero } from '@/components/shared'
 import ServicesOverview from '@/components/what-we-do/services-overview'
 import IndustriesOverview from '@/components/what-we-do/industries-overview'
 
@@ -14,7 +14,10 @@ export const metadata = {
 export default function WhatWeDoPage() {
   return (
     <main className='min-h-screen'>
-      <HeroSection />
+      <PageHero
+        title='What We Do'
+        subtitle="We deliver cutting-edge digital solutions tailored to your industry's unique needs. Explore our services to see how we can help you achieve your goals."
+      />
       <ServicesOverview />
       <IndustriesOverview />
     </main>
