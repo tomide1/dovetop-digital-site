@@ -6,6 +6,7 @@ import { industries } from '@/data/industries'
 import { getIndustryDetails, getIndustryIcon } from '@/utils/industry-helpers'
 import { Metadata } from 'next'
 import CaseStudyCard from '@/components/case-studies/case-study-card'
+import { INDUSTRY_IDS, IndustryId } from '@/types/what-we-do'
 
 // Helper function to determine if icon is a valid image URL
 const isValidImageUrl = (icon: string): boolean => {
@@ -14,6 +15,11 @@ const isValidImageUrl = (icon: string): boolean => {
     icon.startsWith('http://') ||
     icon.startsWith('https://')
   )
+}
+
+// Type guard to check if string is a valid IndustryId
+const isValidIndustryId = (id: string): id is IndustryId => {
+  return INDUSTRY_IDS.includes(id as IndustryId)
 }
 
 interface IndustryPageProps {
@@ -49,6 +55,11 @@ export async function generateStaticParams() {
 }
 
 export default function IndustryPage({ params }: IndustryPageProps) {
+  // Validate that params.industryId is a valid IndustryId
+  if (!isValidIndustryId(params.industryId)) {
+    notFound()
+  }
+
   const industryDetails = getIndustryDetails(params.industryId)
 
   if (!industryDetails) {
