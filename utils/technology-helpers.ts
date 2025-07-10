@@ -9,6 +9,11 @@ import type {
 export function getTechnology(
   id: TechnologyId | string
 ): Technology | undefined {
+  // Handle null/undefined inputs
+  if (id === null || id === undefined) {
+    return undefined
+  }
+
   // First try to find by ID
   const techById = technologies.find((t) => t.id === id)
   if (techById) return techById
@@ -24,6 +29,11 @@ export function getTechnology(
 export function getTechnologyCategory(
   id: TechnologyCategoryId
 ): TechnologyCategory | undefined {
+  // Handle null/undefined/empty inputs
+  if (!id || typeof id !== 'string') {
+    return undefined
+  }
+
   return technologyCategories.find((c) => c.id === id)
 }
 
@@ -41,6 +51,7 @@ export function getTechnologyIcon(id: TechnologyId | string): string {
 const technologyNameMappings: Record<string, string> = {
   AWS: 'aws',
   Lambda: 'aws-lambda',
+  'AWS Lambda': 'aws-lambda',
   CloudFront: 'aws-cloudfront',
   'Route 53': 'aws-route53',
   ECS: 'aws-ecs',
@@ -94,6 +105,7 @@ const technologyNameMappings: Record<string, string> = {
   WCAG: 'wcag',
   UserTesting: 'usertesting',
   'Dynamic Yield': 'dynamic-yield',
+  'Multi-Region': 'aws', // Multi-region deployment is typically AWS-based
   'Node.js': 'nodejs',
   Python: 'python',
   GraphQL: 'graphql',
@@ -110,6 +122,11 @@ const technologyNameMappings: Record<string, string> = {
 
 // Helper function to find technology by name (case-insensitive)
 export function findTechnologyByName(name: string): Technology | undefined {
+  // Handle null/undefined/empty inputs
+  if (!name || typeof name !== 'string') {
+    return undefined
+  }
+
   // First check if there's a direct mapping
   const mappedId = technologyNameMappings[name]
   if (mappedId) {
@@ -132,11 +149,21 @@ export function getTechnologyIconByName(name: string): string {
 export function getTechnologiesByCategory(
   categoryId: TechnologyCategoryId
 ): Technology[] {
+  // Handle null/undefined/empty inputs
+  if (!categoryId || typeof categoryId !== 'string') {
+    return []
+  }
+
   return technologies.filter((tech) => tech.categoryId === categoryId)
 }
 
 // Helper function to search technologies by name
 export function searchTechnologies(query: string): Technology[] {
+  // Handle null/undefined/empty inputs
+  if (!query || typeof query !== 'string') {
+    return []
+  }
+
   const lowerQuery = query.toLowerCase()
   return technologies.filter(
     (tech) =>
