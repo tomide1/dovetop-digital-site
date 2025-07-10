@@ -1,23 +1,29 @@
-import type { CaseStudy } from '@/types/what-we-do'
+import type {
+  CaseStudy,
+  TechnologyId,
+  ServiceId,
+  IndustryId,
+} from '@/types/what-we-do'
+import { getTechnologyDisplayName } from '@/utils/technology-helpers'
 
 /**
  * Get unique service IDs from case studies
  */
-export function getUniqueServices(caseStudies: CaseStudy[]): string[] {
+export function getUniqueServices(caseStudies: CaseStudy[]): ServiceId[] {
   return [...new Set(caseStudies.flatMap((cs) => cs.serviceIds))]
 }
 
 /**
  * Get unique industry IDs from case studies
  */
-export function getUniqueIndustries(caseStudies: CaseStudy[]): string[] {
+export function getUniqueIndustries(caseStudies: CaseStudy[]): IndustryId[] {
   return [...new Set(caseStudies.flatMap((cs) => cs.industryIds))]
 }
 
 /**
  * Get formatted service names for display
  */
-export function getServiceDisplayName(serviceId: string): string {
+export function getServiceDisplayName(serviceId: ServiceId | string): string {
   const serviceNames: Record<string, string> = {
     'cloud-solutions': 'Cloud Solutions',
     'user-centered-design': 'User-Centered Design',
@@ -33,7 +39,9 @@ export function getServiceDisplayName(serviceId: string): string {
 /**
  * Get formatted industry names for display
  */
-export function getIndustryDisplayName(industryId: string): string {
+export function getIndustryDisplayName(
+  industryId: IndustryId | string
+): string {
   const industryNames: Record<string, string> = {
     healthcare: 'Healthcare',
     finance: 'Finance',
@@ -86,8 +94,8 @@ export function getCaseStudyStats(caseStudies: CaseStudy[]) {
 export function filterCaseStudies(
   caseStudies: CaseStudy[],
   filters: {
-    service?: string
-    industry?: string
+    service?: ServiceId
+    industry?: IndustryId
     search?: string
   }
 ): CaseStudy[] {
@@ -110,7 +118,9 @@ export function filterCaseStudies(
         caseStudy.shortDescription,
         caseStudy.client,
         ...caseStudy.results,
-        ...caseStudy.technologies,
+        ...caseStudy.technologies.map((t) =>
+          getTechnologyDisplayName(t as TechnologyId)
+        ),
       ]
         .join(' ')
         .toLowerCase()
@@ -219,7 +229,7 @@ export function getCaseStudyNavigation(
  */
 export function getCaseStudiesByService(
   caseStudies: CaseStudy[],
-  serviceId: string
+  serviceId: ServiceId
 ): CaseStudy[] {
   return caseStudies.filter((cs) => cs.serviceIds.includes(serviceId))
 }
@@ -229,7 +239,7 @@ export function getCaseStudiesByService(
  */
 export function getCaseStudiesByIndustry(
   caseStudies: CaseStudy[],
-  industryId: string
+  industryId: IndustryId
 ): CaseStudy[] {
   return caseStudies.filter((cs) => cs.industryIds.includes(industryId))
 }

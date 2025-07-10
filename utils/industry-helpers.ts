@@ -3,18 +3,20 @@ import { services } from '@/data/services'
 import { caseStudies } from '@/data/case-studies'
 import type {
   Industry,
+  IndustryId,
   IndustryDetailsData,
   ServiceApplicationWithService,
   Service,
+  ServiceId,
 } from '@/types/what-we-do'
 
-export function getIndustryIcon(industryId: string): string {
+export function getIndustryIcon(industryId: IndustryId): string {
   const industry = industries.find((i) => i.id === industryId)
   return industry?.icon || '🏢'
 }
 
 export function getIndustryDetails(
-  industryId: string
+  industryId: IndustryId
 ): IndustryDetailsData | null {
   const industry = industries.find((i) => i.id === industryId)
   if (!industry) {
@@ -52,7 +54,7 @@ export function getIndustryDetails(
   }
 }
 
-export function getServiceIndustries(serviceId: string) {
+export function getServiceIndustries(serviceId: ServiceId) {
   const serviceCaseStudies = caseStudies.filter((cs) =>
     cs.serviceIds.includes(serviceId)
   )
@@ -76,7 +78,7 @@ export function getServiceIndustries(serviceId: string) {
   return serviceIndustries
 }
 
-export function getServiceCaseStudies(serviceId: string, limit?: number) {
+export function getServiceCaseStudies(serviceId: ServiceId, limit?: number) {
   const serviceCaseStudies = caseStudies.filter((cs) =>
     cs.serviceIds.includes(serviceId)
   )

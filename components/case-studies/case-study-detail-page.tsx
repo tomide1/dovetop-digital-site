@@ -7,6 +7,7 @@ import {
   getServiceDisplayName,
   getIndustryDisplayName,
 } from '@/utils/case-study-helpers'
+import TechnologyBadge from '@/components/technology/technology-badge'
 
 interface CaseStudyDetailPageProps {
   caseStudy: CaseStudy
@@ -182,15 +183,8 @@ export default function CaseStudyDetailPage({
                   Technologies Used
                 </h2>
                 <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4'>
-                  {caseStudy.technologies.map((tech) => (
-                    <div
-                      key={tech}
-                      className='flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200'
-                    >
-                      <span className='text-sm font-medium text-gray-900'>
-                        {tech}
-                      </span>
-                    </div>
+                  {caseStudy.technologies.map((techId) => (
+                    <TechnologyBadge key={techId} id={techId} />
                   ))}
                 </div>
               </div>
