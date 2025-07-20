@@ -2,7 +2,8 @@
 
 import React, { useMemo, useCallback, useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import type { CaseStudy } from '@/types/what-we-do'
+import type { CaseStudy, ServiceId, IndustryId } from '@/types/what-we-do'
+import { SERVICE_IDS, INDUSTRY_IDS } from '@/types/what-we-do'
 import CaseStudiesHero from './case-studies-hero'
 import CaseStudiesFilters from './case-studies-filters'
 import CaseStudiesGrid from './case-studies-grid'
@@ -13,6 +14,15 @@ import {
   getUniqueServices,
   getUniqueIndustries,
 } from '@/utils/case-study-helpers'
+
+// Type guards to validate URL parameters
+const isValidServiceId = (id: string): id is ServiceId => {
+  return SERVICE_IDS.includes(id as ServiceId)
+}
+
+const isValidIndustryId = (id: string): id is IndustryId => {
+  return INDUSTRY_IDS.includes(id as IndustryId)
+}
 
 interface CaseStudiesPageProps {
   caseStudies: CaseStudy[]
@@ -35,7 +45,7 @@ export default function CaseStudiesPage({
   const searchParams = useSearchParams()
   const [isLoading, setIsLoading] = useState(false)
 
-  // Get filter values from URL parameters
+  // Get filter values from URL parameters (UI filters as strings)
   const filters = useMemo(
     () => ({
       service: searchParams.get('service') || '',
@@ -44,6 +54,24 @@ export default function CaseStudiesPage({
     }),
     [searchParams]
   )
+
+  // Create typed filters for the filterCaseStudies function
+  const typedFilters = useMemo(() => {
+    const serviceParam = filters.service
+    const industryParam = filters.industry
+
+    return {
+      service:
+        serviceParam && isValidServiceId(serviceParam)
+          ? serviceParam
+          : undefined,
+      industry:
+        industryParam && isValidIndustryId(industryParam)
+          ? industryParam
+          : undefined,
+      search: filters.search || undefined,
+    }
+  }, [filters.service, filters.industry, filters.search])
 
   const currentPage = useMemo(() => {
     const page = parseInt(searchParams.get('page') || '1')
@@ -62,9 +90,9 @@ export default function CaseStudiesPage({
 
   // Filter and sort case studies
   const filteredCaseStudies = useMemo(() => {
-    const filtered = filterCaseStudies(caseStudies, filters)
+    const filtered = filterCaseStudies(caseStudies, typedFilters)
     return sortCaseStudies(filtered, 'title')
-  }, [caseStudies, filters])
+  }, [caseStudies, typedFilters])
 
   // Paginate results
   const paginatedResults = useMemo(() => {
@@ -168,10 +196,11 @@ export default function CaseStudiesPage({
   // Enhanced filter object for the filters component
   const enhancedFilters = useMemo(
     () => ({
-      ...filters,
-      search: searchValue, // Use local search value for immediate UI updates
+      service: filters.service,
+      industry: filters.industry,
+      search: searchValue || '', // Use local search value for immediate UI updates
     }),
-    [filters, searchValue]
+    [filters.service, filters.industry, searchValue]
   )
 
   return (
