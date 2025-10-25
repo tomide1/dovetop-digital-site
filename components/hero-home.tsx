@@ -68,7 +68,7 @@ export default function HeroHome() {
                 data-aos-duration='600'
                 data-aos-once='true'
               >
-                We help businesses adapt to the ever-changing digital landscape through evolutionary development and incremental delivery, ensuring continuous improvement and sustained success.
+                We help businesses adapt to the ever-changing digital landscape through evolutionary development and incremental delivery of systems and applications.
               </p>
             </div>
           </div>
