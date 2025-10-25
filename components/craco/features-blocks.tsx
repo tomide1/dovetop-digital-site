@@ -5,12 +5,7 @@ import ServiceCard from '@/components/shared/service-card'
 
 function FeaturesBlocks() {
   return (
-    <section className='relative' id='features'>
-      {/* Section background (needs .relative class on parent and next sibling elements) */}
-      <div
-        className='absolute inset-0 top-1/2 md:mt-24 lg:mt-0 pointer-events-none bg-white'
-        aria-hidden='true'
-      ></div>
+    <section className='relative bg-white' id='features'>
       <div className='absolute left-0 right-0 bottom-0 m-auto w-px p-px h-20 bg-gray-200 transform translate-y-1/2'></div>
 
       <div className='relative max-w-6xl mx-auto px-4 sm:px-6'>
@@ -35,13 +30,18 @@ function FeaturesBlocks() {
           </div>
 
           {/* Items */}
-          <div className='max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 md:max-w-2xl lg:max-w-none'>
-            {services.map((service) => (
-              <ServiceCard
+          <div className='max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-4 md:max-w-2xl lg:max-w-none'>
+            {services.map((service, index) => (
+              <div
                 key={service.id}
-                service={service}
-                variant='default'
-              />
+                data-aos='fade-up'
+                data-aos-delay={index * 100}
+              >
+                <ServiceCard
+                  service={service}
+                  variant='default'
+                />
+              </div>
             ))}
           </div>
         </div>
