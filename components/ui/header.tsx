@@ -672,28 +672,48 @@ export default function Header() {
       <div className='mx-auto w-full px-4 sm:px-6'>
         <div className='flex h-16 items-center justify-between'>
           {/* Site branding */}
-          <div className='flex items-center'>
+          <div className='flex items-center md:flex-1'>
             <Link
               href='/'
-              className='flex items-center gap-2'
+              className='flex items-center gap-2 md:justify-start justify-center md:w-auto w-full'
               aria-label='Dovetop Digital Homepage'
             >
               <Logo />
-              <span className='hidden md:inline text-gray-900 font-bold text-xl tracking-wide'>
+              <span className='text-gray-900 font-bold text-xl tracking-wide'>
                 Dovetop Digital
               </span>
             </Link>
           </div>
 
-          {/* Main Navigation */}
-          <DesktopNavigation />
+          {/* Main Navigation with Search */}
+          <div className='hidden md:flex md:items-center md:gap-4'>
+            <DesktopNavigation />
+            <button
+              className='p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md transition-colors'
+              aria-label='Search'
+            >
+              <svg className='h-5 w-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' />
+              </svg>
+            </button>
+          </div>
 
-          {/* Hamburger button - Mobile only */}
-          <MobileMenuButton
-            isOpen={mobileMenuOpen}
-            onClick={toggleMobileMenu}
-            buttonRef={buttonRef}
-          />
+          {/* Mobile Menu and Search */}
+          <div className='flex items-center gap-3 md:hidden'>
+            <button
+              className='p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md transition-colors'
+              aria-label='Search'
+            >
+              <svg className='h-5 w-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' />
+              </svg>
+            </button>
+            <MobileMenuButton
+              isOpen={mobileMenuOpen}
+              onClick={toggleMobileMenu}
+              buttonRef={buttonRef}
+            />
+          </div>
 
           {/* Desktop sign in links */}
           {/* <ul className='flex items-center gap-3'>
