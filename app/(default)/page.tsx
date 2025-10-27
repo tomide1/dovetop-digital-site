@@ -6,11 +6,8 @@ export const metadata = {
 
 import Hero from '@/components/hero-home'
 import BusinessCategories from '@/components/business-categories'
-import FeaturesPlanet from '@/components/features-planet'
 import FeaturesBlocks from '@/components/craco/features-blocks'
-import CaseStudies from '@/components/case-studies'
-import LargeTestimonial from '@/components/large-testimonial'
-import Cta from '@/components/cta'
+import CaseStudiesSection from '@/components/case-studies-section'
 
 export default function Home() {
   return (
@@ -19,7 +16,7 @@ export default function Home() {
       {/* <FeaturesPlanet /> */}
       <FeaturesBlocks />
       <BusinessCategories />
-      <CaseStudies />
+      <CaseStudiesSection />
       {/* <LargeTestimonial /> */}
       {/* <Cta /> */}
       {/* <Accordion title='Test' id='test-1'>

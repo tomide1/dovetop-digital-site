@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Contact Us - Dovetop Digital',
-  description: 'Get in touch with Dovetop Digital. We\'re here to help transform your business with innovative technology solutions.',
+  description: 'Get in touch with Dovetop Digital. We&apos;re here to help transform your business with innovative technology solutions.',
 }
 
 import Cta from '@/components/cta'
@@ -18,7 +18,7 @@ export default function ContactPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-600">
-              Ready to transform your business? Let's discuss how we can help you achieve your digital goals.
+              Ready to transform your business? Let&apos;s discuss how we can help you achieve your digital goals.
             </p>
           </div>
         </div>

@@ -142,9 +142,9 @@ export default function CaseStudiesPage({
 
   // Handle search with debouncing
   const [searchValue, setSearchValue] = useState(filters.search)
-  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(
-    null
-  )
+  const [searchTimeout, setSearchTimeout] = useState<
+    ReturnType<typeof setTimeout> | null
+  >(null)
 
   const handleSearchChange = useCallback(
     (search: string) => {

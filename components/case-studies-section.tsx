@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 interface Study {
   id: string
   type: 'Case Study' | 'Research Report'
@@ -44,7 +46,7 @@ const studies: Study[] = [
   }
 ]
 
-export default function CaseStudies() {
+export default function CaseStudiesSection() {
   return (
     <section className='relative bg-white py-16 md:py-24'>
       <div className='mx-auto max-w-6xl px-4 sm:px-6'>
@@ -79,9 +81,11 @@ export default function CaseStudies() {
                 <div className='bg-white border border-gray-200 hover:border-blue-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1'>
                 {/* Image */}
                 <div className='relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden'>
-                  <img 
+                  <Image 
                     src={study.image} 
                     alt={study.title}
+                    width={400}
+                    height={300}
                     className='w-full h-full object-cover'
                   />
                   <div className='absolute inset-0 bg-gradient-to-br from-blue-500/10 to-teal-400/10'></div>

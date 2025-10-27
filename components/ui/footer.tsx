@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer({ border = false }: { border?: boolean }) {
   return (
     <footer>
@@ -9,10 +11,10 @@ export default function Footer({ border = false }: { border?: boolean }) {
           <div className="space-y-2 sm:col-span-6 lg:col-span-3">
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Services</h3>
             <ul className="space-y-2">
-              <li><a href="/services/cloud-solutions" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Cloud Solutions</a></li>
-              <li><a href="/services/ai-automation" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">AI & Automation</a></li>
-              <li><a href="/services/cybersecurity" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Cybersecurity</a></li>
-              <li><a href="/services/digital-transformation" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Digital Transformation</a></li>
+              <li><Link href="/services/cloud-solutions" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Cloud Solutions</Link></li>
+              <li><Link href="/services/ai-automation" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">AI & Automation</Link></li>
+              <li><Link href="/services/cybersecurity" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Cybersecurity</Link></li>
+              <li><Link href="/services/digital-transformation" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Digital Transformation</Link></li>
             </ul>
           </div>
 
@@ -23,7 +25,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li><a href="/about" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">About Us</a></li>
               <li><a href="/careers" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Careers</a></li>
               <li><a href="/contact" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Contact Us</a></li>
-              <li><a href="/insights" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Insights</a></li>
+              <li><Link href="/insights" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Insights</Link></li>
             </ul>
           </div>
 
@@ -31,7 +33,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
           <div className="space-y-2 sm:col-span-6 lg:col-span-3">
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Resources</h3>
             <ul className="space-y-2">
-              <li><a href="/case-studies" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Case Studies</a></li>
+              <li><Link href="/case-studies" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Case Studies</Link></li>
               <li><a href="/blog" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Blog</a></li>
               <li><a href="/whitepapers" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Whitepapers</a></li>
               <li><a href="/support" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Support</a></li>

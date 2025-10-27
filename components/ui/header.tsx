@@ -478,7 +478,7 @@ interface DesktopDropdownMenuItemProps {
 const DesktopDropdownMenuItem = memo<DesktopDropdownMenuItemProps>(
   ({ item, level = 0 }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
     const handleMouseEnter = useCallback(() => {
       if (timeoutRef.current) {
