@@ -3,6 +3,13 @@ export const SERVICE_IDS = [
   'user-centered-design',
   'data-analytics',
   'security-governance',
+
+  'cyber-security',
+  'strategy',
+  'data-ai',
+  'tech-transformation',
+  'sustainability',
+  'learning'
 ] as const
 export type ServiceId = (typeof SERVICE_IDS)[number]
 
@@ -11,6 +18,14 @@ export const INDUSTRY_IDS = [
   'finance',
   'legal',
   'agriculture',
+  'education',
+  'e-commerce',
+  'government',
+
+  'insurance',
+  'energy',
+  'public-service',
+  'software-platforms',
   'education',
   'e-commerce',
   'government',

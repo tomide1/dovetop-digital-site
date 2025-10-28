@@ -46,7 +46,17 @@ const mapIndustriesToNavItems = (
  * This makes it easier to maintain and update navigation structure
  */
 const NAVIGATION_ITEMS: NavigationItem[] = [
-  { id: 'who-we-are', label: 'Who We Are', href: '/about' },
+  {
+    id: 'who-we-are',
+    label: 'Who We Are',
+    href: '/about',
+    children: [
+      { id: 'vision-mission', label: 'Vision and Mission', href: '/about/vision-mission' },
+      { id: 'corporate-sustainability', label: 'Corporate and Sustainability', href: '/about/corporate-sustainability' },
+      { id: 'board-directors', label: 'Board of Directors', href: '/about/board-directors' },
+      { id: 'locations', label: 'Locations', href: '/about/locations' },
+    ],
+  },
   {
     id: 'what-we-do',
     label: 'What We Do',
@@ -64,7 +74,6 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
         href: '/what-we-do#industries',
         children: mapIndustriesToNavItems(industries),
       },
-      { id: 'case-studies', label: 'Case Studies', href: '/case-studies' },
     ],
   },
   { id: 'what-we-think', label: 'What We Think', href: '/insights' },
