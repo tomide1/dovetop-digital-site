@@ -50,4 +50,28 @@ export const industries: Industry[] = [
       'Modernizing public services with secure, transparent, and efficient digital government solutions.',
     icon: '🏛️',
   },
+  {
+    id: 'insurance',
+    name: 'Insurance',
+    description: 'Digital transformation solutions for insurance companies to improve customer experience, streamline claims processing, and enhance risk management.',
+    icon: '🛡️',
+  },
+  {
+    id: 'energy',
+    name: 'Energy',
+    description: 'Technology solutions for the energy sector including smart grid systems, renewable energy management, and operational efficiency optimization.',
+    icon: '⚡',
+  },
+  {
+    id: 'public-service',
+    name: 'Public Service',
+    description: 'Modernizing public services with secure, transparent, and efficient digital solutions for government agencies and public organizations.',
+    icon: '🏛️',
+  },
+  {
+    id: 'software-platforms',
+    name: 'Software and Platforms',
+    description: 'Building robust software platforms, SaaS solutions, and enterprise applications that scale with your business needs.',
+    icon: '💻',
+  },
 ]

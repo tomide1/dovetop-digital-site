@@ -32,9 +32,9 @@ export default function ServiceCard({
 
   const variantClasses = {
     default:
-      'p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl',
+      'p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl h-80 flex flex-col',
     homepage:
-      'p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl',
+      'p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl h-80 flex flex-col',
   }
 
   const animationClasses = isVisible
@@ -73,7 +73,7 @@ export default function ServiceCard({
         {service.title}
       </h3>
 
-      <p className='text-sm text-gray-600 leading-relaxed'>
+      <p className='text-sm text-gray-600 leading-relaxed flex-grow'>
         {service.shortDescription}
       </p>
     </Link>
