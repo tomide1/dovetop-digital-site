@@ -12,9 +12,9 @@ export default function Footer({ border = false }: { border?: boolean }) {
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Services</h3>
             <ul className="space-y-2">
               <li><Link href="/services/cloud-solutions" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Cloud Solutions</Link></li>
-              <li><Link href="/services/ai-automation" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">AI & Automation</Link></li>
-              <li><Link href="/services/cybersecurity" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Cybersecurity</Link></li>
-              <li><Link href="/services/digital-transformation" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Digital Transformation</Link></li>
+              <li><Link href="/services/data-ai" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Data and Artificial Intelligence</Link></li>
+              <li><Link href="/services/cyber-security" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Cybersecurity</Link></li>
+              <li><Link href="/services/tech-transformation" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Technology Transformation</Link></li>
             </ul>
           </div>
 
@@ -62,7 +62,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
           </div>
 
           {/* Copyright and Legal Links */}
-          <div className="sm:col-span-12 border-t border-gray-200 pt-8">
+          <div className="sm:col-span-12 border-t border-gray-200 pt-8 relative z-10">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
               <div className="text-sm text-gray-600">
                 &copy; 2025 Dovetop Digital Limited. All rights reserved.

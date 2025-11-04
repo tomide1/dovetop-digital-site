@@ -51,10 +51,10 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
     label: 'Who We Are',
     href: '/about',
     children: [
-      { id: 'vision-mission', label: 'Vision and Mission', href: '/about/vision-mission' },
-      { id: 'corporate-sustainability', label: 'Corporate and Sustainability', href: '/about/corporate-sustainability' },
-      { id: 'board-directors', label: 'Board of Directors', href: '/about/board-directors' },
-      { id: 'locations', label: 'Locations', href: '/about/locations' },
+      { id: 'vision-mission', label: 'Vision and Mission', href: '/about#mission_vision' },
+      { id: 'corporate-sustainability', label: 'Corporate and Sustainability', href: '/about#corporate_sustainability' },
+      { id: 'board-directors', label: 'Board of Directors', href: '/about#team' },
+      { id: 'locations', label: 'Locations', href: '/about#locations' },
     ],
   },
   {
