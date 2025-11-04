@@ -171,7 +171,7 @@ export default function AboutUs() {
                 data-aos-delay='200'
                 data-aos-duration='600'
               >
-                Dovetop's team drives innovation and ensures technological excellence.
+                Dovetop&apos;s team drives innovation and ensures technological excellence.
               </p>
             </div>
             

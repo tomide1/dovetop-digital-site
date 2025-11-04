@@ -59,7 +59,7 @@ export default function PrivacyPolicy() {
                 You have the right to access, correct, or delete your personal information. You may also withdraw your consent at any time, where applicable. If you would like to exercise any of these rights, please contact us at info@dovetopdigital.co.uk.
               </p>
               <p>
-                For more detailed information on how to manage your privacy preferences, please refer to the "Cookie Policy" and "Terms & Conditions" sections.
+                For more detailed information on how to manage your privacy preferences, please refer to the &quot;Cookie Policy&quot; and &quot;Terms &amp; Conditions&quot; sections.
               </p>
             </div>
           </div>

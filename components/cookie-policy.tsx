@@ -30,7 +30,7 @@ export default function CookiePolicy() {
               <p>These cookies are necessary for the website to function properly. Without them, certain features and services may not be available.</p>
 
               <h3>Performance Cookies</h3>
-              <p>These cookies collect information about how users interact with the website, such as which pages are visited most frequently. This helps us improve the site's performance.</p>
+              <p>These cookies collect information about how users interact with the website, such as which pages are visited most frequently. This helps us improve the site&apos;s performance.</p>
 
               <h3>Functionality Cookies</h3>
               <p>These cookies allow us to remember your preferences and personalize your experience on the site (e.g., language settings, login details).</p>
