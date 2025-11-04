@@ -23,11 +23,13 @@
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",
     "aos": "^3.0.0-beta.6",
+    "flowbite-react": "^0.9.0",
     "next": "^14.0.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^10.1.0",
+    "tailwind-merge": "^2.6.0",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
