@@ -1,3 +1,64 @@
-export default async function AdminPage() {
-  return <p>Admin Page</p>;
+"use client";
+import React from 'react';
+import { useGlobal } from '@/lib/context/GlobalContext';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
+
+export default function DashboardContent() {
+    const { loading, user } = useGlobal();
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="space-y-6 p-6 text-white">
+            <Card>
+                <CardHeader>
+                    <CardTitle>Welcome, {user?.email?.split('@')[0]}! 👋</CardTitle>
+                </CardHeader>
+            </Card>
+
+            {/* Quick Actions */}
+            <Card>
+                <CardHeader>
+                    <CardTitle>Quick Actions</CardTitle>
+                    <CardDescription>Frequently used features</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div className="grid gap-4 md:grid-cols-2">
+                        <Link
+                            href="/app/user-settings"
+                            className="flex items-center gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+                        >
+                            <div className="p-2 bg-primary-50 rounded-full">
+                                {/* <Settings className="h-4 w-4 text-primary-600" /> */}
+                            </div>
+                            <div>
+                                <h3 className="font-medium">User Settings</h3>
+                                <p className="text-sm text-gray-500">Manage your account preferences</p>
+                            </div>
+                        </Link>
+
+                        <Link
+                            href="/app/table"
+                            className="flex items-center gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+                        >
+                            <div className="p-2 bg-primary-50 rounded-full">
+                                {/* <ExternalLink className="h-4 w-4 text-primary-600" /> */}
+                            </div>
+                            <div>
+                                <h3 className="font-medium">Example Page</h3>
+                                <p className="text-sm text-gray-500">Check out example features</p>
+                            </div>
+                        </Link>
+                    </div>
+                </CardContent>
+            </Card>
+        </div>
+    );
 }

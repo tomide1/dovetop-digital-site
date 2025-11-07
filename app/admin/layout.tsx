@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import type { PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 import { customTheme } from "./theme";
+import { GlobalProvider } from '@/lib/context/GlobalContext';
 
 import "./globals.css";
 
@@ -17,18 +18,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <ThemeModeScript />
-      </head>
-      <body className={twMerge("bg-gray-50 dark:bg-gray-900", inter.className)}>
-        <Flowbite theme={{ theme: customTheme }}>{children}</Flowbite>
-      </body>
-    </html>
+    <GlobalProvider>
+      <html lang="en">
+        <head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+            type="text/css"
+          />
+          <ThemeModeScript />
+        </head>
+        <body className={twMerge("bg-gray-50 dark:bg-gray-900", inter.className)}>
+          <Flowbite theme={{ theme: customTheme }}>{children}</Flowbite>
+        </body>
+      </html>
+    </GlobalProvider>
   );
 }
