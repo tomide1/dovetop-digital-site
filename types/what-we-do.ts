@@ -186,6 +186,7 @@ export interface Industry {
   description: string
   icon?: string
   isVisible?: boolean
+  isActive: boolean
   animationDelay?: number
 }
 

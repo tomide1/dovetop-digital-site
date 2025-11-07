@@ -15,7 +15,9 @@ export function useIndustriesOverview() {
   }, [])
 
   // Augment industries with animation properties
-  const industriesWithAnimation: IndustryWithAnimation[] = industries.map(
+  const industriesWithAnimation: IndustryWithAnimation[] = industries.filter(
+    (industry) => industry.isActive
+  ).map(
     (industry, index) => ({
       ...industry,
       isVisible,

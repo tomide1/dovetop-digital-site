@@ -211,6 +211,52 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
+
+      {/* Location Section */}
+      <section id="locations" className='relative bg-gray-900'>
+        <div className='max-w-6xl mx-auto px-4 sm:px-6'>
+          <div className='py-12 md:py-20'>
+            <div className='max-w-3xl mx-auto text-center pb-12'>
+              <h2 
+                className='text-4xl md:text-5xl font-extrabold leading-tighter tracking-tighter mb-4 text-white' 
+                data-aos='fade-up'
+                data-aos-duration='600'
+              >
+                Our{' '}
+                <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400'>
+                  Location
+                </span>
+              </h2>
+            </div>
+            
+            <div className='max-w-2xl mx-auto'>
+              <div 
+                className='bg-white rounded-lg shadow-xl p-8 text-center'
+                data-aos='fade-up'
+                data-aos-delay='200'
+                data-aos-duration='600'
+              >
+                <h3 className='text-2xl font-bold text-gray-900 mb-6'>Head Office</h3>
+                <div className='space-y-4 text-gray-600'>
+                  <p className='text-lg'>Our head office is located in London</p>
+                  <div className='border-t pt-4'>
+                    <p className='font-semibold text-gray-900 mb-2'>Address</p>
+                    <p>151 Picardy Road<br />Belvedere DA17 5QL</p>
+                  </div>
+                  <div className='border-t pt-4'>
+                    <p className='font-semibold text-gray-900 mb-2'>Phone</p>
+                    <p>07525 048364</p>
+                  </div>
+                  <div className='border-t pt-4'>
+                    <p className='font-semibold text-gray-900 mb-2'>Opening Hours</p>
+                    <p>8am - 6pm<br />Monday - Friday</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

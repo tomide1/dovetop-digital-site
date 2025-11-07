@@ -34,7 +34,7 @@ const mapServicesToNavItems = (allServices: Service[]): NavigationItem[] => {
 const mapIndustriesToNavItems = (
   allIndustries: Industry[]
 ): NavigationItem[] => {
-  return allIndustries.map((industry) => ({
+  return allIndustries.filter((industry) => industry.isActive).map((industry) => ({
     id: industry.id, // Use the existing industry ID for stability
     label: industry.name,
     href: `/industries/${industry.id}`,
