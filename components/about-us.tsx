@@ -4,34 +4,40 @@ import Image from 'next/image'
 import Link from 'next/link'
 import PageIllustration from '@/components/page-illustration'
 
-const teamMembers = [
+const boardMembers = [
   {
     name: 'Tomide Fasugba',
-    role: 'CO-FOUNDER/DIRECTOR',
+    role: 'Chief Technology Officer',
     image: '/images/team/tomide.png',
     bgColor: 'bg-blue-500'
   },
   {
     name: 'Victor Ogunmuyiwa',
-    role: 'CO-FOUNDER/DIRECTOR', 
+    role: 'Chief Executive Officer', 
     image: '/images/team/victor.png',
     bgColor: 'bg-green-400'
   },
   {
+    name: 'Raheel Bashir',
+    role: 'Chief Operating Officer', 
+    image: '/images/team/raheel.png',
+    bgColor: 'bg-blue-500'
+  },
+  {
     name: 'Lindalene Okoye',
-    role: 'DELIVERY LEAD',
+    role: 'Delivery Lead',
     image: '/images/team/lindalene.png', 
     bgColor: 'bg-purple-400'
   },
   {
-    name: 'TEMI ALAO',
-    role: 'FOUNDING ENGINEER',
+    name: 'Temi Alao',
+    role: 'Engineering Lead',
     image: '/images/team/temi.png',
     bgColor: 'bg-yellow-400'
   },
   {
     name: 'Benjamin Agu',
-    role: 'PROJECT MANAGER',
+    role: 'Project Manager',
     image: '/images/team/benjamin.png',
     bgColor: 'bg-purple-400'
   }
@@ -162,7 +168,7 @@ export default function AboutUs() {
               >
                 Meet Our{' '}
                 <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400'>
-                  Team
+                  Board of Directors
                 </span>
               </h2>
               <p 
@@ -171,12 +177,12 @@ export default function AboutUs() {
                 data-aos-delay='200'
                 data-aos-duration='600'
               >
-                Dovetop&apos;s team drives innovation and ensures technological excellence.
+                Dovetop Digital Board of Directors drives innovation and ensures technological excellence.
               </p>
             </div>
             
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-              {teamMembers.map((member, index) => (
+              {boardMembers.map((member, index) => (
                 <div 
                   key={member.name} 
                   className='text-center transform hover:scale-105 transition-all duration-300' 

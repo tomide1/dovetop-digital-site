@@ -27,6 +27,7 @@ export default function IndustriesOverview() {
 
   return (
     <section
+      id ="industries"
       ref={sectionRef}
       className='py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white'
       data-testid='industries-overview'
