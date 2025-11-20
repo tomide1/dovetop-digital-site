@@ -4,11 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { services } from '@/data/services'
 import {
-  getServiceIndustries,
+  // getServiceIndustries,
   getServiceCaseStudies,
+  getServiceInfoIndustries,
 } from '@/utils/industry-helpers'
 import { Metadata } from 'next'
-import CaseStudyCard from '@/components/case-studies/case-study-card'
+// import CaseStudyCard from '@/components/case-studies/case-study-card'
 
 interface ServicePageProps {
   params: {
@@ -47,7 +48,7 @@ export default function ServicePage({ params }: ServicePageProps) {
     notFound()
   }
 
-  const serviceIndustries = getServiceIndustries(service.id)
+  const serviceIndustries = getServiceInfoIndustries(service.id)
   const featuredCaseStudies = getServiceCaseStudies(service.id, 3)
 
   return (
@@ -220,7 +221,7 @@ export default function ServicePage({ params }: ServicePageProps) {
       )}
 
       {/* Case Studies */}
-      {featuredCaseStudies.length > 0 && (
+      {/* {featuredCaseStudies.length > 0 && (
         <section className='py-20 bg-gray-50'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
             <div className='text-center mb-16'>
@@ -253,7 +254,7 @@ export default function ServicePage({ params }: ServicePageProps) {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* CTA Section */}
       <section className='py-20 bg-blue-600'>
