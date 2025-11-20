@@ -54,31 +54,34 @@ export class SassClient {
   async uploadFile(myId: string, filename: string, file: File) {
     filename = filename.replace(/[^0-9a-zA-Z!\-_.*'()]/g, '_');
     filename = myId + "/" + filename
-    return this.client.storage.from('files').upload(filename, file);
+    return this.client.storage.from('dovetopdigital').upload(filename, file);
   }
 
   async getFiles(myId: string) {
-    return this.client.storage.from('files').list(myId)
+    return this.client.storage.from('dovetopdigital').list(myId)
   }
 
   async deleteFile(myId: string, filename: string) {
     filename = myId + "/" + filename
-    return this.client.storage.from('files').remove([filename])
+    return this.client.storage.from('dovetopdigital').remove([filename])
   }
 
   async shareFile(myId: string, filename: string, timeInSec: number, forDownload: boolean = false) {
     filename = myId + "/" + filename
-    return this.client.storage.from('files').createSignedUrl(filename, timeInSec, {
+    return this.client.storage.from('dovetopdigital').createSignedUrl(filename, timeInSec, {
       download: forDownload
     });
 
   }
 
-  async getInsightsList(page: number = 1, pageSize: number = 100, order: string = 'created_at', done: boolean | null = false) {
-    let query = this.client.from('insights').select('*').range(page * pageSize - pageSize, page * pageSize - 1).order(order)
-    if (done !== null) {
-      query = query.eq('done', done)
-    }
+  async getInsightsList(page: number = 1, pageSize: number = 100, order: string = 'created_at', is_active: boolean | null = false) {
+    let query = this.client.from('insights').select(`*,author:profiles(id, name, title, image)`)
+      // .range(page * pageSize - pageSize, page * pageSize - 1).order(order)
+    
+    // if (is_active !== null) {
+    //   query = query.eq('is_active', is_active)
+    // }
+    
     return query
   }
 
@@ -92,6 +95,29 @@ export class SassClient {
 
   async updateInsightsAsFeatured(id: number) {
     return this.client.from('insights').update({ featured: true }).eq('id', id)
+  }
+
+  async getInsight(id: number) {
+    return this.client.from('insights').select(`*,author:profiles(id, name, title, image)`).eq('id', id).single()
+  }
+
+  async updateInsight(id: number, row: Database["public"]["Tables"]["insights"]["Update"]) {
+    return this.client.from('insights').update(row).eq('id', id)
+  }
+
+  async deleteInsight(id: number) {
+    return this.client.from('insights').delete().eq('id', id)
+  }
+
+  async uploadInsightImage(file: File, filename: string) {
+    const fileExt = file.name.split('.').pop()
+    const fileName = `private/${filename}.${fileExt}`;
+    console.log('Uploading to ', fileName);
+    return this.client.storage.from('dovetopdigital').upload(fileName, file)
+  }
+
+  async getInsightImageUrl(filename: string) {
+    return this.client.storage.from('dovetopdigital').getPublicUrl(filename)
   }
 
   getSupabaseClient() {
