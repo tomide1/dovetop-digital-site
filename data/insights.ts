@@ -21,6 +21,246 @@ export interface InsightPost {
 export const insights: InsightPost[] = [
   {
     id: '1',
+    slug: 'reinventing-sales-transformation',
+    title: 'Better, faster, stronger: Reinventing sales transformation',
+    excerpt: 'How we transformed a global enterprise sales organization to drive 40% growth through AI-powered insights and streamlined processes.',
+content: `
+# Essential UX Research Methods for User-Centered Design
+
+User experience (UX) research is fundamental to creating digital products that truly meet user needs. By employing a mix of research methods, design teams can gather valuable insights throughout the product development lifecycle.
+
+## Qualitative Research Methods
+
+### 1. User Interviews
+
+One-on-one conversations with users provide deep insights into their behaviors, needs, and pain points. Effective interviews require careful preparation and active listening.
+
+### 2. Contextual Inquiry
+
+This method involves observing users in their natural environment while they interact with your product or similar solutions. It reveals authentic user behaviors that might not surface in lab settings.
+
+### 3. Usability Testing
+
+Watching users interact with your product (or prototype) while completing specific tasks helps identify usability issues and areas for improvement.
+
+## Quantitative Research Methods
+
+### 1. Surveys
+
+Well-designed surveys can collect data from large user groups, providing statistically significant insights about preferences and behaviors.
+
+### 2. Analytics
+
+User behavior analytics offer valuable data about how people actually use your product, including navigation patterns, time spent on features, and abandonment points.
+
+### 3. A/B Testing
+
+This method compares two versions of a design to determine which performs better against your defined metrics.
+
+## Choosing the Right Methods
+
+The best approach typically combines multiple research methods, selected based on:
+
+- Your research questions and goals
+- Available time and resources
+- Project stage (early discovery vs. validation)
+- Access to users
+
+By thoughtfully selecting and applying these research methods, design teams can create products that truly serve user needs while achieving business objectives.
+    `,    
+  coverImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&crop=center',
+    date: '2023-01-01',
+    author: {
+      name: 'John Doe',
+      title: 'Sales Expert',
+      image: '/images/team/thomas-rivera.svg',
+    },
+    category: 'Sales Transformation',
+    readTime: 5,
+    featured: true,
+  },
+  {
+    id: '2',
+    slug: 'ai-operating-model',
+    title: 'AI and your operating model: Radically new ways of working',
+    excerpt: 'Traditional workflows, functions, jobs and skills will evolve with gen AI. Learn how you can accelerate reinvention with an operating model.',
+content: `
+# Essential UX Research Methods for User-Centered Design
+
+User experience (UX) research is fundamental to creating digital products that truly meet user needs. By employing a mix of research methods, design teams can gather valuable insights throughout the product development lifecycle.
+
+## Qualitative Research Methods
+
+### 1. User Interviews
+
+One-on-one conversations with users provide deep insights into their behaviors, needs, and pain points. Effective interviews require careful preparation and active listening.
+
+### 2. Contextual Inquiry
+
+This method involves observing users in their natural environment while they interact with your product or similar solutions. It reveals authentic user behaviors that might not surface in lab settings.
+
+### 3. Usability Testing
+
+Watching users interact with your product (or prototype) while completing specific tasks helps identify usability issues and areas for improvement.
+
+## Quantitative Research Methods
+
+### 1. Surveys
+
+Well-designed surveys can collect data from large user groups, providing statistically significant insights about preferences and behaviors.
+
+### 2. Analytics
+
+User behavior analytics offer valuable data about how people actually use your product, including navigation patterns, time spent on features, and abandonment points.
+
+### 3. A/B Testing
+
+This method compares two versions of a design to determine which performs better against your defined metrics.
+
+## Choosing the Right Methods
+
+The best approach typically combines multiple research methods, selected based on:
+
+- Your research questions and goals
+- Available time and resources
+- Project stage (early discovery vs. validation)
+- Access to users
+
+By thoughtfully selecting and applying these research methods, design teams can create products that truly serve user needs while achieving business objectives.
+    `,    
+    coverImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&crop=center',
+    date: '2023-02-01',
+    author: {
+      name: 'Jane Smith',
+      title: 'AI Strategist',
+      image: '/images/team/thomas-rivera.svg',
+    },
+    category: 'AI Strategy',
+    readTime: 7,
+    featured: true,
+  },
+  {
+    id: '3',
+    slug: 'cloud-transformation-real-time-insights',
+    title: 'Cloud transformation unlocks real-time insights with AI',
+    excerpt: 'The global networking leader is helping customers stay competitive with an AI-powered platform that delivers instant visibility.',
+content: `
+# Essential UX Research Methods for User-Centered Design
+
+User experience (UX) research is fundamental to creating digital products that truly meet user needs. By employing a mix of research methods, design teams can gather valuable insights throughout the product development lifecycle.
+
+## Qualitative Research Methods
+
+### 1. User Interviews
+
+One-on-one conversations with users provide deep insights into their behaviors, needs, and pain points. Effective interviews require careful preparation and active listening.
+
+### 2. Contextual Inquiry
+
+This method involves observing users in their natural environment while they interact with your product or similar solutions. It reveals authentic user behaviors that might not surface in lab settings.
+
+### 3. Usability Testing
+
+Watching users interact with your product (or prototype) while completing specific tasks helps identify usability issues and areas for improvement.
+
+## Quantitative Research Methods
+
+### 1. Surveys
+
+Well-designed surveys can collect data from large user groups, providing statistically significant insights about preferences and behaviors.
+
+### 2. Analytics
+
+User behavior analytics offer valuable data about how people actually use your product, including navigation patterns, time spent on features, and abandonment points.
+
+### 3. A/B Testing
+
+This method compares two versions of a design to determine which performs better against your defined metrics.
+
+## Choosing the Right Methods
+
+The best approach typically combines multiple research methods, selected based on:
+
+- Your research questions and goals
+- Available time and resources
+- Project stage (early discovery vs. validation)
+- Access to users
+
+By thoughtfully selecting and applying these research methods, design teams can create products that truly serve user needs while achieving business objectives.
+    `,    
+    coverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop&crop=center',
+    date: '2023-03-01',
+    author: {
+      name: 'Peter Jones',
+      title: 'Cloud Specialist',
+      image: '/images/team/thomas-rivera.svg',
+    },
+    category: 'Cloud & AI',
+    readTime: 6,
+    featured: false,
+  },
+  {
+    id: '4',
+    slug: 'strengthen-cyber-defenses',
+    title: '4 critical actions to strengthen your cyber defenses',
+    excerpt: 'Cyber risks are growing faster than ever, outpacing security efforts. Learn the steps to build resilience as you embrace AI transformation.',
+content: `
+# Essential UX Research Methods for User-Centered Design
+
+User experience (UX) research is fundamental to creating digital products that truly meet user needs. By employing a mix of research methods, design teams can gather valuable insights throughout the product development lifecycle.
+
+## Qualitative Research Methods
+
+### 1. User Interviews
+
+One-on-one conversations with users provide deep insights into their behaviors, needs, and pain points. Effective interviews require careful preparation and active listening.
+
+### 2. Contextual Inquiry
+
+This method involves observing users in their natural environment while they interact with your product or similar solutions. It reveals authentic user behaviors that might not surface in lab settings.
+
+### 3. Usability Testing
+
+Watching users interact with your product (or prototype) while completing specific tasks helps identify usability issues and areas for improvement.
+
+## Quantitative Research Methods
+
+### 1. Surveys
+
+Well-designed surveys can collect data from large user groups, providing statistically significant insights about preferences and behaviors.
+
+### 2. Analytics
+
+User behavior analytics offer valuable data about how people actually use your product, including navigation patterns, time spent on features, and abandonment points.
+
+### 3. A/B Testing
+
+This method compares two versions of a design to determine which performs better against your defined metrics.
+
+## Choosing the Right Methods
+
+The best approach typically combines multiple research methods, selected based on:
+
+- Your research questions and goals
+- Available time and resources
+- Project stage (early discovery vs. validation)
+- Access to users
+
+By thoughtfully selecting and applying these research methods, design teams can create products that truly serve user needs while achieving business objectives.
+    `,   
+    coverImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop&crop=center',
+    date: '2023-04-01',
+    author: {
+      name: 'Mary Brown',
+      title: 'Cybersecurity Expert',
+      image: '/images/team/thomas-rivera.svg',
+    },
+    category: 'Cybersecurity',
+    readTime: 8,
+    featured: false,
+  },
+  {
+    id: '5',
     slug: 'cloud-migration-best-practices',
     title: 'Cloud Migration Best Practices for Enterprise Applications',
     excerpt:
@@ -71,7 +311,7 @@ By following these best practices, organizations can achieve successful cloud mi
     featured: true,
   },
   {
-    id: '2',
+    id: '6',
     slug: 'ux-research-methods',
     title: 'Essential UX Research Methods for User-Centered Design',
     excerpt:
@@ -132,7 +372,7 @@ By thoughtfully selecting and applying these research methods, design teams can 
     featured: false,
   },
   {
-    id: '3',
+    id: '7',
     slug: 'machine-learning-enterprise',
     title: 'Implementing Machine Learning Solutions in Enterprise Environments',
     excerpt:
@@ -196,7 +436,7 @@ By addressing these considerations, enterprises can move beyond ML pilots to imp
     featured: false,
   },
   {
-    id: '4',
+    id: '8',
     slug: 'devsecops-implementation',
     title: 'DevSecOps: Integrating Security into the Development Lifecycle',
     excerpt:
@@ -267,7 +507,7 @@ By adopting DevSecOps practices, organizations can deliver secure applications a
     featured: false,
   },
   {
-    id: '5',
+    id: '9',
     slug: 'serverless-architecture-benefits',
     title: 'Realizing the Benefits of Serverless Architecture',
     excerpt:
@@ -338,7 +578,7 @@ When implemented thoughtfully, serverless architectures can deliver on their pro
     featured: false,
   },
   {
-    id: '6',
+    id: '10',
     slug: 'ethical-ai-development',
     title: 'Ethical Considerations in AI Development and Deployment',
     excerpt:
@@ -408,7 +648,7 @@ By proactively addressing ethical considerations, organizations can build AI sys
     featured: true,
   },
   {
-    id: '7',
+    id: '11',
     slug: 'accessibility-design-principles',
     title:
       'Digital Accessibility: Essential Design Principles for Inclusive Products',
@@ -488,7 +728,7 @@ By embracing these principles and strategies, organizations can create digital p
     featured: false,
   },
   {
-    id: '8',
+    id: '12',
     slug: 'zero-trust-security-model',
     title: 'Implementing a Zero Trust Security Model in the Modern Enterprise',
     excerpt:
