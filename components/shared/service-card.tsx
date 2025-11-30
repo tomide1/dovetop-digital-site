@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Service } from '@/types/what-we-do'
@@ -27,49 +27,99 @@ export default function ServiceCard({
   variant = 'default',
   className = '',
 }: ServiceCardProps) {
-  const baseClasses =
-    'group block text-center transition-all duration-500 transform hover:-translate-y-2'
+  const iconRef = useRef<HTMLElement>(null)
+  
+  const animationConfig = useMemo(() => {
+    const animations = [
+      { rotate: '360deg', scale: 1 },
+      { rotate: '-360deg', scale: 1 },
+      { rotate: '720deg', scale: 1 },
+      { rotate: '180deg', scale: 1.25 },
+    ]
+    const durations = [500, 700, 1000]
+    const hash = service.id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    return {
+      animation: animations[hash % animations.length],
+      duration: durations[hash % durations.length]
+    }
+  }, [service.id])
 
-  const variantClasses = {
-    default:
-      'p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl h-80 flex flex-col',
-    homepage:
-      'p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl h-80 flex flex-col',
+  const handleCardHover = (isHovering: boolean) => {
+    if (iconRef.current) {
+      if (isHovering) {
+        iconRef.current.style.transform = `rotate(${animationConfig.animation.rotate}) scale(${animationConfig.animation.scale})`
+      } else {
+        iconRef.current.style.transform = 'rotate(0deg) scale(1)'
+      }
+    }
   }
 
-  const animationClasses = isVisible
-    ? 'opacity-100 translate-y-0'
-    : 'opacity-0 translate-y-8'
+  const cardClasses = useMemo(() => {
+    const base = 'group block text-center transition-all duration-500 transform hover:-translate-y-2 p-8 rounded-2xl border-2 h-80 flex flex-col'
+    const hover = 'hover:border-blue-200 hover:shadow-xl'
+    const visibility = isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+    const border = 'border-gray-100'
+    
+    return `${base} ${hover} ${border} ${visibility} ${className}`.trim()
+  }, [isVisible, className])
 
-  const combinedClasses =
-    `${baseClasses} ${variantClasses[variant]} ${animationClasses} ${className}`.trim()
+  const iconContainerClasses = useMemo(() => {
+    return 'mx-auto mb-6 w-20 h-20 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center group-hover:from-blue-100 group-hover:to-blue-200 transition-all duration-300'
+  }, [])
+
+  const titleClasses = useMemo(() => {
+    return 'text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300'
+  }, [])
 
   return (
     <Link
       href={`/services/${service.id}`}
-      className={combinedClasses}
+      className={cardClasses}
       style={{
         transitionDelay: `${animationDelay}ms`,
       }}
+      onMouseEnter={() => handleCardHover(true)}
+      onMouseLeave={() => handleCardHover(false)}
       data-testid={`service-card-${service.id}`}
     >
-      <div className='mx-auto mb-6 w-20 h-20 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center group-hover:from-blue-100 group-hover:to-blue-200 group-hover:scale-110 transition-all duration-300'>
+      <div className={iconContainerClasses}>
         {service.icon && isValidImageUrl(service.icon) ? (
           <Image
+            ref={iconRef as any}
             src={service.icon}
             alt={service.title}
             width={40}
             height={40}
-            className='w-10 h-10'
+            className='w-10 h-10 icon-animate inline-block transition-transform duration-700'
+            style={{ transform: 'rotate(0deg) scale(1)' }}
+            data-aos='zoom-in'
+            data-aos-duration={animationConfig.duration}
+            data-aos-delay={animationDelay}
           />
         ) : service.icon ? (
-          <span className='text-4xl'>{service.icon}</span>
+          <span 
+            ref={iconRef as any}
+            className='text-4xl icon-animate inline-block transition-transform duration-700'
+            style={{ transform: 'rotate(0deg) scale(1)' }}
+            data-aos='zoom-in'
+            data-aos-duration={animationConfig.duration}
+            data-aos-delay={animationDelay}
+          >
+            {service.icon}
+          </span>
         ) : (
-          <div className='w-10 h-10 bg-blue-600 rounded-full'></div>
+          <div 
+            ref={iconRef as any}
+            className='w-10 h-10 bg-blue-600 rounded-full icon-animate inline-block transition-transform duration-700'
+            style={{ transform: 'rotate(0deg) scale(1)' }}
+            data-aos='zoom-in'
+            data-aos-duration={animationConfig.duration}
+            data-aos-delay={animationDelay}
+          />
         )}
       </div>
 
-      <h3 className='text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300'>
+      <h3 className={titleClasses}>
         {service.title}
       </h3>
 
