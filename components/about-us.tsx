@@ -106,7 +106,7 @@ export default function AboutUs() {
                 <p className='text-gray-700 text-lg'>
                   To be a trusted catalyst for digital evolution empowering businesses around the world to 
                   innovate confidently, operate sustainably, and thrive in an ever-changing technological landscape. 
-                  We envision a future where adaptive, human-centered digital systems enhance every organization's 
+                  We envision a future where adaptive, human-centered digital systems enhance every organization&apos;s 
                   ability to grow, compete, and create lasting positive impact.
                 </p>
               </div>

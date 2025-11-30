@@ -6,7 +6,7 @@ import type { Service } from '@/types/what-we-do'
 export interface ServiceCardProps {
   service: Service
   isVisible?: boolean
-  animationDelay?: number
+  animationDelay?: number,
   variant?: 'default' | 'homepage'
   className?: string
 }
@@ -27,7 +27,8 @@ export default function ServiceCard({
   variant = 'default',
   className = '',
 }: ServiceCardProps) {
-  const iconRef = useRef<HTMLElement>(null)
+  console.log(variant);
+  const iconRef = useRef<HTMLElement>(null);
   
   const animationConfig = useMemo(() => {
     const animations = [
@@ -85,7 +86,7 @@ export default function ServiceCard({
       <div className={iconContainerClasses}>
         {service.icon && isValidImageUrl(service.icon) ? (
           <Image
-            ref={iconRef as any}
+            ref={iconRef as unknown as React.Ref<HTMLImageElement>}
             src={service.icon}
             alt={service.title}
             width={40}
@@ -98,7 +99,7 @@ export default function ServiceCard({
           />
         ) : service.icon ? (
           <span 
-            ref={iconRef as any}
+            ref={iconRef as unknown as React.Ref<HTMLSpanElement>}
             className='text-4xl icon-animate inline-block transition-transform duration-700'
             style={{ transform: 'rotate(0deg) scale(1)' }}
             data-aos='zoom-in'
@@ -109,7 +110,7 @@ export default function ServiceCard({
           </span>
         ) : (
           <div 
-            ref={iconRef as any}
+            ref={iconRef as unknown as React.Ref<HTMLDivElement>}
             className='w-10 h-10 bg-blue-600 rounded-full icon-animate inline-block transition-transform duration-700'
             style={{ transform: 'rotate(0deg) scale(1)' }}
             data-aos='zoom-in'

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { services } from '@/data/services'
 import {
   // getServiceIndustries,
-  getServiceCaseStudies,
+  // getServiceCaseStudies,
   getServiceInfoIndustries,
 } from '@/utils/industry-helpers'
 import { Metadata } from 'next'
@@ -49,7 +49,7 @@ export default function ServicePage({ params }: ServicePageProps) {
   }
 
   const serviceIndustries = getServiceInfoIndustries(service.id)
-  const featuredCaseStudies = getServiceCaseStudies(service.id, 3)
+  // const featuredCaseStudies = getServiceCaseStudies(service.id, 3)
 
   return (
     <main className='min-h-screen'>
