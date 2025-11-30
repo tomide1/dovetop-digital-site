@@ -14,20 +14,17 @@ export const SERVICE_IDS = [
 export type ServiceId = (typeof SERVICE_IDS)[number]
 
 export const INDUSTRY_IDS = [
-  'healthcare',
-  'finance',
-  'legal',
-  'agriculture',
-  'education',
-  'e-commerce',
-  'government',
-
   'insurance',
   'energy',
+  'finance',
+  'legal',
   'public-service',
   'software-platforms',
-  'education',
   'e-commerce',
+  'healthcare', 
+
+  'agriculture',
+  'education',
   'government',
 ] as const
 export type IndustryId = (typeof INDUSTRY_IDS)[number]

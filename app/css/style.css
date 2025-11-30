@@ -7,3 +7,22 @@
 @import "additional-styles/theme.css";
 
 @import "tailwindcss/utilities";
+
+/* Service Card Icon Animations */
+.icon-animate {
+  display: inline-block;
+  transition: transform 700ms ease-in-out;
+}
+
+.icon-animate[data-aos].aos-animate {
+  animation: iconScrollIn 1200ms ease-in-out;
+}
+
+@keyframes iconScrollIn {
+  from {
+    transform: rotate(0deg) scale(0);
+  }
+  to {
+    transform: rotate(var(--rotate, 360deg)) scale(var(--scale, 1));
+  }
+}

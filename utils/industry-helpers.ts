@@ -87,3 +87,24 @@ export function getServiceCaseStudies(serviceId: ServiceId, limit?: number) {
   }
   return serviceCaseStudies
 }
+
+export function getServiceInfoIndustries(serviceId: ServiceId) {
+  const industryIds = new Set(
+    industries.flatMap((cs) => cs.id)
+  )
+
+  const serviceIndustries = Array.from(industryIds)
+    .map((industryId) => {
+      const industry = industries.find((i) => i.id === industryId && i.isActive)
+      return {
+        industry,
+        application: `Applying our ${services.find((s) => s.id === serviceId)?.title} expertise to the ${industry?.name} industry.`,
+      }
+    })
+    .filter(
+      (item): item is { industry: Industry; application: string } =>
+        !!item.industry
+    )
+
+  return serviceIndustries
+}
