@@ -3,7 +3,7 @@ export const metadata = {
   description: 'Page description',
 }
 
-import Link from 'next/link'
+// import Link from 'next/link'
 
 export default function SignIn() {
   return (
@@ -54,14 +54,14 @@ export default function SignIn() {
           </div>
         </form>
         {/* Bottom link */}
-        <div className='mt-6 text-center'>
+        {/* <div className='mt-6 text-center'>
           <Link
             className='text-sm text-gray-700 underline hover:no-underline'
             href='/reset-password'
           >
             Forgot password
           </Link>
-        </div>
+        </div> */}
       </>
     </>
   )

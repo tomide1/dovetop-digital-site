@@ -194,7 +194,7 @@ export const services: Service[] = [
     title: 'Cyber Security',
     shortDescription: 'Comprehensive cybersecurity solutions to protect your digital assets and data.',
     detailedDescription: 'Safeguard your organization with our advanced cybersecurity services. We provide end-to-end security solutions including threat detection, incident response, and compliance management to protect your business from evolving cyber threats.',
-    icon: '/images/icons/security.svg',
+    icon: '/images/icons/cybersecurity.png',
     benefits: [
       'Protection against advanced cyber threats',
       'Regulatory compliance assurance',
@@ -317,7 +317,7 @@ export const services: Service[] = [
     title: 'Technology Transformation',
     shortDescription: 'Comprehensive technology modernization to drive digital innovation and efficiency.',
     detailedDescription: 'Transform your technology landscape with our comprehensive modernization services. We help organizations upgrade legacy systems, adopt modern architectures, and implement cutting-edge technologies to improve efficiency and competitiveness.',
-    icon: '/images/icons/design.svg',
+    icon: '/images/icons/tech-transformation.png',
     benefits: [
       'Modernized technology infrastructure',
       'Improved operational efficiency',
@@ -358,7 +358,7 @@ export const services: Service[] = [
     title: 'Sustainability',
     shortDescription: 'Sustainable technology solutions that reduce environmental impact while driving business value.',
     detailedDescription: 'Build a sustainable future with our green technology solutions. We help organizations reduce their environmental footprint through energy-efficient systems, sustainable practices, and technologies that support environmental responsibility.',
-    icon: '/images/icons/design.svg',
+    icon: '/images/icons/sustainability.png',
     benefits: [
       'Reduced environmental impact and carbon footprint',
       'Lower energy costs and operational expenses',
@@ -399,7 +399,7 @@ export const services: Service[] = [
     title: 'Learning',
     shortDescription: 'Educational technology solutions and training programs to enhance learning experiences.',
     detailedDescription: 'Transform education and training with our innovative learning solutions. We develop educational technologies, learning management systems, and training programs that enhance knowledge transfer and skill development.',
-    icon: '/images/icons/design.svg',
+    icon: '/images/icons/learning.png',
     benefits: [
       'Enhanced learning outcomes and engagement',
       'Scalable training and education delivery',
