@@ -25,7 +25,6 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li><a href="/about" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">About Us</a></li>
               <li><a href="/careers" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Careers</a></li>
               <li><a href="/contact" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Contact Us</a></li>
-              <li><Link href="/insights" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Insights</Link></li>
             </ul>
           </div>
 
@@ -34,7 +33,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Resources</h3>
             <ul className="space-y-2">
               <li><Link href="/case-studies" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Case Studies</Link></li>
-              <li><a href="/blog" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Blog</a></li>
+              <li><Link href="/insights" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">Insights</Link></li>
             </ul>
           </div>
 

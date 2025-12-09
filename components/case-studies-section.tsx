@@ -11,12 +11,11 @@ export default function CaseStudiesSection() {
         {/* Section header */}
         <div className='mx-auto max-w-3xl text-center pb-12 md:pb-16'>
           <h2
-            className='text-4xl md:text-5xl font-extrabold leading-tighter tracking-tighter mb-4'
+            className='text-5xl md:text-5xl font-extrabold leading-tighter tracking-tighter mb-4'
             data-aos='fade-up'
           >
-            Insights &{' '}
             <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400'>
-              Case Studies
+              Insights
             </span>
           </h2>
           <p className='text-xl text-gray-600' data-aos='fade-up' data-aos-delay={100}>
