@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { industries } from '@/data/industries'
 import { getIndustryDetails, getIndustryIcon } from '@/utils/industry-helpers'
 import { Metadata } from 'next'
-import CaseStudyCard from '@/components/case-studies/case-study-card'
 import { INDUSTRY_IDS, IndustryId } from '@/types/what-we-do'
+import { ProjectCard } from '@/components/projects/index'
 
 // Helper function to determine if icon is a valid image URL
 const isValidImageUrl = (icon: string): boolean => {
@@ -66,7 +66,7 @@ export default function IndustryPage({ params }: IndustryPageProps) {
     notFound()
   }
 
-  const { industry, applications, caseStudies } = industryDetails
+  const { industry, applications, projects } = industryDetails
   const icon = getIndustryIcon(industry.id)
 
   return (
@@ -157,13 +157,13 @@ export default function IndustryPage({ params }: IndustryPageProps) {
         </section>
       )}
 
-      {/* Case Studies */}
-      {caseStudies.length > 0 && (
+      {/* Projects */}
+      {projects.length > 0 && (
         <section className='py-20 bg-gray-50'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
             <div className='text-center mb-16'>
               <h2 className='text-4xl font-bold text-gray-900 mb-6'>
-                {industry.name} Case Studies
+                {industry.name} Projects
               </h2>
               <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
                 Real-world examples of our impact in the{' '}
@@ -172,10 +172,10 @@ export default function IndustryPage({ params }: IndustryPageProps) {
             </div>
 
             <div className='grid md:grid-cols-2 gap-8'>
-              {caseStudies.map((caseStudy) => (
-                <CaseStudyCard
-                  key={caseStudy.id}
-                  caseStudy={caseStudy}
+              {projects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
                   variant='compact'
                   maxResults={2}
                 />
@@ -183,10 +183,10 @@ export default function IndustryPage({ params }: IndustryPageProps) {
             </div>
             <div className='text-center mt-12'>
               <Link
-                href={`/case-studies?industry=${industry.id}`}
+                href={`/projects?industry=${industry.id}`}
                 className='text-lg font-medium text-blue-600 hover:text-blue-800'
               >
-                View All {industry.name} Case Studies &rarr;
+                View All {industry.name} Projects &rarr;
               </Link>
             </div>
           </div>

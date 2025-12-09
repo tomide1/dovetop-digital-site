@@ -214,4 +214,5 @@ export interface IndustryDetailsData {
   industry: Industry
   applications: ServiceApplicationWithService[]
   caseStudies: CaseStudy[]
+  projects: Project[]
 }
