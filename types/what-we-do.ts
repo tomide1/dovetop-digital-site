@@ -157,6 +157,20 @@ export interface CaseStudy {
   technologies: TechnologyId[]
 }
 
+export interface Project {
+  id: string
+  title: string
+  serviceIds: ServiceId[]
+  shortDescription: string
+  detailedDescription: string
+  results: string[]
+  imageUrl: string
+  client: string
+  industryIds: IndustryId[]
+  duration: string
+  technologies: TechnologyId[]
+}
+
 export interface Service {
   id: ServiceId
   title: string
