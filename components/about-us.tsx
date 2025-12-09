@@ -32,7 +32,7 @@ const boardMembers = [
   },
   {
     name: 'Lindalene Okoye',
-    role: 'Delivery Lead',
+    role: 'Head of Delivery',
     image: '/images/team/lindalene.png', 
     email: 'lindalene.okoye@dovetopdigital.co.uk',
     linkedin: 'https://linkedin.com/in/lindalene-okoye',
@@ -40,7 +40,7 @@ const boardMembers = [
   },
   {
     name: 'Temi Alao',
-    role: 'Engineering Lead',
+    role: 'Head of Engineering',
     image: '/images/team/temi.png',
     email: 'temi.alao@dovetopdigital.co.uk',
     linkedin: 'https://www.linkedin.com/in/temi-alao-2a627215a',
@@ -48,7 +48,7 @@ const boardMembers = [
   },
   {
     name: 'Benjamin Agu',
-    role: 'Programme Manager',
+    role: 'Head of Product',
     image: '/images/team/benjamin.png',
     email: 'benjamin.agu@dovetopdigital.co.uk',
     linkedin: 'https://linkedin.com/in/benjamin-agu',
@@ -307,13 +307,13 @@ export default function AboutUs() {
               {boardMembers.map((member, index) => (
                 <div 
                   key={member.name} 
-                  className='text-center transform hover:scale-105 transition-all duration-300 cursor-pointer' 
+                  className='text-center transform hover:scale-105 transition-all duration-300 cursor-pointer group' 
                   data-aos='fade-up' 
                   data-aos-delay={index * 150}
                   data-aos-duration='600'
                   onClick={() => setSelectedMember(member)}
                 >
-                  <div className='w-48 h-48 md:w-40 md:h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-gray-100'>
+                  <div className='w-48 h-48 md:w-40 md:h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-gray-100 relative'>
                     <Image
                       src={member.image}
                       alt={member.name}
@@ -321,6 +321,9 @@ export default function AboutUs() {
                       height={192}
                       className='w-full h-full object-cover object-top'
                     />
+                    <div className='absolute inset-0 bg-gray-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'>
+                      <span className='text-white font-semibold text-lg'>View Bio</span>
+                    </div>
                   </div>
                   <h3 className='text-xl font-bold text-gray-900 mb-1'>
                     {member.name}
