@@ -1,4 +1,5 @@
 import React from 'react'
+import PageIllustration from '../page-illustration'
 
 interface ProjectsHeroProps {
   stats: {
@@ -11,7 +12,8 @@ interface ProjectsHeroProps {
 
 export default function ProjectsHero({ stats }: ProjectsHeroProps) {
   return (
-    <section className='bg-gradient-to-r from-[#1E40AF] to-purple-700 text-white py-16 md:py-24'>
+    <section className='bg-gray-900 text-white py-16 md:py-24'>
+      <PageIllustration />
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='text-center'>
           {/* Main Heading */}
@@ -20,7 +22,7 @@ export default function ProjectsHero({ stats }: ProjectsHeroProps) {
           </h1>
 
           {/* Subheading */}
-          <p className='text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed'>
+          <p className='text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto leading-relaxed'>
             Real results for real clients. Explore our portfolio of successful
             digital transformation projects that drive meaningful business
             outcomes.
@@ -32,7 +34,7 @@ export default function ProjectsHero({ stats }: ProjectsHeroProps) {
               <div className='text-3xl md:text-4xl font-bold text-white mb-2'>
                 {stats.total}+
               </div>
-              <div className='text-blue-200 text-sm md:text-base font-medium'>
+              <div className='text-white text-sm md:text-base font-medium'>
                 Successful Projects
               </div>
             </div>
@@ -41,7 +43,7 @@ export default function ProjectsHero({ stats }: ProjectsHeroProps) {
               <div className='text-3xl md:text-4xl font-bold text-white mb-2'>
                 {stats.industries}
               </div>
-              <div className='text-blue-200 text-sm md:text-base font-medium'>
+              <div className='text-white text-sm md:text-base font-medium'>
                 Industries Served
               </div>
             </div>
@@ -50,7 +52,7 @@ export default function ProjectsHero({ stats }: ProjectsHeroProps) {
               <div className='text-3xl md:text-4xl font-bold text-white mb-2'>
                 {stats.services}
               </div>
-              <div className='text-blue-200 text-sm md:text-base font-medium'>
+              <div className='text-white text-sm md:text-base font-medium'>
                 Core Services
               </div>
             </div>
@@ -59,7 +61,7 @@ export default function ProjectsHero({ stats }: ProjectsHeroProps) {
               <div className='text-3xl md:text-4xl font-bold text-white mb-2'>
                 {stats.avgDuration}
               </div>
-              <div className='text-blue-200 text-sm md:text-base font-medium'>
+              <div className='text-white text-sm md:text-base font-medium'>
                 Avg Project (Months)
               </div>
             </div> */}
@@ -67,7 +69,7 @@ export default function ProjectsHero({ stats }: ProjectsHeroProps) {
 
           {/* Call to Action */}
           <div className='mt-12'>
-            <p className='text-blue-100 text-lg mb-6'>
+            <p className='text-white text-lg mb-6'>
               Ready to create your own success story?
             </p>
             <a

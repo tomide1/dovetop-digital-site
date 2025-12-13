@@ -5,6 +5,7 @@ import type { Project } from '@/types/what-we-do'
 import TechnologyBadge from '@/components/technology/technology-badge'
 import { getIndustryDisplayName, getServiceDisplayName } from '@/utils/project-helpers'
 import ProjectCard from './projects-card'
+import PageIllustration from '@/components/page-illustration'
 
 interface ProjectDetailPageProps {
   project: Project
@@ -76,7 +77,8 @@ export default function ProjectDetailPage({
       </nav>
 
       {/* Hero Section */}
-      <section className='bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16 md:py-24'>
+      <section className='relative bg-gray-900 text-white py-16 md:py-24'>
+        <PageIllustration />
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
             <div>
@@ -107,12 +109,12 @@ export default function ProjectDetailPage({
             {/* Hero Image */}
             {project.imageUrl && (
               <div className='relative'>
-                <div className='aspect-video rounded-xl overflow-hidden shadow-2xl'>
+                <div className='aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/20'>
                   <Image
                     src={project.imageUrl}
                     alt={project.title}
                     fill
-                    className='object-cover'
+                    className='object-cover opacity-90'
                     priority
                   />
                 </div>
