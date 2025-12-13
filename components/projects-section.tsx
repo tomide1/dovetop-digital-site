@@ -86,7 +86,7 @@ export default function ProjectsSection() {
         <div className='text-center' data-aos='fade-up' data-aos-delay='400'>
           <Link
             href='/projects'
-            className='inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200'
+            className='inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-teal-400 text-white font-semibold rounded-lg shadow-sm hover:opacity-90 transition-all duration-200'
           >
             View All Projects
             <svg

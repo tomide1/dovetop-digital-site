@@ -301,7 +301,7 @@ export default function ProjectDetailPage({
             <div className='text-center mt-12'>
               <Link
                 href='/projects'
-                className='inline-flex items-center text-blue-600 hover:text-blue-800 font-medium'
+                className='inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-teal-400 text-white font-semibold rounded-lg shadow-sm hover:opacity-90 transition-all duration-200'
               >
                 View All Projects
                 <svg
