@@ -76,7 +76,15 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
       },
     ],
   },
-  { id: 'what-we-think', label: 'What We Think', href: '/insights' },
+  {
+    id: 'what-we-think',
+    label: 'What We Think',
+    href: '/insights',
+    children: [
+      { id: 'projects', label: 'Projects', href: '/projects' },
+      { id: 'insights', label: 'Insights', href: '/insights' }
+    ],
+  },
   { id: 'contact', label: 'Contact', href: '/contact', variant: 'cta' },
 ]
 
@@ -190,9 +198,10 @@ const MobileDropdownMenuItem = memo<MobileDropdownMenuItemProps>(
     }, [])
 
     // Base classes with indentation for nested items
+    const fontWeight = level === 0 ? 'font-semibold' : (level === 1 || (level === 2 && hasChildren)) ? 'font-medium' : 'font-normal'
     const baseClasses = `block py-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md transition duration-150 ease-in-out ${
-      level > 0 ? `pl-${(level + 1) * 4} pr-2` : 'px-2'
-    }`
+      level === 0 ? 'px-2' : level === 1 ? 'pl-6 pr-2' : 'pl-10 pr-2'
+    } ${fontWeight}`
 
     // CTA button classes
     const ctaClasses =
