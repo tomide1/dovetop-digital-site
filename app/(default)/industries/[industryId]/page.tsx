@@ -6,7 +6,7 @@ import { industries } from '@/data/industries'
 import { getIndustryDetails, getIndustryIcon } from '@/utils/industry-helpers'
 import { Metadata } from 'next'
 import { INDUSTRY_IDS, IndustryId } from '@/types/what-we-do'
-import { ProjectCard } from '@/components/projects/index'
+// import { ProjectCard } from '@/components/projects/index'
 import ProjectCardFeatured from '@/components/projects/project-card-featured'
 import IndustryOpportunitiesAccordion from '@/components/industry-opportunities-accordion'
 
@@ -68,7 +68,8 @@ export default function IndustryPage({ params }: IndustryPageProps) {
     notFound()
   }
 
-  const { industry, applications, projects } = industryDetails
+  // const { industry, applications, projects } = industryDetails
+  const { industry, projects } = industryDetails
   const icon = getIndustryIcon(industry.id)
 
   return (
