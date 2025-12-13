@@ -33,7 +33,7 @@ export default function Careers() {
               <div className='text-6xl mb-6'>🚀</div>
               <h2 className='text-3xl font-bold text-white mb-4'>Coming Soon</h2>
               <p className='text-xl text-gray-300 mb-8 leading-relaxed'>
-                We're building something amazing and will be expanding our team soon. 
+                We&apos;re building something amazing and will be expanding our team soon. 
                 Stay tuned for exciting career opportunities at Dovetop Digital.
               </p>
               
