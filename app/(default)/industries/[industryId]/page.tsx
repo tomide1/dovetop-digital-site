@@ -7,6 +7,7 @@ import { getIndustryDetails, getIndustryIcon } from '@/utils/industry-helpers'
 import { Metadata } from 'next'
 import { INDUSTRY_IDS, IndustryId } from '@/types/what-we-do'
 import { ProjectCard } from '@/components/projects/index'
+import ProjectCardFeatured from '@/components/projects/project-card-featured'
 import IndustryOpportunitiesAccordion from '@/components/industry-opportunities-accordion'
 
 // Helper function to determine if icon is a valid image URL
@@ -141,7 +142,7 @@ export default function IndustryPage({ params }: IndustryPageProps) {
         <section className='py-20 bg-gray-900'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
             <h2 className='text-3xl font-bold text-white mb-12 text-center' data-aos='fade-up'>
-              {industry.name} now
+              {industry.name.toUpperCase()} NOW
             </h2>
             <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
               {industry.stats.map((stat, index) => (
@@ -195,7 +196,7 @@ export default function IndustryPage({ params }: IndustryPageProps) {
       )}
 
       {/* Main Content - Services for this industry */}
-      {applications.length > 0 && (
+      {/* {applications.length > 0 && (
         <section className='py-20 bg-white'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
             <div className='text-center mb-16'>
@@ -232,7 +233,7 @@ export default function IndustryPage({ params }: IndustryPageProps) {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Projects */}
       {projects.length > 0 && (
@@ -240,7 +241,7 @@ export default function IndustryPage({ params }: IndustryPageProps) {
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
             <div className='text-center mb-16'>
               <h2 className='text-4xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
-                {industry.name} Projects
+                Our Solutions
               </h2>
               <div className='h-1 w-24 bg-gradient-to-r from-blue-600 to-teal-400 mx-auto mb-6' data-aos='fade-up' data-aos-delay='100' />
               <p className='text-xl text-gray-600 max-w-3xl mx-auto' data-aos='fade-up' data-aos-delay='200'>
@@ -252,11 +253,7 @@ export default function IndustryPage({ params }: IndustryPageProps) {
             <div className='grid md:grid-cols-2 gap-8'>
               {projects.map((project, index) => (
                 <div key={project.id} data-aos='fade-up' data-aos-delay={index * 100}>
-                  <ProjectCard
-                    project={project}
-                    variant='compact'
-                    maxResults={2}
-                  />
+                  <ProjectCardFeatured project={project} />
                 </div>
               ))}
             </div>
