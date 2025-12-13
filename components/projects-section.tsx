@@ -1,10 +1,22 @@
 'use client'
 
+import { useRef } from 'react'
 import Link from 'next/link'
 import { projects } from '@/data/projects'
 import ProjectCardFeatured from '@/components/projects/project-card-featured'
 
 export default function ProjectsSection() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.offsetWidth * 0.8
+      scrollRef.current.scrollBy({
+        left: direction === 'right' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  }
 
   return (
     <section className='relative bg-gray-50 py-16 md:py-24'>
@@ -28,7 +40,7 @@ export default function ProjectsSection() {
 
         {/* Projects Scroll Container */}
         <div className='relative mb-12'>
-          <div className='flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide' id='projects-scroll'>
+          <div ref={scrollRef} className='flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide'>
             {projects.map((project, index) => (
               <div
                 key={project.id}
@@ -41,16 +53,32 @@ export default function ProjectsSection() {
               </div>
             ))}
           </div>
-          {/* Scroll Arrow Indicator */}
-          {projects.length > 4 && (
-            <div className='absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none hidden lg:block'>
-              <div className='bg-gradient-to-l from-gray-50 via-gray-50 to-transparent w-24 h-full absolute right-0 top-0' />
-              <div className='relative z-10 bg-blue-600 text-white rounded-full p-3 shadow-lg animate-pulse'>
-                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          
+          {/* Scroll Arrows */}
+          {projects.length > 1 && (
+            <>
+              {/* Left Arrow */}
+              <button
+                onClick={() => scroll('left')}
+                className='absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-all z-10'
+                aria-label='Scroll left'
+              >
+                <svg className='w-5 h-5 md:w-6 md:h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
+                </svg>
+              </button>
+              
+              {/* Right Arrow */}
+              <button
+                onClick={() => scroll('right')}
+                className='absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-all z-10'
+                aria-label='Scroll right'
+              >
+                <svg className='w-5 h-5 md:w-6 md:h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                 </svg>
-              </div>
-            </div>
+              </button>
+            </>
           )}
         </div>
 
