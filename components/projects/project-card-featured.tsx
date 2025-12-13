@@ -13,7 +13,7 @@ export default function ProjectCardFeatured({ project }: ProjectCardFeaturedProp
   return (
     <Link
       href={`/projects/${project.id}`}
-      className='group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col'
+      className='group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col'
     >
       {/* Image Section */}
       <div className='relative h-48 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600'>
@@ -56,7 +56,7 @@ export default function ProjectCardFeatured({ project }: ProjectCardFeaturedProp
         </h3>
 
         {/* Description */}
-        <p className='text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed'>
+        <p className='text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed'>
           {project.shortDescription}
         </p>
 
@@ -78,11 +78,11 @@ export default function ProjectCardFeatured({ project }: ProjectCardFeaturedProp
         </div>
 
         {/* Footer with Client */}
-        <div className='pt-4 border-t border-gray-100 mt-auto'>
+        {/* <div className='pt-4 border-t border-gray-100 mt-auto'>
           <span className='text-sm font-medium text-gray-500'>
             {project.client}
           </span>
-        </div>
+        </div> */}
       </div>
     </Link>
   )
