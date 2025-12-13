@@ -14,7 +14,7 @@ export const projects: Project[] = [
       'Increased operational efficiency through automation of reporting workflows, reducing manual effort by over 80%',
       'Enhanced data transparency and governance by providing real-time dashboards and comprehensive audit trails'
     ],
-    imageUrl: 'https://placehold.co/600x400/3B82F6/white?text=Trade+Reporting',
+    imageUrl: '/images/project/trading-project.jpeg',
     client: 'Financial Services Firm',
     industryIds: ['finance'],
     duration: '8 months',
@@ -33,7 +33,7 @@ export const projects: Project[] = [
       'Improved risk oversight and compliance by integrating real-time market and credit risk assessments into underwriting decisions',
       'Enhanced data consistency and reporting with a centralised policy repository, enabling faster audit responses'
     ],
-    imageUrl: 'https://placehold.co/600x400/3B82F6/white?text=Policy+Admin',
+    imageUrl: '/images/project/policy-admin-project.jpeg',
     client: 'Insurance Syndicate',
     industryIds: ['insurance'],
     duration: '10 months',
@@ -52,7 +52,7 @@ export const projects: Project[] = [
       'Improved financial accuracy and control via a unified cashbook and integrated invoicing system, reducing revenue leakage',
       'Enhanced tenant satisfaction with faster issue resolution and clear visibility of billing and communication history'
     ],
-    imageUrl: 'https://placehold.co/600x400/3B82F6/white?text=Property+Mgmt',
+    imageUrl: '/images/project/property-mgt-project.jpeg',
     client: 'Real Estate Portfolio Manager',
     industryIds: ['government'],
     duration: '7 months',
@@ -71,7 +71,7 @@ export const projects: Project[] = [
       'Improved compliance and accuracy with audit-ready case records, centralised client information, and controlled access to sensitive legal documents',
       'Enhanced client service delivery by enabling quicker matter updates, transparent billing, and streamlined enquiry handling'
     ],
-    imageUrl: 'https://placehold.co/600x400/3B82F6/white?text=Legal+Case+Mgmt',
+    imageUrl: '/images/project/case-mgt-project.jpeg',
     client: 'Legal Conveyancing Firm',
     industryIds: ['legal'],
     duration: '6 months',
@@ -90,7 +90,7 @@ export const projects: Project[] = [
       'Improved revenue accuracy and recovery with automated billing workflows, prepaid credit management, and real-time consumption tracking',
       'Enhanced grid reliability and customer satisfaction by providing transparent usage analytics and quicker resolution of technical issues'
     ],
-    imageUrl: 'https://placehold.co/600x400/3B82F6/white?text=Solar+Grid',
+    imageUrl: '/images/project/utility-mgt-project.jpeg',
     client: 'Solar Energy Provider',
     industryIds: ['energy'],
     duration: '12 months',

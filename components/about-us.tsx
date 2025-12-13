@@ -25,7 +25,7 @@ const boardMembers = [
   {
     name: 'Raheel Bashir',
     role: 'Chief Operating Officer', 
-    image: '/images/team/raheel.png',
+    image: '/images/team/raheel.jpeg',
     email: 'raheel.bashir@dovetopdigital.co.uk',
     linkedin: 'https://linkedin.com/in/raheel-bashir',
     profile: 'Raheel Bashir serves as the Chief Operating Officer (COO) of Dovetop Digital, where he oversees the company\'s operational strategy, organizational performance, and execution excellence across all service lines. As COO, Raheel plays a pivotal role in ensuring that Dovetop Digital delivers consistent, high-quality, and scalable IT solutions that align with both client expectations and the company\'s long-term strategic goals. Raheel brings a strong foundation in operational leadership, process optimization, and cross-functional management. He is responsible for translating Dovetop Digital\'s vision into actionable operational frameworks—ensuring that teams, processes, and resources work seamlessly together to support efficient delivery and measurable client outcomes. His operational philosophy is centered on efficiency, accountability, and continuous improvement. Raheel champions the development of robust internal systems, standardized delivery methodologies, and performance-driven cultures that enable Dovetop Digital to adapt quickly to evolving project demands and emerging industry trends.'
