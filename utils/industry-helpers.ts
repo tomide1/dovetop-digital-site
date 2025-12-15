@@ -9,6 +9,7 @@ import type {
   Service,
   ServiceId,
 } from '@/types/what-we-do'
+import { projects } from '@/data/projects'
 
 export function getIndustryIcon(industryId: IndustryId): string {
   const industry = industries.find((i) => i.id === industryId)
@@ -22,6 +23,10 @@ export function getIndustryDetails(
   if (!industry) {
     return null
   }
+
+  const industryProjects = projects.filter((cs) =>
+    cs.industryIds.includes(industryId)
+  )
 
   const industryCaseStudies = caseStudies.filter((cs) =>
     cs.industryIds.includes(industryId)
@@ -51,6 +56,7 @@ export function getIndustryDetails(
     industry,
     applications,
     caseStudies: industryCaseStudies,
+    projects: industryProjects,
   }
 }
 

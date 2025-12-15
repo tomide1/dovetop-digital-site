@@ -25,14 +25,14 @@ const boardMembers = [
   {
     name: 'Raheel Bashir',
     role: 'Chief Operating Officer', 
-    image: '/images/team/raheel.png',
+    image: '/images/team/raheel.jpeg',
     email: 'raheel.bashir@dovetopdigital.co.uk',
     linkedin: 'https://linkedin.com/in/raheel-bashir',
     profile: 'Raheel Bashir serves as the Chief Operating Officer (COO) of Dovetop Digital, where he oversees the company\'s operational strategy, organizational performance, and execution excellence across all service lines. As COO, Raheel plays a pivotal role in ensuring that Dovetop Digital delivers consistent, high-quality, and scalable IT solutions that align with both client expectations and the company\'s long-term strategic goals. Raheel brings a strong foundation in operational leadership, process optimization, and cross-functional management. He is responsible for translating Dovetop Digital\'s vision into actionable operational frameworks—ensuring that teams, processes, and resources work seamlessly together to support efficient delivery and measurable client outcomes. His operational philosophy is centered on efficiency, accountability, and continuous improvement. Raheel champions the development of robust internal systems, standardized delivery methodologies, and performance-driven cultures that enable Dovetop Digital to adapt quickly to evolving project demands and emerging industry trends.'
   },
   {
     name: 'Lindalene Okoye',
-    role: 'Delivery Lead',
+    role: 'Head of Delivery',
     image: '/images/team/lindalene.png', 
     email: 'lindalene.okoye@dovetopdigital.co.uk',
     linkedin: 'https://linkedin.com/in/lindalene-okoye',
@@ -40,7 +40,7 @@ const boardMembers = [
   },
   {
     name: 'Temi Alao',
-    role: 'Engineering Lead',
+    role: 'Head of Engineering',
     image: '/images/team/temi.png',
     email: 'temi.alao@dovetopdigital.co.uk',
     linkedin: 'https://www.linkedin.com/in/temi-alao-2a627215a',
@@ -48,7 +48,7 @@ const boardMembers = [
   },
   {
     name: 'Benjamin Agu',
-    role: 'Programme Manager',
+    role: 'Head of Product',
     image: '/images/team/benjamin.png',
     email: 'benjamin.agu@dovetopdigital.co.uk',
     linkedin: 'https://linkedin.com/in/benjamin-agu',
@@ -307,13 +307,13 @@ export default function AboutUs() {
               {boardMembers.map((member, index) => (
                 <div 
                   key={member.name} 
-                  className='text-center transform hover:scale-105 transition-all duration-300 cursor-pointer' 
+                  className='text-center transform hover:scale-105 transition-all duration-300 cursor-pointer group' 
                   data-aos='fade-up' 
                   data-aos-delay={index * 150}
                   data-aos-duration='600'
                   onClick={() => setSelectedMember(member)}
                 >
-                  <div className='w-48 h-48 md:w-40 md:h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-gray-100'>
+                  <div className='w-48 h-48 md:w-40 md:h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-gray-100 relative'>
                     <Image
                       src={member.image}
                       alt={member.name}
@@ -321,6 +321,9 @@ export default function AboutUs() {
                       height={192}
                       className='w-full h-full object-cover object-top'
                     />
+                    <div className='absolute inset-0 bg-gray-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'>
+                      <span className='text-white font-semibold text-lg'>View Bio</span>
+                    </div>
                   </div>
                   <h3 className='text-xl font-bold text-gray-900 mb-1'>
                     {member.name}

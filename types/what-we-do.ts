@@ -157,6 +157,20 @@ export interface CaseStudy {
   technologies: TechnologyId[]
 }
 
+export interface Project {
+  id: string
+  title: string
+  serviceIds: ServiceId[]
+  shortDescription: string
+  detailedDescription: string
+  results: string[]
+  imageUrl: string
+  client: string
+  industryIds: IndustryId[]
+  duration: string
+  technologies: TechnologyId[]
+}
+
 export interface Service {
   id: ServiceId
   title: string
@@ -177,10 +191,41 @@ export interface Service {
   }[] // For future integration with case studies
 }
 
+export interface IndustryStats {
+  value: string
+  description: string
+}
+
+export interface IndustryRevenueCard {
+  title: string
+  description: string
+}
+
+export interface IndustryRevenue {
+  sectionTitle: string
+  cards: IndustryRevenueCard[]
+}
+
+export interface IndustryOpportunity {
+  title: string
+  description: string
+  details: string[]
+  example?: string
+}
+
+export interface IndustryOpportunities {
+  sectionTitle: string
+  items: IndustryOpportunity[]
+}
+
 export interface Industry {
   id: IndustryId
   name: string
   description: string
+  summary?: string
+  stats?: IndustryStats[]
+  revenue?: IndustryRevenue
+  opportunities?: IndustryOpportunities
   icon?: string
   isVisible?: boolean
   isActive: boolean
@@ -200,4 +245,5 @@ export interface IndustryDetailsData {
   industry: Industry
   applications: ServiceApplicationWithService[]
   caseStudies: CaseStudy[]
+  projects: Project[]
 }

@@ -76,7 +76,15 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
       },
     ],
   },
-  { id: 'what-we-think', label: 'What We Think', href: '/insights' },
+  {
+    id: 'what-we-think',
+    label: 'What We Think',
+    href: '/insights',
+    children: [
+      { id: 'projects', label: 'Projects', href: '/projects' },
+      { id: 'insights', label: 'Insights', href: '/insights' }
+    ],
+  },
   { id: 'contact', label: 'Contact', href: '/contact', variant: 'cta' },
 ]
 
@@ -190,13 +198,14 @@ const MobileDropdownMenuItem = memo<MobileDropdownMenuItemProps>(
     }, [])
 
     // Base classes with indentation for nested items
+    const fontWeight = level === 0 ? 'font-semibold' : (level === 1 || (level === 2 && hasChildren)) ? 'font-medium' : 'font-normal'
     const baseClasses = `block py-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md transition duration-150 ease-in-out ${
-      level > 0 ? `pl-${(level + 1) * 4} pr-2` : 'px-2'
-    }`
+      level === 0 ? 'px-2' : level === 1 ? 'pl-6 pr-2' : 'pl-10 pr-2'
+    } ${fontWeight}`
 
     // CTA button classes
     const ctaClasses =
-      'block py-3 px-4 text-center text-sm font-medium text-white bg-gradient-to-t from-blue-600 to-blue-500 bg-[length:100%_100%] bg-[bottom] rounded-lg shadow-sm hover:bg-[length:100%_150%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 ease-in-out'
+      'block py-3 px-4 text-center text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-teal-400 rounded-lg shadow-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 ease-in-out'
 
     const linkClasses = item.variant === 'cta' ? ctaClasses : baseClasses
 
@@ -522,7 +531,7 @@ const DesktopDropdownMenuItem = memo<DesktopDropdownMenuItemProps>(
 
     // CTA button classes for top-level contact button
     const ctaClasses =
-      'inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-t from-blue-600 to-blue-500 bg-[length:100%_100%] bg-[bottom] rounded-lg shadow-sm hover:bg-[length:100%_150%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 ease-in-out'
+      'inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-teal-400 rounded-lg shadow-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 ease-in-out'
 
     const linkClasses = item.variant === 'cta' ? ctaClasses : baseClasses
 
