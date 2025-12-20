@@ -128,9 +128,9 @@ export default function IndustryPage({ params }: IndustryPageProps) {
       {industry.summary && (
         <section className='py-20 bg-gray-50'>
           <div className='max-w-4xl mx-auto px-4 sm:px-6'>
-            <h2 className='text-3xl font-bold text-gray-900 mb-6' data-aos='fade-up'>
+            {/* <h2 className='text-3xl font-bold text-gray-900 mb-6' data-aos='fade-up'>
               Summary
-            </h2>
+            </h2> */}
             <p className='text-lg text-gray-700 leading-relaxed' data-aos='fade-up' data-aos-delay='100'>
               {industry.summary}
             </p>

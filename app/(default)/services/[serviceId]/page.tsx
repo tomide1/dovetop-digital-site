@@ -54,48 +54,49 @@ export default function ServicePage({ params }: ServicePageProps) {
   return (
     <main className='min-h-screen'>
       {/* Hero Section */}
-      <section className='bg-gradient-to-b from-blue-50 to-white pt-32 pb-20'>
-        <div className='max-w-6xl mx-auto px-4 sm:px-6'>
+      <section className='relative bg-gray-900 pt-32 pb-20'>
+        <div className='absolute inset-0 bg-gradient-to-b from-blue-600/20 to-transparent pointer-events-none' aria-hidden='true' />
+        <div className='max-w-6xl mx-auto px-4 sm:px-6 relative'>
           <div className='text-center mb-12'>
             {/* Breadcrumb */}
             <nav className='mb-8' aria-label='Breadcrumb'>
-              <ol className='flex items-center justify-center space-x-2 text-sm text-gray-500'>
+              <ol className='flex items-center justify-center space-x-2 text-sm text-gray-400'>
                 <li>
-                  <Link href='/' className='hover:text-blue-600'>
+                  <Link href='/' className='hover:text-blue-400'>
                     Home
                   </Link>
                 </li>
                 <li>/</li>
                 <li>
-                  <Link href='/what-we-do' className='hover:text-blue-600'>
+                  <Link href='/what-we-do' className='hover:text-blue-400'>
                     What We Do
                   </Link>
                 </li>
                 <li>/</li>
-                <li className='text-gray-900 font-medium'>{service.title}</li>
+                <li className='text-white font-medium'>{service.title}</li>
               </ol>
             </nav>
 
             {/* Service Icon */}
-            <div className='w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center'>
+            <div className='w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500/20 to-teal-500/20 border border-white/10 flex items-center justify-center backdrop-blur-sm'>
               {service.icon ? (
                 <Image
                   src={service.icon}
                   alt={service.title}
                   width={48}
                   height={48}
-                  className='w-12 h-12'
+                  className='w-12 h-12 brightness-0 invert'
                 />
               ) : (
-                <div className='w-12 h-12 bg-blue-600 rounded-full'></div>
+                <div className='w-12 h-12 bg-white rounded-full'></div>
               )}
             </div>
 
-            <h1 className='text-5xl md:text-6xl font-bold text-blue-600 mb-8'>
+            <h1 className='text-5xl md:text-6xl font-bold text-white mb-8'>
               {service.title}
             </h1>
 
-            <p className='text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed'>
+            <p className='text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed'>
               {service.detailedDescription}
             </p>
           </div>
@@ -103,20 +104,21 @@ export default function ServicePage({ params }: ServicePageProps) {
       </section>
 
       {/* Main Content */}
-      <section className='py-20 bg-white'>
+      <section className='py-20 bg-gray-50'>
         <div className='max-w-6xl mx-auto px-4 sm:px-6'>
           <div className='grid lg:grid-cols-2 gap-16'>
             {/* Benefits */}
             <div>
-              <h2 className='text-3xl font-bold text-gray-900 mb-8'>
+              <h2 className='text-3xl font-bold text-gray-900 mb-4'>
                 Key Benefits
               </h2>
+              <div className='h-1 w-16 bg-gradient-to-r from-blue-600 to-teal-400 mb-8' />
               <ul className='space-y-4'>
                 {service.benefits.map((benefit, index) => (
                   <li key={index} className='flex items-start'>
-                    <div className='w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-4 mt-1 flex-shrink-0'>
+                    <div className='w-6 h-6 rounded-full bg-teal-400/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0'>
                       <svg
-                        className='w-4 h-4 text-green-600'
+                        className='w-4 h-4 text-teal-600'
                         fill='currentColor'
                         viewBox='0 0 20 20'
                       >
@@ -137,9 +139,10 @@ export default function ServicePage({ params }: ServicePageProps) {
 
             {/* Process */}
             <div>
-              <h2 className='text-3xl font-bold text-gray-900 mb-8'>
+              <h2 className='text-3xl font-bold text-gray-900 mb-4'>
                 Our Process
               </h2>
+              <div className='h-1 w-16 bg-gradient-to-r from-blue-600 to-teal-400 mb-8' />
               <div className='space-y-6'>
                 {service.process?.steps.map((step, index) => (
                   <div key={index} className='flex items-start'>
@@ -163,22 +166,23 @@ export default function ServicePage({ params }: ServicePageProps) {
       </section>
 
       {/* Deliverables */}
-      <section className='py-20 bg-gray-50'>
+      <section className='py-20 bg-gray-900'>
         <div className='max-w-6xl mx-auto px-4 sm:px-6'>
           <div className='text-center mb-16'>
-            <h2 className='text-4xl font-bold text-gray-900 mb-6'>
+            <h2 className='text-4xl font-bold text-white mb-4'>
               What You&apos;ll Receive
             </h2>
-            <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
+            <div className='h-1 w-24 bg-gradient-to-r from-blue-600 to-teal-400 mx-auto mb-6' />
+            <p className='text-xl text-gray-300 max-w-3xl mx-auto'>
               Our comprehensive deliverables ensure you have everything needed
               for success.
             </p>
           </div>
 
-          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
             {service.deliverables?.map((deliverable, index) => (
-              <div key={index} className='bg-white rounded-xl p-6 shadow-md'>
-                <h3 className='text-lg font-semibold text-gray-900 mb-3'>
+              <div key={index} className='bg-gray-800/50 rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 hover:bg-gray-800 transition-all'>
+                <h3 className='text-lg font-semibold text-white'>
                   {deliverable}
                 </h3>
               </div>
@@ -189,28 +193,29 @@ export default function ServicePage({ params }: ServicePageProps) {
 
       {/* Industries */}
       {serviceIndustries.length > 0 && (
-        <section className='py-20 bg-white'>
+        <section className='py-20 bg-gray-50'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
             <div className='text-center mb-16'>
-              <h2 className='text-4xl font-bold text-gray-900 mb-6'>
+              <h2 className='text-4xl font-bold text-gray-900 mb-4'>
                 Industries We Serve
               </h2>
+              <div className='h-1 w-24 bg-gradient-to-r from-blue-600 to-teal-400 mx-auto mb-6' />
               <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
                 See how {service.title} applies across different industries.
               </p>
             </div>
 
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
               {serviceIndustries.map((item, index) => (
                 <Link
                   key={index}
                   href={`/industries/${item.industry?.id}`}
-                  className='block bg-gray-50 rounded-xl p-6 hover:bg-blue-50 hover:shadow-md transition-all duration-300'
+                  className='block bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all'
                 >
-                  <h3 className='text-xl font-bold text-gray-900 mb-3 hover:text-blue-600'>
+                  <h3 className='text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors'>
                     {item.industry?.name}
                   </h3>
-                  <p className='text-gray-600 leading-relaxed'>
+                  <p className='text-gray-700 leading-relaxed text-sm'>
                     {item.application}
                   </p>
                 </Link>
@@ -257,12 +262,12 @@ export default function ServicePage({ params }: ServicePageProps) {
       )} */}
 
       {/* CTA Section */}
-      <section className='py-20 bg-blue-600'>
+      <section className='py-20 bg-gray-900'>
         <div className='max-w-4xl mx-auto px-4 sm:px-6 text-center'>
           <h2 className='text-4xl font-bold text-white mb-6'>
             Ready to Get Started with {service.title}?
           </h2>
-          <p className='text-xl text-blue-100 mb-8 leading-relaxed'>
+          <p className='text-xl text-gray-300 mb-8 leading-relaxed'>
             Let&apos;s discuss how our {service.title} can transform your
             business and drive growth.
           </p>
