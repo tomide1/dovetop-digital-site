@@ -228,7 +228,7 @@ export interface Industry {
   opportunities?: IndustryOpportunities
   icon?: string
   isVisible?: boolean
-  isActive: boolean
+  isActive?: boolean
   animationDelay?: number
 }
 
