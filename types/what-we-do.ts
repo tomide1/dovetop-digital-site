@@ -188,7 +188,40 @@ export interface Service {
   caseStudies?: {
     id: string
     title: string
-  }[] // For future integration with case studies
+  }[]
+  whatItIs?: string
+  todaySection?: {
+    title: string
+    description: string
+    focus: string[]
+    conclusion: string
+  }
+  asAService?: {
+    title: string
+    description?: string
+    enables?: string[]
+    features?: string[]
+  }
+  services?: {
+    title: string
+    description: string
+  }[]
+  stats?: {
+    value: string
+    description: string
+  }[]
+  shapingNow?: string[]
+  whyChooseUs?: string[]
+  whyMattersNow?: string[]
+  capabilities?: {
+    title: string
+    items: string[]
+  }[]
+  useCases?: {
+    title: string
+    impact: string
+  }[]
+  successMetrics?: string[]
 }
 
 export interface IndustryStats {
