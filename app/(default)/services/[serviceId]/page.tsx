@@ -108,14 +108,14 @@ export default function ServicePage({ params }: ServicePageProps) {
         <div className='max-w-6xl mx-auto px-4 sm:px-6'>
           <div className='grid lg:grid-cols-2 gap-16'>
             {/* Benefits */}
-            <div>
+            <div data-aos='fade-up'>
               <h2 className='text-3xl font-bold text-gray-900 mb-4'>
                 Key Benefits
               </h2>
               <div className='h-1 w-16 bg-gradient-to-r from-blue-600 to-teal-400 mb-8' />
               <ul className='space-y-4'>
                 {service.benefits.map((benefit, index) => (
-                  <li key={index} className='flex items-start'>
+                  <li key={index} className='flex items-start' data-aos='fade-up' data-aos-delay={index * 50}>
                     <div className='w-6 h-6 rounded-full bg-teal-400/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0'>
                       <svg
                         className='w-4 h-4 text-teal-600'
@@ -138,14 +138,14 @@ export default function ServicePage({ params }: ServicePageProps) {
             </div>
 
             {/* Process */}
-            <div>
+            <div data-aos='fade-up' data-aos-delay='100'>
               <h2 className='text-3xl font-bold text-gray-900 mb-4'>
                 Our Process
               </h2>
               <div className='h-1 w-16 bg-gradient-to-r from-blue-600 to-teal-400 mb-8' />
               <div className='space-y-6'>
                 {service.process?.steps.map((step, index) => (
-                  <div key={index} className='flex items-start'>
+                  <div key={index} className='flex items-start' data-aos='fade-up' data-aos-delay={100 + index * 50}>
                     <div className='w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mr-4 mt-1 flex-shrink-0 text-sm font-bold'>
                       {index + 1}
                     </div>
@@ -254,15 +254,15 @@ export default function ServicePage({ params }: ServicePageProps) {
       {(service.services || service.capabilities) && (
         <section className='py-20 bg-white'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
-            <h2 className='text-3xl font-bold text-gray-900 mb-4'>
+            <h2 className='text-3xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
               {service.services ? `Our ${service.title} Services` : `${service.title} Capabilities`}
             </h2>
-            <div className='h-1 w-16 bg-gradient-to-r from-blue-600 to-teal-400 mb-12' />
+            <div className='h-1 w-16 bg-gradient-to-r from-blue-600 to-teal-400 mb-12' data-aos='fade-up' data-aos-delay='100' />
             
             {service.services && (
               <div className='space-y-8'>
                 {service.services.map((item, index) => (
-                  <div key={index} className='bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-all'>
+                  <div key={index} className='bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-all' data-aos='fade-up' data-aos-delay={index * 100}>
                     <h3 className='text-xl font-bold text-gray-900 mb-3'>
                       {item.title}
                     </h3>
@@ -277,7 +277,7 @@ export default function ServicePage({ params }: ServicePageProps) {
             {service.capabilities && (
               <div className='grid md:grid-cols-2 gap-8'>
                 {service.capabilities.map((capability, index) => (
-                  <div key={index} className='bg-gray-50 rounded-xl p-6'>
+                  <div key={index} className='bg-gray-50 rounded-xl p-6' data-aos='fade-up' data-aos-delay={index * 100}>
                     <h3 className='text-xl font-bold text-gray-900 mb-4'>
                       {capability.title}
                     </h3>
@@ -301,12 +301,12 @@ export default function ServicePage({ params }: ServicePageProps) {
       {service.stats && service.stats.length > 0 && (
         <section className='py-20 bg-gray-900'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
-            <h2 className='text-3xl font-bold text-white mb-12 text-center'>
+            <h2 className='text-3xl font-bold text-white mb-12 text-center' data-aos='fade-up'>
               {service.title.toUpperCase()} BY THE NUMBERS
             </h2>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
               {service.stats.map((stat, index) => (
-                <div key={index}>
+                <div key={index} data-aos='fade-up' data-aos-delay={index * 100}>
                   <div className='h-1 w-16 bg-teal-400 mb-6' />
                   <div className='text-5xl font-bold text-blue-400 mb-4'>
                     {stat.value}
@@ -345,13 +345,13 @@ export default function ServicePage({ params }: ServicePageProps) {
       {service.useCases && service.useCases.length > 0 && (
         <section className='py-20 bg-white'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
-            <h2 className='text-3xl font-bold text-gray-900 mb-4'>
+            <h2 className='text-3xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
               High-Impact Use Cases
             </h2>
-            <div className='h-1 w-16 bg-gradient-to-r from-blue-600 to-teal-400 mb-12' />
+            <div className='h-1 w-16 bg-gradient-to-r from-blue-600 to-teal-400 mb-12' data-aos='fade-up' data-aos-delay='100' />
             <div className='grid md:grid-cols-2 gap-6'>
               {service.useCases.map((useCase, index) => (
-                <div key={index} className='bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-all'>
+                <div key={index} className='bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-all' data-aos='fade-up' data-aos-delay={index * 100}>
                   <h3 className='text-lg font-bold text-gray-900 mb-2'>
                     {useCase.title}
                   </h3>
@@ -425,13 +425,13 @@ export default function ServicePage({ params }: ServicePageProps) {
       {service.whyChooseUs && service.whyChooseUs.length > 0 && (
         <section className='py-20 bg-gray-50'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
-            <h2 className='text-3xl font-bold text-gray-900 mb-4 text-center'>
+            <h2 className='text-3xl font-bold text-gray-900 mb-4 text-center' data-aos='fade-up'>
               Why Choose Dovetop Digital
             </h2>
-            <div className='h-1 w-24 bg-gradient-to-r from-blue-600 to-teal-400 mx-auto mb-12' />
+            <div className='h-1 w-24 bg-gradient-to-r from-blue-600 to-teal-400 mx-auto mb-12' data-aos='fade-up' data-aos-delay='100' />
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
               {service.whyChooseUs.map((reason, index) => (
-                <div key={index} className='bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all'>
+                <div key={index} className='bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all' data-aos='fade-up' data-aos-delay={index * 100}>
                   <div className='flex items-start'>
                     <div className='w-6 h-6 rounded-full bg-blue-600/20 flex items-center justify-center mr-3 mt-1 flex-shrink-0'>
                       <svg
@@ -460,11 +460,11 @@ export default function ServicePage({ params }: ServicePageProps) {
         <section className='py-20 bg-gray-50'>
           <div className='max-w-6xl mx-auto px-4 sm:px-6'>
             <div className='text-center mb-16'>
-              <h2 className='text-4xl font-bold text-gray-900 mb-4'>
+              <h2 className='text-4xl font-bold text-gray-900 mb-4' data-aos='fade-up'>
                 Industries We Serve
               </h2>
-              <div className='h-1 w-24 bg-gradient-to-r from-blue-600 to-teal-400 mx-auto mb-6' />
-              <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
+              <div className='h-1 w-24 bg-gradient-to-r from-blue-600 to-teal-400 mx-auto mb-6' data-aos='fade-up' data-aos-delay='100' />
+              <p className='text-xl text-gray-600 max-w-3xl mx-auto' data-aos='fade-up' data-aos-delay='200'>
                 See how {service.title} applies across different industries.
               </p>
             </div>
@@ -475,6 +475,8 @@ export default function ServicePage({ params }: ServicePageProps) {
                   key={index}
                   href={`/industries/${item.industry?.id}`}
                   className='block bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all'
+                  data-aos='fade-up'
+                  data-aos-delay={index * 100}
                 >
                   <h3 className='text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors'>
                     {item.industry?.name}
