@@ -111,7 +111,9 @@ export const industries: Industry[] = [
           example: 'Car insurers using telematics monitor driving behavior to offer personalized premiums and encourage safer driving habits.'
         }
       ]
-    }
+    },
+    icon: '🛡️',
+    isActive: true
   },
   {
     id: 'legal',
