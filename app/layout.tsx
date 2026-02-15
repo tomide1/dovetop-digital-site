@@ -1,6 +1,7 @@
 import './css/style.css'
 
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,6 +30,7 @@ export default function RootLayout({
 				className={`${inter.variable} bg-gray-50 font-inter tracking-tight text-gray-900 antialiased`} suppressHydrationWarning={true}>
         <div className='flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip'>
           {children}
+					<Analytics />
         </div>
       </body>
     </html>
