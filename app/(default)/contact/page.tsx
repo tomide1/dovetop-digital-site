@@ -48,7 +48,7 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Address</h3>
-              <p className="text-gray-700 font-medium">151 Picardy Road<br />Belvedere DA17 5QL<br />London, UK</p>
+              <p className="text-gray-700 font-medium">167-169 Great Portland Street<br />London, W1W 5PF</p>
             </div>
 
             {/* Email Card */}

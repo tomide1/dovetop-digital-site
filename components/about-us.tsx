@@ -440,7 +440,7 @@ export default function AboutUs() {
                   <p className='text-lg'>Our head office is located in London</p>
                   <div className='border-t pt-4'>
                     <p className='font-semibold text-gray-900 mb-2'>Address</p>
-                    <p>167-169 Greate Portland Street<br />London, W1W 5PF</p>
+                    <p>167-169 Great Portland Street<br />London, W1W 5PF</p>
                   </div>
                   <div className='border-t pt-4'>
                     <p className='font-semibold text-gray-900 mb-2'>Phone</p>
